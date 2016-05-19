@@ -34,6 +34,12 @@ def before_request():
         }
     ))
 
+@app.after_request
+def add_header(response):
+    response.headers["X-SaintIC-Media-Type"] = "saintic.v"+__version_list__[0]
+    response.headers["X-SaintIC-Request-Id"] = str(g.requestId)
+    return response
+
 class Index(Resource):
     def get(self):
         return {"Team Api": "Welcome %s" %request.headers.get('X-Real-Ip', request.remote_addr)}
@@ -71,7 +77,7 @@ class User(Resource):
                 logger.debug(emails)
                 emails=[ email.email for email in emails if email.email ]
                 logger.debug(emails)
-                if not _email in emails:
+                if not _email in emails: #check email in mysql
                     res.update({"msg": "no such email"})
                     logger.info(res)
                     return res
@@ -99,7 +105,7 @@ class User(Resource):
         else:
             res.update({"msg": "success", "data": data})
         logger.info(res)
-        return res, 200, {'X-SaintIC-Media-Type': "saintic.v"+__version_list__[0], "X-SaintIC-Request-Id": str(g.requestId)}
+        return res
 
     def post(self):
         if True:
