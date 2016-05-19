@@ -10,12 +10,12 @@ class DB():
     def __init__(self):
         try:
             self.dbc = torndb.Connection(
-                           host     = "%s:%s" %(MySQL.get('Host'), MySQL.get('Port', 3306)),
-                           database = MySQL.get('Database'),
-                           user     = MySQL.get('User', None),
-                           password = MySQL.get('Passwd', None),
-                           time_zone= MySQL.get('Timezone','+8:00'),
-                           charset  = MySQL.get('Charset', 'utf8'),
+                           host     = "%s:%s" %(MYSQL.get('Host'), MYSQL.get('Port', 3306)),
+                           database = MYSQL.get('Database'),
+                           user     = MYSQL.get('User', None),
+                           password = MYSQL.get('Passwd', None),
+                           time_zone= MYSQL.get('Timezone','+8:00'),
+                           charset  = MYSQL.get('Charset', 'utf8'),
                            connect_timeout=3,max_idle_time=5,)
         except Exception, e:
             logger.error(e)
@@ -41,4 +41,6 @@ class DB():
         return self.dbc.execute(sql)
 
 if __name__ == "__main__":
-    pass
+    mysql=DB()
+    data=mysql.get("select email from user")
+    print [ email.email for email in data if email.email ]

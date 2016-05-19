@@ -6,6 +6,12 @@ from pub import logger, mysql, gen_token, gen_requestId
 from flask import Flask, request, g, Response, session
 from flask.ext.restful import Api, Resource, abort
 
+__version__ = '1.0.0'
+__version_list__ = [ _v for _v in __version__ if _v != '.' ]
+__author__ = 'SaintIC <staugur@saintic.com>'
+__date__ = '2016-05-19'
+__doc__ = "Team Blog System for SaintIC, the GitHub URL is https://github.com/saintic/Team, now branch is api."
+
 app = Flask(__name__)
 api = Api(app)
 mail= re.compile(r'([0-9a-zA-Z\_*\.*\-*]+)@([a-zA-Z0-9\-*\_*\.*]+)\.([a-zA-Z]+$)')
@@ -44,6 +50,7 @@ class User(Resource):
         request_url = request.url
         http_code = Response.default_status
         res={"code": http_code, "url":request_url, "msg": None, "data": None}
+        logger.debug({"default_response": res})
         try:
             _num = int(request.args.get('num', 10))
         except ValueError, e:
@@ -52,30 +59,47 @@ class User(Resource):
         else:
             _email = request.args.get('email', None)
             _username = request.args.get('username', None)
+            _token = request.args.get('token')
+            logger.debug({"email":_email, "username":_username, "token":_token})
             if _username: #username's priority is greater than email
-                if request.args.get('token') == 'true':
-                    sql="SELECT username,email,cname,motto,url,token,extra FROM user WHERE username=%s LIMIT %d" %(_username, _num)
+                if _token == 'true':
+                    sql="SELECT username,email,cname,motto,url,token,extra FROM user WHERE username='%s' LIMIT %d" %(_username, _num)
                 else:
-                    sql="SELECT username,email,cname,motto,url,extra FROM user WHERE username=%s LIMIT %d" %(_username, _num)
-            else:
+                    sql="SELECT username,email,cname,motto,url,extra FROM user WHERE username='%s' LIMIT %d" %(_username, _num)
+            elif _email:
+                emails=mysql.get("SELECT email FROM user")
+                logger.debug(emails)
+                emails=[ email.email for email in emails if email.email ]
+                logger.debug(emails)
+                if not _email in emails:
+                    res.update({"msg": "no such email"})
+                    logger.info(res)
+                    return res
                 if mail.match(_email):
-                    if request.args.get('token') == 'true':
-                        sql="SELECT username,email,cname,motto,url,token,extra FROM user WHERE email=%s LIMIT %d" %(_email, _num)
+                    if _token == 'true':
+                        sql="SELECT username,email,cname,motto,url,token,extra FROM user WHERE email='%s' LIMIT %d" %(_email, _num)
                     else:
-                        sql="SELECT username,email,cname,motto,url,extra FROM user WHERE email=%s LIMIT %d" %(_email, _num)
+                        sql="SELECT username,email,cname,motto,url,extra FROM user WHERE email='%s' LIMIT %d" %(_email, _num)
                 else:
                     res.update({"msg": "mail format error"})
                     logger.info(res)
                     return res
+            else: #url args no username and email
+                if _token == 'true':
+                    sql="SELECT username,email,cname,motto,url,token,extra FROM user LIMIT %d" % _num
+                else:
+                    #this is default sql and display
+                    sql="SELECT username,email,cname,motto,url,extra FROM user LIMIT %d" %  _num
             logger.info({"requestId": g.requestId, "sql": sql})
         try:
             data=mysql.get(sql)
         except Exception,e:
             logger.error(e)
             return res.update({"msg": "get user info error"})
-        res.update({"msg": "success", "data": data})
+        else:
+            res.update({"msg": "success", "data": data})
         logger.info(res)
-        return res
+        return res, 200, {'X-SaintIC-Media-Type': "saintic.v"+__version_list__[0], "X-SaintIC-Request-Id": str(g.requestId)}
 
     def post(self):
         if True:
