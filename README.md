@@ -1,5 +1,5 @@
 # Team
-Team Blog System
+Team Blog
 
 # LICENSE
 MIT
