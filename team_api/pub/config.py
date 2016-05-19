@@ -5,19 +5,20 @@ GLOBAL={
 
     #"Environment": "dev",
     "Environment": "product",
-    #  1. The meaning of the representative is the application of the environment, the value of dev, product;
-    #  2. When the value is dev, only exec app.run() with flask.
-    #  3. When the value is product, will start server with tornado or gevent.
-    #  3. When the value is "super debug", will start tuning mode.
+    #1. The meaning of the representative is the application of the environment, the value of dev, product;
+    #2. When the value is dev, only exec app.run() with flask.
+    #3. When the value is product, will start server with tornado or gevent.
+    #3. When the value is "super debug", will start tuning mode.
 
     "Host": "0.0.0.0",
     #Application run network address, you can set it `0.0.0.0`, `127.0.0.1`, ``, `None`;
+    #Default run on all network interfaces.
 
-    "Port": 10050,
+    "Port": 10040,
     #Application run port, default port;
 
-    "Debug": True,
-    #The development environment is open, the production environment is closed for default.
+   "Debug": True,
+    #The development environment is open, the production environment is closed, which is also the default configuration.
 
     "LogLevel": "DEBUG",
     #应用程序写日志级别，目前有DEBUG，INFO，WARNING，ERROR，CRITICAL
@@ -28,7 +29,7 @@ GLOBAL={
 #生产环境配置段
 PRODUCT={
 
-    "ProcessName": "SIC.Team",
+    "ProcessName": "Team.Api",
     #Custom process, you can see it with "ps aux|grep ProcessName".
 
     "ProductType": "tornado",
@@ -53,9 +54,8 @@ MYSQL={
 BLOG={
 
     "IndexPageNum": 8,
-    #首页展现的文章数
+    #首页文章展现术,
 
     "AdminGroup": ("admin", "taochengwei"),
     #管理员组成员配置
-
 }

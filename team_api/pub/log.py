@@ -1,7 +1,6 @@
 #-*- coding:utf8 -*-
 
 import os
-import sys
 import logging.handlers
 from config import GLOBAL
 

@@ -1,29 +1,30 @@
 #!/usr/bin/python -O
 #product environment start application with `tornado IOLoop` and `gevent server`
 
-from src.api import app
-from src.pub.log import Syslog
-from src.pub.config import GLOBAL,PRODUCT
+from team_api.api import app
+from team_api.errors import RunEnvError
+from team_api.pub import logger
+from team_api.pub.config import GLOBAL, PRODUCT
 
 Host = GLOBAL.get('Host')
 Port = GLOBAL.get('Port')
 Environment = GLOBAL.get('Environment')
 ProcessName = PRODUCT.get('ProcessName')
 ProductType = PRODUCT.get('ProductType')
-logger = Syslog.getLogger()
 
 try:
     import setproctitle
-    if ProcessName:
-        setproctitle.setproctitle(ProcessName)
-        logger.info("The process is %s" % ProcessName)
 except ImportError, e:
-    ProcessName = None
     logger.warn("%s, try to pip install setproctitle, otherwise, you can't use the process to customize the function" %e)
+    pass
+else:
+    setproctitle.setproctitle(ProcessName)
+    logger.info("The process is %s" % ProcessName)
 
 if Environment != 'product':
-    logger.error("%s isn't product, exit." % Environment)
-    exit(128)  
+    errmsg="The %s isn't product, process exit!!!" % Environment
+    logger.error(msg)
+    raise RunEnvError(msg)
 
 try:
     logger.info('%s has been launched, %s:%d' %(ProcessName, Host, Port))
@@ -41,8 +42,9 @@ try:
         IOLoop.instance().start()
 
     else:
-        logger.error('Start the program does not support with %s, abnormal exit!' %ProductType)
-        exit(127)
+        errmgs='Start the program does not support with %s, abnormal exit!' %ProductType
+        logger.error(msg)
+        raise RunEnvError(msg)
 
 except Exception,e:
     print e

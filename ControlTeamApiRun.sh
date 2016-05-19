@@ -1,11 +1,11 @@
 #!/bin/bash
 
 dir=$(cd $(dirname $0);pwd)
-pidfile=/tmp/team.pid
+pidfile=/tmp/team_api.pid
 
 case $1 in
 start)
-    [ -d ${dir}/src/logs/ ] || mkdir -p ${dir}/src/logs/
+    [ -d ${dir}/team_api/logs/ ] || mkdir -p ${dir}/team_api/logs/
     if [ -f $pidfile ]; then
         if [[ $(ps aux | grep $(cat $pidfile) | grep -v grep | wc -l) -lt 1 ]]; then
             $(which python) -O ${dir}/Product.py &> /dev/null &
@@ -22,7 +22,7 @@ start)
     ;;
 
 stop)
-    killall SIC.Team
+    killall Team.Api
     retval=$?
     if [ $retval -eq 0 ]; then
         rm -f $pidfile
