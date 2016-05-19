@@ -1,0 +1,7 @@
+tornado
+gevent
+flask
+flask-RESTful
+MySQL-python
+torndb
+setproctitle
