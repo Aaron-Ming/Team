@@ -3,7 +3,7 @@
 import re
 import json
 from pub import logger, mysql, gen_token, gen_requestId
-from flask import Flask, request, g, Response, session
+from flask import Flask, request, g, jsonify, session, make_response, Response
 from flask.ext.restful import Api, Resource, abort
 
 __version__ = '1.0.0'
@@ -23,7 +23,7 @@ def before_request():
     logger.info(json.dumps({
         "AccessLog": {
             "login_user": session.get('username', None),
-            "status_code": Response.default_status,
+            "status_code": str(Response.status_code),
             "method": request.method,
             "ip": request.headers.get('X-Real-Ip', request.remote_addr),
             "url": request.url,
@@ -34,11 +34,34 @@ def before_request():
         }
     ))
 
+#每次返回数据中，带上响应头，包含API版本和本次请求的ID，以及允许所有域跨域访问API.
 @app.after_request
 def add_header(response):
     response.headers["X-SaintIC-Media-Type"] = "saintic.v"+__version_list__[0]
     response.headers["X-SaintIC-Request-Id"] = str(g.requestId)
+    response.headers["Access-Control-Allow-Origin"] = "*"
     return response
+
+#自定义错误显示信息，404错误和500错误
+@app.errorhandler(404)
+def not_found(error=None):
+    message = {
+        'status': 404,
+        'message': 'Not Found: ' + request.url,
+    }
+    resp = jsonify(message)
+    resp.status_code = 404
+    return resp
+
+@app.errorhandler(500)
+def internal_error(error=None):
+    message = {
+        'status': 500,
+        'message': 'Internal Server Error: ' + request.url,
+    }
+    resp = jsonify(message)
+    resp.status_code = 500
+    return resp
 
 class Index(Resource):
     def get(self):
@@ -54,7 +77,7 @@ class User(Resource):
         返回数据样例，{'msg':'success or error(errmsg)', 'code':'http code', 'data':data, 'url':request_url}
         """
         request_url = request.url
-        http_code = Response.default_status
+        http_code = "200 ok"
         res={"code": http_code, "url":request_url, "msg": None, "data": None}
         logger.debug({"default_response": res})
         try:
@@ -140,7 +163,7 @@ class User(Resource):
 
 api.add_resource(Index, '/', endpoint='index')
 #api.add_resource(Blog, '/api/blog', '/api/blog/', endpoint='api_blog')
-api.add_resource(User, '/api/user', '/api/user/', endpoint='api_user')
+api.add_resource(User, '/user', '/user/', endpoint='user')
 
 if __name__ == '__main__':
     from pub.config import GLOBAL

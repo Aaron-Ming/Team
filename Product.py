@@ -2,8 +2,7 @@
 #product environment start application with `tornado IOLoop` and `gevent server`
 
 from team_api.api import app
-from team_api.errors import RunEnvError
-from team_api.pub import logger
+from team_api.pub import logger, RunEnvError
 from team_api.pub.config import GLOBAL, PRODUCT
 
 Host = GLOBAL.get('Host')
