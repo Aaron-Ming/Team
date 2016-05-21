@@ -22,4 +22,6 @@ MIT
 
 ```python Product.py```
 
-如有问题，请到https://github.com/saintic/Team/issues提出问题。
+如有问题，请到[https://github.com/saintic/Team/issues][1]提出问题。
+
+[1]: https://github.com/saintic/Team/issues
