@@ -11,12 +11,15 @@ MIT
 > 4. sh ./ControlTeamApiRun.sh
 
 此时netstat -anptl查看进程，应该可以看到类似以下的信息(其中Team.Api是你配置文件中定义的)：
+
 ```tcp        0      0 0.0.0.0:10040               0.0.0.0:*                   LISTEN      31355/Team.Api```
 
 或者ps aux | grep Team.Api过滤下，应该可以看到类似以下的信息(其中Team.Api是你配置文件中定义的)：
+
 ```500      31355  0.0  2.1 334368 21424 ?        S    May20   0:00 Team.Api```
 
 如果没有正常监听系统，请直接运行，查看具体输出或查看logs/sys.log：
+
 ```python Product.py```
 
 如有问题，请到https://github.com/saintic/Team/issues提出问题。
