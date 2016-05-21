@@ -35,11 +35,11 @@ stop)
     ;;
 
 restart)
-    $0 stop
-    $0 start
+    ./$0 stop
+    ./$0 start
     ;;
 
 *)
-    $0 start
+    ./$0 start
     ;;
 esac
