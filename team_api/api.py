@@ -29,7 +29,7 @@ def before_request():
             "url": request.url,
             "referer": request.headers.get('Referer'),
             "agent": request.headers.get("User-Agent"),
-            "requestId": g.requestId,
+            "requestId": str(g.requestId),
             }
         }
     ))
@@ -79,7 +79,7 @@ class User(Resource):
         request_url = request.url
         http_code = "200 ok"
         res={"code": http_code, "url":request_url, "msg": None, "data": None}
-        logger.debug({"default_response": res})
+        logger.debug({"default_response": res, "requestId": str(g.requestId)})
         try:
             _num = int(request.args.get('num', 10))
         except ValueError, e:
@@ -89,7 +89,7 @@ class User(Resource):
             _email = request.args.get('email', None)
             _username = request.args.get('username', None)
             _token = request.args.get('token')
-            logger.debug({"email":_email, "username":_username, "token":_token})
+            logger.debug({"email":_email, "username":_username, "token":_token, "requestId": str(g.requestId)})
             if _username: #username's priority is greater than email
                 if _token == 'true':
                     sql="SELECT username,email,cname,motto,url,token,extra FROM user WHERE username='%s' LIMIT %d" %(_username, _num)
@@ -97,9 +97,9 @@ class User(Resource):
                     sql="SELECT username,email,cname,motto,url,extra FROM user WHERE username='%s' LIMIT %d" %(_username, _num)
             elif _email:
                 emails=mysql.get("SELECT email FROM user")
-                logger.debug(emails)
+                logger.debug({"first email": emails, "requestId": str(g.requestId)})
                 emails=[ email.email for email in emails if email.email ]
-                logger.debug(emails)
+                logger.debug({"second email":emails, "requestId": str(g.requestId)})
                 if not _email in emails: #check email in mysql
                     res.update({"msg": "no such email"})
                     logger.info(res)
@@ -119,7 +119,8 @@ class User(Resource):
                 else:
                     #this is default sql and display
                     sql="SELECT username,email,cname,motto,url,extra FROM user LIMIT %d" %  _num
-            logger.info({"requestId": g.requestId, "sql": sql})
+            #try...except...else(if...elif...else) end, write log sql and requestId
+            logger.info({"requestId": g.requestId, "User Get End SQL": sql})
         try:
             data=mysql.get(sql)
         except Exception,e:
