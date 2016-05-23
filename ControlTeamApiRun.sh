@@ -1,7 +1,8 @@
 #!/bin/bash
 
 dir=$(cd $(dirname $0);pwd)
-pidfile=/tmp/team_api.pid
+procname=$(python -c "from team_api.pub import config;print config.PRODUCT.get('ProcessName')")
+pidfile=/tmp/${procname}.pid
 
 case $1 in
 start)
@@ -22,7 +23,7 @@ start)
     ;;
 
 stop)
-    killall Team.Api
+    killall $procname
     retval=$?
     if [ $retval -eq 0 ]; then
         rm -f $pidfile
@@ -30,7 +31,7 @@ stop)
         kill -9 `cat $pidfile`
         retval=$?
         sleep 1
-        [ "$retval" = "0" ] && rm -f $pidfile || echo "Stop Error"
+        [ "$retval" = "0" ] && rm -f $pidfile || echo "$procname stop error"
     fi
     ;;
 

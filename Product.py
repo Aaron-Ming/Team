@@ -41,9 +41,9 @@ try:
         IOLoop.instance().start()
 
     else:
-        errmgs='Start the program does not support with %s, abnormal exit!' %ProductType
-        logger.error(msg)
-        raise RunEnvError(msg)
+        errmsg='Start the program does not support with %s, abnormal exit!' %ProductType
+        logger.error(errmsg)
+        raise RunEnvError(errmsg)
 
 except Exception,e:
     print e
