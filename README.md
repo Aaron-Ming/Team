@@ -7,5 +7,7 @@ MIT
 ### 思维导图
 team.xmind
 
-> 1. api，front，backend分离
-> 2. 
+### 分支结构
+> 1. api, 提供需要的接口
+> 2. front, 前端
+> 3. backend, 后台
