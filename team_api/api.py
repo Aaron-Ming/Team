@@ -2,7 +2,7 @@
 
 import re
 import json
-from pub import logger, mysql, gen_token, gen_requestId
+from pub import logger, mysql, gen_token, gen_requestId, md5
 from flask import Flask, request, g, jsonify, session, make_response, Response
 from flask.ext.restful import Api, Resource, abort
 
@@ -63,12 +63,38 @@ def internal_error(error=None):
     resp.status_code = 500
     return resp
 
+#API所需要的公共函数
+def dbUser(username=None, password=False):
+    "获取数据库中所有用户或是否存在某个具体用户(方法: username=username)"
+    if username:
+        if password == True:
+            sql = "SELECT username,password FROM user WHERE username='%s'" % username
+        else:
+            sql = "SELECT username FROM user WHERE username='%s'" % username
+    else:
+        #All user from mysql(team.user)
+        sql = "SELECT username FROM user"
+    logger.info({"func:dbUser:sql":sql})
+    try:
+        data = mysql.get(sql)
+    except Exception, e:
+        logger.error({"func:dbUser:exec_sql":sql})
+        return None
+    else:
+        return data
+
+#Define /, make it chcek or get
 class Index(Resource):
     def get(self):
-        return {"Team Api": "Welcome %s" %request.headers.get('X-Real-Ip', request.remote_addr)}
+        return {"Team.Api": "Welcome %s" %request.headers.get('X-Real-Ip', request.remote_addr)}
 
 class User(Resource):
-
+    """User resource, url is /user, /user/.
+    1. #get:    Get user
+    2. #post:   Create user, registry and login
+    3. #put:    Update user profile
+    4. #delete: Delete user
+    """
     def get(self):
         """Public func, no token, with url args:
         1. num, 展现的数量,
@@ -79,12 +105,12 @@ class User(Resource):
         request_url = request.url
         http_code = "200 ok"
         res={"code": http_code, "url":request_url, "msg": None, "data": None}
-        logger.debug({"default_response": res, "requestId": str(g.requestId)})
         try:
             _num = int(request.args.get('num', 10))
         except ValueError, e:
             logger.warn(e)
-            return res.update({"msg": "the num is not integer"})
+            res.update({"msg": "the num is not integer"})
+            return res
         else:
             _email = request.args.get('email', None)
             _username = request.args.get('username', None)
@@ -119,48 +145,99 @@ class User(Resource):
                 else:
                     #this is default sql and display
                     sql="SELECT username,email,cname,motto,url,extra FROM user LIMIT %d" %  _num
-            #try...except...else(if...elif...else) end, write log sql and requestId
+            #try...except...else(if...elif...else) is end, write log sql and requestId
             logger.info({"requestId": g.requestId, "User Get End SQL": sql})
         try:
             data=mysql.get(sql)
         except Exception,e:
             logger.error(e)
-            return res.update({"msg": "get user info error"})
+            res.update({"msg": "get user info error"})
+            return res
         else:
             res.update({"msg": "success", "data": data})
         logger.info(res)
         return res
 
     def post(self):
-        if True:
-            username = request.form.get('username', None)
-            password = request.form.get('password', None)
-            email    = request.form.get('email', 'NULL')
-            extra    = request.form.get('extra', 'NULL')
-        if username == None or password == None:
-            abort(400, message="username or password is empty!")
-        if re.match(r'([0-9a-zA-Z\_*\.*\-*]+)@([a-zA-Z0-9\-*\_*\.*]+)\.([a-zA-Z]+$)', email) == None:
-            abort(400, message="email format error")
-        sql = "select username from user where username='%s'" % username
-        logger.info(sql)
-        if mysql.select(sql):
-            data = {'code':1024, 'msg':'User already exists'}
-            logger.warn(data)
+        """login and registry, with url args:
+        1. action=log/reg, default is log;
+
+        post data:
+        1. username,
+        2. password,
+        3. email,可选, 不用做系统登录, 如果有则会做正则检测不符合格式则弹回请求.
+        """
+        request_url = request.url
+        res = {"url": request_url, "msg": None, "data": None}
+        try:
+            username = request.json.get('username', None)
+            password = request.json.get('password', None)
+            email    = request.json.get('email')
+        except Exception, e:
+            logger.error(e)
+            res.update({'msg': 'no username or password'})
+            return res
         else:
-            sql = "insert into user (username, password, email, extra) values('%s', '%s', '%s', '%s')" % (username, md5(password), email, extra)
+            res.update({'data': {'username': username, 'email': email}})
+        if not username or not password:
+            logger.debug({"User:post:request.json": (username, password), "res": res.update({'msg': 'Invaild username or password'})})
+            return res
+        if email and re.match(r'([0-9a-zA-Z\_*\.*\-*]+)@([a-zA-Z0-9\-*\_*\.*]+)\.([a-zA-Z]+$)', email) == None:
+            logger.debug({"User:post:request.json": email, "res": res.update({'msg': "email format error"})})  #when email has set, otherwise, pass `if...abort`
+            return res
+        #Start Action with (log, reg)
+        action = request.args.get("action") #log or reg (登录or注册)
+        ReqData = dbUser(username, password=True)
+        logger.debug({"request.type": action, 'ReqData': ReqData})
+        _MD5pass = md5(password)
+        if action == 'log':
+            _DBuser  = ReqData.get('username')
+            _DBpass  = ReqData.get('password')
+            if not ReqData:
+                res.update({'msg':'User not exists'})
+                logger.warn(res)
+                return res
+            #ReqData is True(user is exists), it's dict, eg:{'username': u'xxxxx', 'password': u'xxxxxxxxxx'}
+            logger.debug({'ReqUser': username, 'ReqPassMD5': _MD5pass, 'DBuser': _DBuser, 'DBpass': _DBpass})
+            if len(username) < 5:
+                res.update({'msg': 'Username length of at least 5', 'code': 1010}) #code:1010, username length < 5
+                logger.warn(res)
+                return res
+            if _MD5pass == _DBpass:
+                res.update({'msg': 'Verify Success', 'code': 0}) #code:0, it's successful
+            else:
+                res.update({'msg': 'Verify Fail', 'code': 1011}) #code:1011, request pass != mysql pass
+            logger.info(res)
+            return res
+        elif action == 'reg':
+            sql = "INSERT INTO user (username, password, email) VALUES('%s', '%s', '%s')" % (username, _MD5pass, email)
+            if ReqData:
+                res.update({'msg': 'User already exists, cannot be registered!'})
+                logger.warn(res)
+                return res
             try:
                 if hasattr(mysql, 'insert'):
                     mysql.insert(sql)
                 else:
                     mysql.execute(sql)
-                logger.info(sql)
+                logger.info({"User:post:reg:sql": sql})
             except Exception, e:
-                data = {'code':1025, 'msg':'Sign up failed'}
-                logger.error(data)
+                res.update({'code':1026, 'msg':'Sign up failed'}) #code:1026, sign up failed when write into mysql
+                logger.error(res)
             else:
-                data = {'code':0, 'msg':'Sign up success', 'data':{'username':username, 'email':email}}
-                logger.info(data)
-        return data
+                res.update({'code': 0, 'msg': 'Sign up success'})
+                logger.info(res)
+            return res
+        else:
+            res.update({'msg': 'Request action error', 'code': 1025}) #code:1025, no such action when request post /user
+            logger.info(res)
+            return res
+
+    def delete(self):
+        pass
+
+    def put(self):
+        pass
 
 api.add_resource(Index, '/', endpoint='index')
 #api.add_resource(Blog, '/api/blog', '/api/blog/', endpoint='api_blog')

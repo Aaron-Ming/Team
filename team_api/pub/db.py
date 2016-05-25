@@ -42,5 +42,5 @@ class DB():
 
 if __name__ == "__main__":
     mysql=DB()
-    data=mysql.get("select email from user")
-    print [ email.email for email in data if email.email ]
+    sql = "SELECT username,password FROM user where username='sakura'"
+    print mysql.get(sql)
