@@ -177,12 +177,13 @@ class User(Resource):
         """
         res = {"url": request.url, "msg": None, "data": None}
         request_json = request.json
-        logger.debug({"request.json": request_json})
+        logger.debug({"request.json": request_json, "request.json.type": type(request_json)})
         if request_json: #header ask: "Content-type: application/json"
             username = request_json.get('username', None)
             password = request_json.get('password', None)
             email    = request_json.get('email')
         else:            #this is default form ask
+            logger.debug("No request.json, start request.form")
             try:
                 username = request.form.get('username', None)
                 password = request.form.get('password', None)
@@ -192,7 +193,7 @@ class User(Resource):
                 res.update({'msg': 'No username or password in request', 'code': 1015}) #code:1015, 获取不到相关的请求(username and password)
                 return res
         if not username or not password:
-            logger.debug({"User:post:request.json": (username, password), "res": res.update({'msg': 'Invaild username or password', 'code': 1016})}) #code:1016, 请求的username或password为空。
+            logger.debug({"User:post:request.json(user, pass)": (username, password), "res": res.update({'msg': 'Invaild username or password', 'code': 1016})}) #code:1016, 请求的username或password为空。
             return res
         else:
             res.update({'data': {'username': username, 'email': email}})
@@ -255,7 +256,7 @@ class User(Resource):
         And, operator must have administrator rights.
         """
         from pub.config.BLOG import AdminGroup
-        res      = {"url": request.url, "msg": None, "data": None}
+        res      = {"url": request.url, "msg": None, "data": None, "code": 200}
         token    = request.args.get('token', None)
         username = request.args.get('username', None)
         if not token:
@@ -267,7 +268,7 @@ class User(Resource):
             logger.warn(res)
             return res
         if not username in AdminGroup:
-            res.update({'msg': 'This user does not have permission!', "code": 1022}) #code:1022, 请求的username不在配置文件的AdminGroup组，没有删除权限
+            res.update({'msg': 'The user does not have permission!', "code": 1022}) #code:1022, 请求的username不在配置文件的AdminGroup组，没有删除权限
             logger.error(res)
             return res
 
@@ -299,6 +300,7 @@ class User(Resource):
         return res
 
     def put(self):
+        """Update user profile"""
         pass
 
 class Token(Resource):
