@@ -3,18 +3,18 @@
 import re
 import json
 from pub import logger, mysql, gen_token, gen_requestId, md5
-from flask import Flask, request, g, jsonify, session, make_response, Response
+from flask import Flask, request, g, jsonify, session, Response
 from flask.ext.restful import Api, Resource, abort
 
+__author__  = 'SaintIC <staugur@saintic.com>'
+__doc__     = "Team Blog Api System for SaintIC, the GitHub URL is https://github.com/saintic/Team, now branch is api."
+__date__    = '2016-05-19'
 __version__ = '1.0.0'
 __version_list__ = [ _v for _v in __version__ if _v != '.' ]
-__author__ = 'SaintIC <staugur@saintic.com>'
-__date__ = '2016-05-19'
-__doc__ = "Team Blog System for SaintIC, the GitHub URL is https://github.com/saintic/Team, now branch is api."
 
-app = Flask(__name__)
-api = Api(app)
-mail= re.compile(r'([0-9a-zA-Z\_*\.*\-*]+)@([a-zA-Z0-9\-*\_*\.*]+)\.([a-zA-Z]+$)')
+app  = Flask(__name__)
+api  = Api(app)
+mail = re.compile(r'([0-9a-zA-Z\_*\.*\-*]+)@([a-zA-Z0-9\-*\_*\.*]+)\.([a-zA-Z]+$)')
 
 #每个URL请求之前，定义requestId并绑定到g，JSON化写入日志中。
 @app.before_request
@@ -34,10 +34,10 @@ def before_request():
         }
     ))
 
-#每次返回数据中，带上响应头，包含API版本和本次请求的ID，以及允许所有域跨域访问API.
+#每次返回数据中，带上响应头，包含API版本和本次请求的requestId，以及允许所有域跨域访问API.
 @app.after_request
 def add_header(response):
-    response.headers["X-SaintIC-Media-Type"] = "saintic.v"+__version_list__[0]
+    response.headers["X-SaintIC-Media-Type"] = "saintic.v" + __version_list__[0]
     response.headers["X-SaintIC-Request-Id"] = str(g.requestId)
     response.headers["Access-Control-Allow-Origin"] = "*"
     return response
@@ -52,6 +52,7 @@ def not_found(error=None):
     resp = jsonify(message)
     resp.status_code = 404
     return resp
+
 @app.errorhandler(500)
 def internal_error(error=None):
     message = {
@@ -64,7 +65,13 @@ def internal_error(error=None):
 
 #API所需要的公共函数
 def dbUser(username=None, password=False, token=False):
-    "获取数据库中所有用户或是否存在某个具体用户(方法: username=username)"
+    """
+    1. 获取数据库中所有用户或是否存在某个具体用户(方法: username=username)。
+    2. 当username为真，password=True, 获取用户及密码。
+    3. 当username为真，token=True，获取用户及token。
+    4. 当username为真，password、token皆为True，获取用户、密码、token。
+    5. 当username不存在，即第一条解释。
+    """
     if username:
         if password == True:
             if token == True:
@@ -76,8 +83,7 @@ def dbUser(username=None, password=False, token=False):
                 sql = "SELECT username,token FROM user WHERE username='%s'" % username
             else:
                 sql = "SELECT username FROM user WHERE username='%s'" % username
-    else:
-        #All user from mysql(team.user)
+    else:#All user from mysql(team.user)
         sql = "SELECT username FROM user"
     logger.info({"func:dbUser:sql":sql})
     try:
@@ -102,23 +108,23 @@ class User(Resource):
     """
     def get(self):
         """Public func, no token, with url args:
-        1. num, 展现的数量,
-        2. username|email, 用户名或邮箱，数据库主键，唯一.
+        1. num, 展现的数量,默认是10条。
+        2. username|email, 用户名或邮箱，数据库主键，唯一。
 
         返回数据样例，{'msg':'success or error(errmsg)', 'code':'http code', 'data':data, 'url':request_url}
         """
-        res={"code": 200, "url":request.url, "msg": None, "data": None}
+        res={"code": 200, "url": request.url, "msg": None, "data": None}
         try:
             _num = int(request.args.get('num', 10))
         except ValueError, e:
             logger.warn(e)
-            res.update({"msg": "the num is not integer"})
+            res.update({"msg": "the num is not integer", "code": 1000}) #code:1000, for get, the error is num error when request
             return res
         else:
-            _email = request.args.get('email', None)
+            _email    = request.args.get('email', None)
             _username = request.args.get('username', None)
-            _token = request.args.get('token')
-            logger.debug({"email":_email, "username":_username, "token":_token, "requestId": str(g.requestId)})
+            _token    = request.args.get('token')
+            logger.debug({"email": _email, "username": _username, "token": _token, "requestId": str(g.requestId)})
             if _username: #username's priority is greater than email
                 if _token == 'true':
                     sql="SELECT username,email,cname,motto,url,token,extra FROM user WHERE username='%s' LIMIT %d" %(_username, _num)
@@ -126,11 +132,11 @@ class User(Resource):
                     sql="SELECT username,email,cname,motto,url,extra FROM user WHERE username='%s' LIMIT %d" %(_username, _num)
             elif _email:
                 emails=mysql.get("SELECT email FROM user")
-                logger.debug({"first email": emails, "requestId": str(g.requestId)})
+                logger.debug({"The first email": emails, "requestId": str(g.requestId)})
                 emails=[ email.email for email in emails if email.email ]
-                logger.debug({"second email":emails, "requestId": str(g.requestId)})
+                logger.debug({"The second email": emails, "requestId": str(g.requestId)})
                 if not _email in emails: #check email in mysql
-                    res.update({"msg": "no such email"})
+                    res.update({"msg": "no such email", "code": 1001}) #code:1001, request email not in mysql
                     logger.info(res)
                     return res
                 if mail.match(_email):
@@ -139,7 +145,7 @@ class User(Resource):
                     else:
                         sql="SELECT username,email,cname,motto,url,extra FROM user WHERE email='%s' LIMIT %d" %(_email, _num)
                 else:
-                    res.update({"msg": "mail format error"})
+                    res.update({"msg": "mail format error", "code": 1002}) #code:1002, email format error with mail.match(re)
                     logger.info(res)
                     return res
             else: #url args no username and email
@@ -154,9 +160,9 @@ class User(Resource):
             data=mysql.get(sql)
         except Exception,e:
             logger.error(e)
-            res.update({"msg": "get user info error"})
+            res.update({"msg": "get user info error, %s" %e, "code": 1003}) #code:1003, exec sql error from mysql.
         else:
-            res.update({"msg": "success", "data": data})
+            res.update({"msg": "success", "data": data, "code": 0})
         logger.info(res)
         return res
 
@@ -172,41 +178,42 @@ class User(Resource):
         res = {"url": request.url, "msg": None, "data": None}
         request_json = request.json
         logger.debug({"request.json": request_json})
-        if request_json:
+        if request_json: #header ask: "Content-type: application/json"
             username = request_json.get('username', None)
             password = request_json.get('password', None)
             email    = request_json.get('email')
-        else:
+        else:            #this is default form ask
             try:
                 username = request.form.get('username', None)
                 password = request.form.get('password', None)
                 email    = request.form.get('email')
             except Exception, e:
                 logger.error(e)
-                res.update({'msg': 'No username or password in request'})
+                res.update({'msg': 'No username or password in request', 'code': 1015}) #code:1015, 获取不到相关的请求(username and password)
                 return res
         if not username or not password:
-            logger.debug({"User:post:request.json": (username, password), "res": res.update({'msg': 'Invaild username or password'})})
+            logger.debug({"User:post:request.json": (username, password), "res": res.update({'msg': 'Invaild username or password', 'code': 1016})}) #code:1016, 请求的username或password为空。
             return res
         else:
             res.update({'data': {'username': username, 'email': email}})
+        #define username and password length(can be from config.py)
         if len(username) < 5 or len(password) < 5:
             res.update({'msg': 'username or password length of at least 5', 'code': 1010}) #code:1010, username/password length < 5
             logger.warn(res)
             return res
-        if email and re.match(r'([0-9a-zA-Z\_*\.*\-*]+)@([a-zA-Z0-9\-*\_*\.*]+)\.([a-zA-Z]+$)', email) == None:
-            logger.debug({"User:post:request.json": email, "res": res.update({'msg': "email format error"})})  #when email has set, otherwise, pass `if...abort`
+        if email and mail.match(email) == None:
+            logger.debug({"User:post:request.json": email, "res": res.update({'msg': "email format error", 'code': 1017})})  #when email has set, otherwise, pass `if...abort`. The code:1017, email format error in request.json.
             return res
         #Start Action with (log, reg)
-        action = request.args.get("action") #log or reg (登录or注册)
-        ReqData = dbUser(username, password=True)
-        logger.debug({"request.type": action, 'ReqData': ReqData})
+        action   = request.args.get("action") #log or reg (登录or注册)
+        ReqData  = dbUser(username, password=True)
         _MD5pass = md5(password)
+        logger.debug({"request.action": action, 'ReqData': ReqData})
         if action == 'log':
             _DBuser  = ReqData.get('username')
             _DBpass  = ReqData.get('password')
             if not ReqData:
-                res.update({'msg':'User not exists'})
+                res.update({'msg':'User not exists', 'code': 1018}) #code:1018, 登录请求时，请求中的username在数据库中获取不到信息(没有此用户)。
                 logger.warn(res)
                 return res
             #ReqData is True(user is exists), it's dict, eg:{'username': u'xxxxx', 'password': u'xxxxxxxxxx'}
@@ -220,7 +227,7 @@ class User(Resource):
         elif action == 'reg':
             sql = "INSERT INTO user (username, password, email) VALUES('%s', '%s', '%s')" % (username, _MD5pass, email)
             if ReqData:
-                res.update({'msg': 'User already exists, cannot be registered!', 'code': 1024}) #code:1024, already has user when reg.
+                res.update({'msg': 'User already exists, cannot be registered!', 'code': 1014}) #code:1024, already has user when reg.
                 logger.warn(res)
                 return res
             try:

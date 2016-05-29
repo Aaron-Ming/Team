@@ -12,8 +12,6 @@ start)
             $(which python) -O ${dir}/Product.py &> /dev/null &
             pid=$!
             echo $pid > $pidfile
-        else
-            :
         fi
     else
         $(which python) -O ${dir}/Product.py &> /dev/null &
