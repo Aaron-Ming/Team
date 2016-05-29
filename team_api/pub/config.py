@@ -4,7 +4,7 @@
 GLOBAL={
 
     "Environment": "dev",
-    "Environment": "product",
+    #"Environment": "product",
     #1. The meaning of the representative is the application of the environment, the value of dev, product;
     #2. When the value is dev, only exec app.run() with flask.
     #3. When the value is product, will start server with tornado or gevent.
@@ -24,7 +24,6 @@ GLOBAL={
     #应用程序写日志级别，目前有DEBUG，INFO，WARNING，ERROR，CRITICAL
 
 }
-
 
 #生产环境配置段
 PRODUCT={
@@ -49,3 +48,7 @@ MYSQL={
     #MySQL连接信息，格式可包括在()、[]、{}内，分别填写主机名或IP、端口、数据库、用户、密码、字符集、时区等，其中port默认3306、字符集默认utf8、时区默认东八区，注意必须写在一行内！
 }
 
+#博客配置项
+BLOG={
+    "AdminGroup": ("admin", "taochengwei"),
+}

@@ -51,9 +51,10 @@ status)
         echo -e "\033[39;34m  系统pid：${pid}\033[0m"
         echo -e "\033[39;34m  pid文件：$(cat ${pidfile})\033[0m"
     else
-       echo -e "\033[39;33m${procname}: \033[0m"
+        echo -e "\033[39;33m${procname}: \033[0m"
         echo "  pid: $pid"
-        echo -e "  state:" "\033[39;32mrunning\033[0m"
+	echo -e "  state:" "\033[39;32mrunning\033[0m"
+        echo -e "  process run time:" "\033[39;32m$(ps -eO lstart | grep $procname | grep -v grep | awk '{print $6"-"$3"-"$4,$5}')\033[0m"
     fi
     ;;
 

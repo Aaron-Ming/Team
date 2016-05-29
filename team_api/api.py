@@ -16,7 +16,7 @@ app = Flask(__name__)
 api = Api(app)
 mail= re.compile(r'([0-9a-zA-Z\_*\.*\-*]+)@([a-zA-Z0-9\-*\_*\.*]+)\.([a-zA-Z]+$)')
 
-#每个URL请求之前，定义requestId并绑定到g，并序列化写入日志中。
+#每个URL请求之前，定义requestId并绑定到g，JSON化写入日志中。
 @app.before_request
 def before_request():
     g.requestId = gen_requestId()
@@ -52,7 +52,6 @@ def not_found(error=None):
     resp = jsonify(message)
     resp.status_code = 404
     return resp
-
 @app.errorhandler(500)
 def internal_error(error=None):
     message = {
@@ -64,13 +63,19 @@ def internal_error(error=None):
     return resp
 
 #API所需要的公共函数
-def dbUser(username=None, password=False):
+def dbUser(username=None, password=False, token=False):
     "获取数据库中所有用户或是否存在某个具体用户(方法: username=username)"
     if username:
         if password == True:
-            sql = "SELECT username,password FROM user WHERE username='%s'" % username
+            if token == True:
+                sql = "SELECT username,password,token FROM user WHERE username='%s'" % username
+            else:
+                sql = "SELECT username,password FROM user WHERE username='%s'" % username
         else:
-            sql = "SELECT username FROM user WHERE username='%s'" % username
+            if token == True:
+                sql = "SELECT username,token FROM user WHERE username='%s'" % username
+            else:
+                sql = "SELECT username FROM user WHERE username='%s'" % username
     else:
         #All user from mysql(team.user)
         sql = "SELECT username FROM user"
@@ -102,9 +107,7 @@ class User(Resource):
 
         返回数据样例，{'msg':'success or error(errmsg)', 'code':'http code', 'data':data, 'url':request_url}
         """
-        request_url = request.url
-        http_code = "200 ok"
-        res={"code": http_code, "url":request_url, "msg": None, "data": None}
+        res={"code": 200, "url":request.url, "msg": None, "data": None}
         try:
             _num = int(request.args.get('num', 10))
         except ValueError, e:
@@ -152,7 +155,6 @@ class User(Resource):
         except Exception,e:
             logger.error(e)
             res.update({"msg": "get user info error"})
-            return res
         else:
             res.update({"msg": "success", "data": data})
         logger.info(res)
@@ -167,20 +169,30 @@ class User(Resource):
         2. password,
         3. email,可选, 不用做系统登录, 如果有则会做正则检测不符合格式则弹回请求.
         """
-        request_url = request.url
-        res = {"url": request_url, "msg": None, "data": None}
-        try:
-            username = request.json.get('username', None)
-            password = request.json.get('password', None)
-            email    = request.json.get('email')
-        except Exception, e:
-            logger.error(e)
-            res.update({'msg': 'no username or password'})
+        res = {"url": request.url, "msg": None, "data": None}
+        request_json = request.json
+        logger.debug({"request.json": request_json})
+        if request_json:
+            username = request_json.get('username', None)
+            password = request_json.get('password', None)
+            email    = request_json.get('email')
+        else:
+            try:
+                username = request.form.get('username', None)
+                password = request.form.get('password', None)
+                email    = request.form.get('email')
+            except Exception, e:
+                logger.error(e)
+                res.update({'msg': 'No username or password in request'})
+                return res
+        if not username or not password:
+            logger.debug({"User:post:request.json": (username, password), "res": res.update({'msg': 'Invaild username or password'})})
             return res
         else:
             res.update({'data': {'username': username, 'email': email}})
-        if not username or not password:
-            logger.debug({"User:post:request.json": (username, password), "res": res.update({'msg': 'Invaild username or password'})})
+        if len(username) < 5 or len(password) < 5:
+            res.update({'msg': 'username or password length of at least 5', 'code': 1010}) #code:1010, username/password length < 5
+            logger.warn(res)
             return res
         if email and re.match(r'([0-9a-zA-Z\_*\.*\-*]+)@([a-zA-Z0-9\-*\_*\.*]+)\.([a-zA-Z]+$)', email) == None:
             logger.debug({"User:post:request.json": email, "res": res.update({'msg': "email format error"})})  #when email has set, otherwise, pass `if...abort`
@@ -199,20 +211,16 @@ class User(Resource):
                 return res
             #ReqData is True(user is exists), it's dict, eg:{'username': u'xxxxx', 'password': u'xxxxxxxxxx'}
             logger.debug({'ReqUser': username, 'ReqPassMD5': _MD5pass, 'DBuser': _DBuser, 'DBpass': _DBpass})
-            if len(username) < 5:
-                res.update({'msg': 'Username length of at least 5', 'code': 1010}) #code:1010, username length < 5
-                logger.warn(res)
-                return res
             if _MD5pass == _DBpass:
-                res.update({'msg': 'Verify Success', 'code': 0}) #code:0, it's successful
+                res.update({'msg': 'Password authentication success at sign in', 'code': 0}) #code:0, it's successful
             else:
-                res.update({'msg': 'Verify Fail', 'code': 1011}) #code:1011, request pass != mysql pass
+                res.update({'msg': 'Password authentication failed at sign in', 'code': 1011}) #code:1011, request pass != mysql pass
             logger.info(res)
             return res
         elif action == 'reg':
             sql = "INSERT INTO user (username, password, email) VALUES('%s', '%s', '%s')" % (username, _MD5pass, email)
             if ReqData:
-                res.update({'msg': 'User already exists, cannot be registered!'})
+                res.update({'msg': 'User already exists, cannot be registered!', 'code': 1024}) #code:1024, already has user when reg.
                 logger.warn(res)
                 return res
             try:
@@ -222,26 +230,112 @@ class User(Resource):
                     mysql.execute(sql)
                 logger.info({"User:post:reg:sql": sql})
             except Exception, e:
-                res.update({'code':1026, 'msg':'Sign up failed'}) #code:1026, sign up failed when write into mysql
+                res.update({'code':1012, 'msg':'Sign up failed'}) #code:1012, sign up failed when write into mysql
                 logger.error(res)
             else:
                 res.update({'code': 0, 'msg': 'Sign up success'})
                 logger.info(res)
             return res
         else:
-            res.update({'msg': 'Request action error', 'code': 1025}) #code:1025, no such action when request post /user
+            res.update({'msg': 'Request action error', 'code': 1013}) #code:1013, no such action when request post /user
             logger.info(res)
             return res
 
     def delete(self):
-        pass
+        """delete user, with url args:
+        1. token, must match username,
+        2. username, must match token,
+        And, operator must have administrator rights.
+        """
+        from pub.config.BLOG import AdminGroup
+        res      = {"url": request.url, "msg": None, "data": None}
+        token    = request.args.get('token', None)
+        username = request.args.get('username', None)
+        if not token:
+            res.update({'msg': 'No token', "code": 1020}) #code:1020, 请求参数无token
+            logger.warn(res)
+            return res
+        if not username:
+            res.update({'msg': 'No username', "code": 1021}) #code:1021, 请求参数无username
+            logger.warn(res)
+            return res
+        if not username in AdminGroup:
+            res.update({'msg': 'This user does not have permission!', "code": 1022}) #code:1022, 请求的username不在配置文件的AdminGroup组，没有删除权限
+            logger.error(res)
+            return res
+
+        ReqData  = dbUser(username, token=True)
+        logger.debug({"User:delete:ReqData": ReqData})
+        if ReqData:
+            _DBtoken = ReqData.get('token')
+            _DBuser  = ReqData.get('username')
+            if _DBtoken != token:
+                res.update({'msg': 'token miss match!', 'code': 1023}) #code:1023, 请求的token参数与数据库token值不匹配
+                logger.error(res)
+                return res
+            sql = "DELETE FROM user WHERE username='%s'" % username
+            logger.info({"User:delete:SQL": sql})
+            try:
+                if hasattr(mysql, 'delete'):
+                    mysql.delete(sql)
+                else:
+                    mysql.execute(sql)
+            except Exception, e:
+                res.update({'code':1024, 'msg':'Delete user failed'}) #code:1024, delete user from mysql, it's error
+                logger.error(res)
+                return res
+            else:
+                res.update({'code':0, 'msg':'Delete success', 'data':{'delete username': username}}) #token match username, deleter ok
+        else:
+            res.update({'code': 1025, 'msg':'No found username'}) #code:1025, no such username in mysql.
+        logger.info(res)
+        return res
 
     def put(self):
         pass
 
+class Token(Resource):
+    pass
+
+class Blog(Resource):
+    def get(self):
+        try:
+            num = int(request.args.get('num', 10))
+        except ValueError,e:
+            logger.warn(e)
+            return {"code":126, "msg": "num is not integer"}
+        #num, 限制列出数据数量，默认值10，不参与优先级
+        listBlogId = request.args.get('list', False) #列出博客所有id，优先级1
+        id = request.args.get('id', None)           #查看某个id的博客数据，优先级2
+        if id != None:
+            try:
+                id=int(id)
+            except ValueError,e:
+                logger.debug(type(id)+id)
+                return {"code":126, "msg": "id is invaild"}
+
+        if listBlogId == True or listBlogId == 'true':
+            sql="SELECT id FROM blog LIMIT %d" %num
+        else:
+            if id:
+                sql="SELECT * FROM blog WHERE id='%s'" % id
+            else:
+                sql="SELECT * FROM blog LIMIT %d" % num
+        try:
+            data=mysql.get(sql)
+            logger.info(sql)
+            code=0
+        except Exception,e:
+            logger.error(e)
+            code=127
+        _result={'code':code, 'msg':'Get Blogs', 'data':data}
+        logger.info(_result)
+        return _result
+
 api.add_resource(Index, '/', endpoint='index')
-#api.add_resource(Blog, '/api/blog', '/api/blog/', endpoint='api_blog')
 api.add_resource(User, '/user', '/user/', endpoint='user')
+api.add_resource(Token, '/token', '/token/', endpoint='token')
+#api.add_resource(Blog, '/api/blog', '/api/blog/', endpoint='api_blog')
 
 if __name__ == '__main__':
     from pub.config import GLOBAL
