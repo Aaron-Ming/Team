@@ -1,9 +1,10 @@
 #-*- coding:utf8 -*-
 
 import torndb
-from tool import logger
+from log import Syslog
 from config import MYSQL
 
+logger = Syslog.getLogger()
 class DB():
 
     """ 封装与操作常用的操作数据库，初始化数据库，相关工具等。 """
@@ -42,5 +43,5 @@ class DB():
 
 if __name__ == "__main__":
     mysql=DB()
-    sql = "SELECT username,password FROM user where username='sakura'"
+    sql = "SELECT username,password FROM user WHERE username='sakura'"
     print mysql.get(sql)

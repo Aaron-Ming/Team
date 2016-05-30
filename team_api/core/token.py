@@ -1,8 +1,46 @@
 # -*- coding:utf-8 -*-
 
-from pub import logger, mysql
+from pub import logger, mysql, dbUser, md5, gen_token
 from flask import request, g
 from flask.ext.restful import Resource
 
 class Token(Resource):
-    pass
+    def post(self):
+        """create token, with post data:
+        1. username,
+        2. password,
+        return token
+        """
+        code= 1030
+        res = {"url": request.url, "msg": None}
+        if request.json: #header ask: "Content-type: application/json"
+            username = request.json.get('username')
+            password = request.json.get('password')
+        else:
+            logger.error({"request.json.data": request.json, "request.json.type": type(request.json), "message": "No request.json, return"})
+            res['msg'] = 'No username or password in request, you maybe set headers with "Content-Type: application/json" next time.'
+            res['code']= code + 1
+            return res
+        #login check(as a function), in user.py(User:post:action=log)
+        ReqData  = dbUser(username, password=True, token=True)
+        if not ReqData:
+            res['msg'] = 'User not exists'
+            res['code']= code + 2
+            logger.warn(res)
+            return res
+        #ReqData is True(user is exists), it's dict, eg:{'username': u'xxxxx', 'password': u'xxxxxxxxxx'}
+        _Reqpass = md5(password)
+        _DBuser  = ReqData.get('username')
+        _DBpass  = ReqData.get('password')
+        _DBtoken = ReqData.get('token')
+        if _DBtoken:
+            res.update({'msg': 'Token already exists', 'code': code + 3, "token": _DBtoken})
+            logger.warn(res)
+            return res
+        if _Reqpass == _DBpass:
+            _Reqtoken = gen_token()
+            res.update({'msg': 'username + password authentication success', 'code': 0, 'token': _Reqtoken})
+        else:
+            res.update({'msg': 'username + password authentication failed', 'code': code + 4})
+        logger.info(res)
+        return res

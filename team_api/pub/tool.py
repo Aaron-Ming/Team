@@ -3,9 +3,11 @@
 import re
 import hashlib
 from log import Syslog
+from db import DB
 import binascii, os, uuid
 
 md5           = lambda pwd:hashlib.md5(pwd).hexdigest()
+mysql         = DB()
 logger        = Syslog.getLogger()
 gen_token     = lambda :binascii.b2a_base64(os.urandom(24))[:32]
 gen_requestId = lambda :str(uuid.uuid4())
@@ -40,6 +42,7 @@ def dbUser(username=None, password=False, token=False):
     try:
         data = mysql.get(sql)
     except Exception, e:
+        logger.warn(e)
         logger.error({"func:dbUser:exec_sql":sql})
         return None
     else:
