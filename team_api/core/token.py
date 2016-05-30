@@ -22,7 +22,7 @@ class Token(Resource):
             res['code']= code + 1
             return res
         #login check(as a function), in user.py(User:post:action=log)
-        ReqData  = dbUser(username, password=True, token=True)
+        ReqData = dbUser(username, password=True, token=True)
         if not ReqData:
             res['msg'] = 'User not exists'
             res['code']= code + 2
@@ -38,8 +38,16 @@ class Token(Resource):
             logger.warn(res)
             return res
         if _Reqpass == _DBpass:
-            _Reqtoken = gen_token()
-            res.update({'msg': 'username + password authentication success', 'code': 0, 'token': _Reqtoken})
+            token = gen_token()
+            res.update({'msg': 'username + password authentication success', 'code': 0, 'token': token})
+            sql = "UPDATE user SET token='%s' WHERE username='%s'" % (token, username)
+            try:
+                mysql.update(sql)
+                logger.info('Token:post:create_token:sql--> "%s"' %sql)
+            except Exception,e:
+                logger.error(e)
+                res['msg'] = 'token insert error' #had token for return
+                return res
         else:
             res.update({'msg': 'username + password authentication failed', 'code': code + 4})
         logger.info(res)
