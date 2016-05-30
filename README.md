@@ -20,7 +20,7 @@ MIT
 
 如果没有正常监听系统，请直接运行，查看具体输出或查看logs/sys.log：
 
-```python Product.py```
+```python team_api/Product.py```
 
 如有问题，请到[https://github.com/saintic/Team/issues][1]提出问题。
 

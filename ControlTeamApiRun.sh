@@ -1,7 +1,7 @@
 #!/bin/bash
 
-dir=$(cd $(dirname $0);pwd)
-procname=$(python -c "from os import chdir; chdir(\"${dir}\"); from team_api.pub import config;print config.PRODUCT.get('ProcessName')")
+dir=$(cd $(dirname $0); pwd)
+procname=$(grep '"ProcessName":' ${dir}/team_api/pub/config.py | awk '{print $2}' | awk -F \" '{print $2}')
 pidfile=/tmp/${procname}.pid
 
 case $1 in
@@ -9,14 +9,18 @@ start)
     [ -d ${dir}/team_api/logs/ ] || mkdir -p ${dir}/team_api/logs/
     if [ -f $pidfile ]; then
         if [[ $(ps aux | grep $(cat $pidfile) | grep -v grep | wc -l) -lt 1 ]]; then
-            $(which python) -O ${dir}/Product.py &> /dev/null &
+            $(which python) -O ${dir}/team_api/Product.py &> /dev/null &
             pid=$!
-            echo $pid > $pidfile
         fi
     else
-        $(which python) -O ${dir}/Product.py &> /dev/null &
+        $(which python) -O ${dir}/team_api/Product.py &> /dev/null &
         pid=$!
+    fi
+    if [[ $(ps aux | grep $pid | grep -v grep | wc -l) = "1" ]]; then
         echo $pid > $pidfile
+    else
+        echo "Start error, please check ${dir}/team_api/logs/sys.log"
+        exit 1
     fi
     ;;
 
@@ -47,9 +51,9 @@ status)
     if [[ $pid != $(cat $pidfile) ]]; then
         echo -e "\033[39;31m异常，pid文件与系统pid值不相等。\033[0m"
         echo -e "\033[39;34m  系统pid：${pid}\033[0m"
-        echo -e "\033[39;34m  pid文件：$(cat ${pidfile})\033[0m"
+        echo -e "\033[39;34m  pid文件：$(cat ${pidfile})($(echo $pidfile))\033[0m"
     else
-        echo -e "\033[39;33m${procname}: \033[0m"
+        echo -e "\033[39;33m${procname}\033[0m":
         echo "  pid: $pid"
 	echo -e "  state:" "\033[39;32mrunning\033[0m"
         echo -e "  process run time:" "\033[39;32m$(ps -eO lstart | grep $procname | grep -v grep | awk '{print $6"-"$3"-"$4,$5}')\033[0m"
