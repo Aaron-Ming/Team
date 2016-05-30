@@ -2,7 +2,7 @@
 
 import json
 from pub import logger, gen_requestId
-from flask import Flask, request, g, jsonify, Response
+from flask import Flask, request, g, redirect, jsonify, Response
 from flask.ext.restful import Api, Resource
 from core import (User, Blog, Token)
 
@@ -65,6 +65,10 @@ def internal_error(error=None):
 class Index(Resource):
     def get(self):
         return {"Team.Api": "Welcome %s" %request.headers.get('X-Real-Ip', request.remote_addr)}
+
+@app.route('/favicon.ico')
+def favicon():
+    return redirect("https://www.saintic.com/static/images/favicon.ico")
 
 #Router rules
 api.add_resource(Index, '/', endpoint='index')
