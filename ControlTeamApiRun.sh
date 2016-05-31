@@ -32,8 +32,8 @@ stop)
     else
         kill -9 `cat $pidfile`
         retval=$?
-        sleep 1
-        [ "$retval" = "0" ] && rm -f $pidfile || echo "$procname stop error"
+        rm -f $pidfile
+        echo "$procname stop over"
     fi
     ;;
 
