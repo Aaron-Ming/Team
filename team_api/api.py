@@ -15,29 +15,30 @@ __version_list__ = [ _v for _v in __version__ if _v != '.' ]
 app  = Flask(__name__)
 api  = Api(app)
 
-#每个URL请求之前，定义requestId并绑定到g，JSON化写入日志中。
+#每个URL请求之前，定义requestId并绑定到g.
 @app.before_request
 def before_request():
     g.requestId = gen_requestId()
+    logger.info("Start Once Access, and this requestId is %s" % g.requestId)
+
+#每次返回数据中，带上响应头，包含API版本和本次请求的requestId，以及允许所有域跨域访问API, 记录访问日志
+@app.after_request
+def add_header(response):
+    response.headers["X-SaintIC-Media-Type"] = "saintic.v" + __version_list__[0]
+    response.headers["X-SaintIC-Request-Id"] = str(g.requestId)
+    response.headers["Access-Control-Allow-Origin"] = "*"
     logger.info(json.dumps({
         "AccessLog": {
-            "status_code": str(Response.status_code),
+            "status_code": response.status_code,
             "method": request.method,
             "ip": request.headers.get('X-Real-Ip', request.remote_addr),
             "url": request.url,
             "referer": request.headers.get('Referer'),
             "agent": request.headers.get("User-Agent"),
             "requestId": str(g.requestId),
-            }
-        }
-    ))
-
-#每次返回数据中，带上响应头，包含API版本和本次请求的requestId，以及允许所有域跨域访问API.
-@app.after_request
-def add_header(response):
-    response.headers["X-SaintIC-Media-Type"] = "saintic.v" + __version_list__[0]
-    response.headers["X-SaintIC-Request-Id"] = str(g.requestId)
-    response.headers["Access-Control-Allow-Origin"] = "*"
+            }   
+        }   
+    )) 
     return response
 
 #自定义错误显示信息，404错误和500错误
@@ -65,7 +66,7 @@ def internal_error(error=None):
 class Index(Resource):
     def get(self):
         return {"Team.Api": "Welcome %s" %request.headers.get('X-Real-Ip', request.remote_addr)}
-
+#Define browser small icons
 @app.route('/favicon.ico')
 def favicon():
     return redirect("https://www.saintic.com/static/images/favicon.ico")

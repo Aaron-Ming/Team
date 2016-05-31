@@ -12,15 +12,22 @@ class Token(Resource):
         return token
         """
         code= 1030
-        res = {"url": request.url, "msg": None}
-        if request.json: #header ask: "Content-type: application/json"
-            username = request.json.get('username')
-            password = request.json.get('password')
-        else:
+        res = {"url": request.url, "msg": None, 'code': code}
+        logger.debug("Token:post:request.json is %s"%request.json)
+        if request_json: #header ask: "Content-type: application/json"
+            username = request_json.get('username', None)
+            password = request_json.get('password', None)
+        else:            #this is default form ask
+            logger.debug("No request.json, start request.form")
             logger.error({"request.json.data": request.json, "request.json.type": type(request.json), "message": "No request.json, return"})
-            res['msg'] = 'No username or password in request, you maybe set headers with "Content-Type: application/json" next time.'
-            res['code']= code + 1
-            return res
+            try:
+                username = request.form.get('username', None)
+                password = request.form.get('password', None)
+            except Exception, e:
+                logger.error(e)
+                res['msg'] = 'No username or password in request, you maybe set headers with "Content-Type: application/json" next time.'
+                res['code']= code + 1
+                return res 
         #login check(as a function), in user.py(User:post:action=log)
         ReqData = dbUser(username, password=True, token=True)
         if not ReqData:
@@ -39,7 +46,7 @@ class Token(Resource):
             return res
         if _Reqpass == _DBpass:
             token = gen_token()
-            res.update({'msg': 'username + password authentication success', 'code': 0, 'token': token})
+            res.update({'msg': 'username + password authentication success, token has been created.', 'code': 0, 'token': token})
             sql = "UPDATE user SET token='%s' WHERE username='%s'" % (token, username)
             try:
                 mysql.update(sql)

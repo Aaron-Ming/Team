@@ -118,19 +118,27 @@ class User(Resource):
             logger.debug({"User:post:request.json": email, "res": res.update({'msg': "email format error", 'code': 1017})})  #when email has set, otherwise, pass `if...abort`. The code:1017, email format error in request.json.
             return res
         #Start Action with (log, reg)
+        _MD5pass = md5(password)
         action   = request.args.get("action") #log or reg (登录or注册)
         ReqData  = dbUser(username, password=True)
-        _MD5pass = md5(password)
+        #ReqData is True(user is exists), it's dict, eg:{'username': u'xxxxx', 'password': u'xxxxxxxxxx'}
         logger.debug({"request.action": action, 'ReqData': ReqData})
         if action == 'log':
-            _DBuser  = ReqData.get('username')
-            _DBpass  = ReqData.get('password')
+            #When `ReqData` is True, has user, it's right, continue login
             if not ReqData:
                 res.update({'msg':'User not exists', 'code': 1018}) #code:1018, 登录请求时，请求中的username在数据库中获取不到信息(没有此用户)。
                 logger.warn(res)
                 return res
-            #ReqData is True(user is exists), it's dict, eg:{'username': u'xxxxx', 'password': u'xxxxxxxxxx'}
-            logger.debug({'ReqUser': username, 'ReqPassMD5': _MD5pass, 'DBuser': _DBuser, 'DBpass': _DBpass})
+            try:
+                _DBuser  = ReqData.get('username')
+                _DBpass  = ReqData.get('password')
+            except AttributeError,e:
+                logger.error(e)
+                res.update({'msg':'User not exists', 'code': 1018}) #code:1018, 登录请求时，请求中的username在数据库中获取不到信息(没有此用户)。
+                logger.warn(res)
+                return res
+            else:
+                logger.debug({'ReqUser': username, 'ReqPassMD5': _MD5pass, 'DBuser': _DBuser, 'DBpass': _DBpass})
             if _MD5pass == _DBpass:
                 res.update({'msg': 'Password authentication success at sign in', 'code': 0}) #code:0, it's successful
             else:
@@ -138,12 +146,13 @@ class User(Resource):
             logger.info(res)
             return res
         elif action == 'reg':
-            sql = "INSERT INTO user (username, password, email) VALUES('%s', '%s', '%s')" % (username, _MD5pass, email)
+            #When `ReqData` is True, has user, it's wrong, cannot registry
             if ReqData:
                 res.update({'msg': 'User already exists, cannot be registered!', 'code': 1014}) #code:1024, already has user when reg.
                 logger.warn(res)
                 return res
             try:
+                sql = "INSERT INTO user (username, password, email) VALUES('%s', '%s', '%s')" % (username, _MD5pass, email)
                 if hasattr(mysql, 'insert'):
                     mysql.insert(sql)
                 else:
