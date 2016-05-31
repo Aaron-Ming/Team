@@ -1,16 +1,6 @@
 #!/usr/bin/python -O
 #product environment start application with `tornado IOLoop` and `gevent server`
 
-"""
-import os, sys
-src = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'team_api')
-sys.path.append(src)
-print sys.path
-exit(1)
-from team_api.api import app
-from team_api.pub import logger, RunEnvError
-from team_api.pub.config import GLOBAL, PRODUCT
-"""
 from api import app
 from pub import logger, RunEnvError
 from pub.config import GLOBAL, PRODUCT
