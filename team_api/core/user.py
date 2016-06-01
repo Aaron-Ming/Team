@@ -18,6 +18,7 @@ class User(Resource):
         """Public func, no token, with url args:
         1. num, 展现的数量,默认是10条。
         2. username|email, 用户名或邮箱，数据库主键，唯一。
+        3. token, if true, display token info.
 
         返回数据样例，{'msg':'success or error(errmsg)', 'code':'http code', 'data':data, 'url':request_url}
         """

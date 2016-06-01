@@ -12,8 +12,8 @@ __date__    = '2016-05-19'
 __version__ = '1.0.0'
 __version_list__ = [ _v for _v in __version__ if _v != '.' ]
 
-app  = Flask(__name__)
-api  = Api(app)
+app = Flask(__name__)
+api = Api(app)
 
 #每个URL请求之前，定义requestId并绑定到g.
 @app.before_request
