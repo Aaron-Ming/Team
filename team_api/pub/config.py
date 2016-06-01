@@ -4,7 +4,7 @@
 GLOBAL={
 
     "Environment": "dev",
-    "Environment": "product",
+    #"Environment": "product",
     #1. The meaning of the representative is the application of the environment, the value of dev, product;
     #2. When the value is dev, only exec app.run() with flask.
     #3. When the value is product, will start server with tornado or gevent.

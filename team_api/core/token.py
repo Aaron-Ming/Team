@@ -14,9 +14,9 @@ class Token(Resource):
         code= 1030
         res = {"url": request.url, "msg": None, 'code': code}
         logger.debug("Token:post:request.json is %s"%request.json)
-        if request_json: #header ask: "Content-type: application/json"
-            username = request_json.get('username', None)
-            password = request_json.get('password', None)
+        if request.json: #header ask: "Content-type: application/json"
+            username = request.json.get('username', None)
+            password = request.json.get('password', None)
         else:            #this is default form ask
             logger.debug("No request.json, start request.form")
             logger.error({"request.json.data": request.json, "request.json.type": type(request.json), "message": "No request.json, return"})

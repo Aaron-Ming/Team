@@ -10,7 +10,7 @@ class TeamApiTest(unittest.TestCase):
         self.logger = pub.logger
         self.app    = app.test_client()
         self.base_url = 'http://api.team.saintic.com'
-        self.username = "test_case9"
+        self.username = "test_case10"
         self.password = "123456"
         self.email    = None
 
@@ -25,6 +25,7 @@ class TeamApiTest(unittest.TestCase):
         self.assertEqual(len(token), 32)
         self.assertEqual(len(requestId), 36)
         self.assertTrue(re.match(r'([0-9a-z]{8})-([0-9a-z]{4})-([0-9a-z]{4})-([0-9a-z]{4})-([0-9a-z]{8})', requestId))
+
     def test_web_index(self):
         Index = self.app.get('%s/'%self.base_url)
         data = json.loads(Index.data)
@@ -68,22 +69,23 @@ class TeamApiTest(unittest.TestCase):
             self.assertEqual(data.get('data').get('username'), self.username)
             self.assertEqual(data.get('data').get('email'), self.email)
 
-"""
     def token(self, username, password):
         url = self.base_url + '/token'
         return self.app.post(url,
             data=dict(username=username, password=password),
             follow_redirects=True,
-            headers=[('Content-Type', 'application/json')],
+            #headers=[('Content-Type', 'application/json')],
         )
     def test_token(self):
-        Token = self.token(username=self.username, password=password)
+        Token = self.token(username=self.username, password=self.password)
         data = json.loads(Token.data)
         print data
-        if not self.assertEqual(data.get('code'), 1031):
-            print 'create token error,',data.get('msg')
+        if data.get('code') ==  0:
+            assert 'authentication success' in data.get('msg')
+            assert 'created' in data.get('msg')
         else:
-            pass
-"""
+            assert 'Token already exists' in data.get('msg')
+            self.assertEqual(len(data.get('token')), 32)
+
 if __name__ == '__main__':
     unittest.main()

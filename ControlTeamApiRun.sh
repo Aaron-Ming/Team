@@ -16,7 +16,7 @@ start)
         $(which python) -O ${dir}/team_api/Product.py &> /dev/null &
         pid=$!
     fi
-    if [[ $(ps aux | grep $pid | grep -v grep | wc -l) = "1" ]]; then
+    if [[ $(ps aux | grep $procname | grep -v grep | wc -l) = "1" ]]; then
         echo $pid > $pidfile
     else
         echo "Start error, please check ${dir}/team_api/logs/sys.log"
