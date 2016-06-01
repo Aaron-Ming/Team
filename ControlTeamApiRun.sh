@@ -11,16 +11,14 @@ start)
         if [[ $(ps aux | grep $(cat $pidfile) | grep -v grep | wc -l) -lt 1 ]]; then
             $(which python) -O ${dir}/team_api/Product.py &> /dev/null &
             pid=$!
+            echo $pid > $pidfile
+            echo "$procname start over."
         fi
     else
         $(which python) -O ${dir}/team_api/Product.py &> /dev/null &
         pid=$!
-    fi
-    if [[ $(ps aux | grep $procname | grep -v grep | wc -l) = "1" ]]; then
         echo $pid > $pidfile
-    else
-        echo "Start error, please check ${dir}/team_api/logs/sys.log"
-        exit 1
+        echo "$procname start over."
     fi
     ;;
 
@@ -31,15 +29,10 @@ stop)
         rm -f $pidfile
     else
         kill -9 `cat $pidfile`
-        retval=$?
+        [ $? -ne 0 ] && kill -9 `cat $pidfile`
         rm -f $pidfile
         echo "$procname stop over"
     fi
-    ;;
-
-restart)
-    ./$0 stop
-    ./$0 start
     ;;
 
 status)
@@ -58,6 +51,11 @@ status)
 	echo -e "  state:" "\033[39;32mrunning\033[0m"
         echo -e "  process run time:" "\033[39;32m$(ps -eO lstart | grep $procname | grep -v grep | awk '{print $6"-"$3"-"$4,$5}')\033[0m"
     fi
+    ;;
+
+restart)
+    ./$0 stop
+    ./$0 start
     ;;
 
 *)

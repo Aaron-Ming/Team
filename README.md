@@ -22,6 +22,44 @@ MIT
 
 ```python team_api/Product.py```
 
+> 5. 部署到域名(Nginx)
+```
+server {
+    listen 443;
+    server_name YourDomainName;
+    if ($host != "YourDomainName") {
+      rewrite ^/(.*)$ http://www.saintic.com/$1 permanent;
+    }
+    charset utf-8;
+    ssl     on;
+    ssl_certificate      certs/your.crt;
+    ssl_certificate_key  certs/your.key;
+    location / {
+       proxy_pass http://127.0.0.1:10040; #设置为实际IP+PORT
+       proxy_set_header Host $host;
+       proxy_set_header X-Real-IP $remote_addr;
+       proxy_set_header X-Forwarded-Proto https;
+       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+       #add_header  Content-Type 'application/json; charset=utf-8';
+       #add_header X-Cache $upstream_cache_status;
+    }
+}
+server {
+    listen 80;
+    server_name YourDomainName;
+    #rewrite ^/(.*)$ http://www.saintic.com/$1 permanent;
+    #这里去掉rewrite注释跳转到https，但是发现这样请求http时发生请求异常，所以注释。
+    charset utf-8;
+    location / {
+       proxy_pass http://127.0.0.1:10040;
+       proxy_set_header Host $host;
+       proxy_set_header X-Real-IP $remote_addr;
+       proxy_set_header X-Forwarded-Proto https;
+       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+```
+
 如有问题，请到[https://github.com/saintic/Team/issues][1]提出问题。
 
 [1]: https://github.com/saintic/Team/issues
