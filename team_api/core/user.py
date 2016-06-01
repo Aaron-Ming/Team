@@ -32,37 +32,27 @@ class User(Resource):
         else:
             _email    = request.args.get('email', None)
             _username = request.args.get('username', None)
-            _token    = request.args.get('token')
-            logger.debug({"email": _email, "username": _username, "token": _token, "requestId": str(g.requestId)})
+            logger.debug({"email": _email, "username": _username, "requestId": str(g.requestId)})
             if _username: #username's priority is greater than email
-                if _token == 'true':
-                    sql="SELECT username,email,cname,motto,url,token,extra FROM user WHERE username='%s' LIMIT %d" %(_username, _num)
-                else:
-                    sql="SELECT username,email,cname,motto,url,extra FROM user WHERE username='%s' LIMIT %d" %(_username, _num)
+                sql="SELECT username,email,cname,motto,url,extra FROM user WHERE username='%s' LIMIT %d" %(_username, _num)
             elif _email:
                 emails=mysql.get("SELECT email FROM user")
-                logger.debug({"The first email": emails, "requestId": str(g.requestId)})
+                logger.debug({"The start email": emails, "requestId": str(g.requestId)})
                 emails=[ email.email for email in emails if email.email ]
-                logger.debug({"The second email": emails, "requestId": str(g.requestId)})
+                logger.debug({"The end email": emails, "requestId": str(g.requestId)})
                 if not _email in emails: #check email in mysql
                     res.update({"msg": "no such email", "code": 1001}) #code:1001, request email not in mysql
                     logger.info(res)
                     return res
                 if mail_check.match(_email):
-                    if _token == 'true':
-                        sql="SELECT username,email,cname,motto,url,token,extra FROM user WHERE email='%s' LIMIT %d" %(_email, _num)
-                    else:
-                        sql="SELECT username,email,cname,motto,url,extra FROM user WHERE email='%s' LIMIT %d" %(_email, _num)
+                    sql="SELECT username,email,cname,motto,url,extra FROM user WHERE email='%s' LIMIT %d" %(_email, _num)
                 else:
                     res.update({"msg": "mail format error", "code": 1002}) #code:1002, email format error with mail.match(re)
                     logger.info(res)
                     return res
             else: #url args no username and email
-                if _token == 'true':
-                    sql="SELECT username,email,cname,motto,url,token,extra FROM user LIMIT %d" % _num
-                else:
-                    #this is default sql and display
-                    sql="SELECT username,email,cname,motto,url,extra FROM user LIMIT %d" %  _num
+                #this is default sql and display
+                sql="SELECT username,email,cname,motto,url,extra FROM user LIMIT %d" %  _num
             #try...except...else(if...elif...else) is end, write log sql and requestId
             logger.info({"requestId": g.requestId, "User Get End SQL": sql})
         try:
@@ -71,7 +61,10 @@ class User(Resource):
             logger.error(e)
             res.update({"msg": "get user info error, %s" %e, "code": 1003}) #code:1003, exec sql error from mysql.
         else:
-            res.update({"msg": "success", "data": data, "code": 0})
+            if data:
+                res.update({"msg": "success", "data": data, "code": 0})
+            else:
+                res.update({"msg": "fail, no data, maybe no such username", "code": 1004}) #code:1004, maybe no username
         logger.info(res)
         return res
 
@@ -85,12 +78,11 @@ class User(Resource):
         3. email,可选, 不用做系统登录, 如果有则会做正则检测不符合格式则弹回请求.
         """
         res = {"url": request.url, "msg": None, "data": None}
-        request_json = request.json
-        logger.debug({"request.json": request_json, "request.json.type": type(request_json)})
-        if request_json: #header ask: "Content-type: application/json"
-            username = request_json.get('username', None)
-            password = request_json.get('password', None)
-            email    = request_json.get('email')
+        logger.debug({"request.json": request.json, "request.json.type": type(request.json)})
+        if request.json: #header ask: "Content-type: application/json"
+            username = request.json.get('username', None)
+            password = request.json.get('password', None)
+            email    = request.json.get('email')
         else:            #this is default form ask
             logger.debug("No request.json, start request.form")
             try:
