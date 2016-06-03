@@ -48,6 +48,25 @@ def dbUser(username=None, password=False, token=False):
     else:
         return data
 
+def postData(request, res):
+    logger.debug(request.header)
+    if request.header.get("Content-Type").findall("json") >= 0:
+        username = request.json.get('username', None)
+        password = request.json.get('password', None)
+        email    = request.json.get('email', None)
+    else:
+        logger.debug("No request.json, start request.form")
+        logger.error({"request.json.data": request.json, "request.json.type": type(request.json)})
+        try:
+            username = request.form.get('username', None)
+            password = request.form.get('password', None)
+            email    = request.form.get('email', None)
+        except Exception, e:
+            logger.error(e)
+            res['msg'] = 'No username or password in request, you maybe set headers with "Content-Type: application/json" next time.'
+            res['code']= code + 1
+    return {"data":(username, password), "res": res}
+
 if __name__ == "__main__":
     import sys
     reload(sys)

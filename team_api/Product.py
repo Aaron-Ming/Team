@@ -15,7 +15,6 @@ try:
     import setproctitle
 except ImportError, e:
     logger.warn("%s, try to pip install setproctitle, otherwise, you can't use the process to customize the function" %e)
-    pass
 else:
     setproctitle.setproctitle(ProcessName)
     logger.info("The process is %s" % ProcessName)
@@ -46,5 +45,5 @@ try:
         raise RunEnvError(errmsg)
 
 except Exception,e:
-    print e
+    print(e)
     logger.error(e)

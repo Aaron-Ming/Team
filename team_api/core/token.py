@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-from pub import logger, mysql, dbUser, md5, gen_token
+from pub import logger, mysql, dbUser, md5, gen_token, postData
 from flask import request, g
 from flask.ext.restful import Resource
 
@@ -13,7 +13,7 @@ class Token(Resource):
         """
         code= 1030
         res = {"url": request.url, "msg": None, 'code': code}
-        logger.debug("Token:post:request.json is %s"%request.json)
+        """
         if request.json: #header ask: "Content-type: application/json"
             username = request.json.get('username', None)
             password = request.json.get('password', None)
@@ -27,7 +27,11 @@ class Token(Resource):
                 logger.error(e)
                 res['msg'] = 'No username or password in request, you maybe set headers with "Content-Type: application/json" next time.'
                 res['code']= code + 1
-                return res 
+                return res
+        """
+        _Pd = postData(request, res)
+        logger.debug({"Token:tool:postData": _Pd})
+        username, password, email, res = _Pd.get("data").get("username"), _Pd.get("data").get("password"), _Pd.get("data").get("email"), _Pd.get("res")
         #login check(as a function), in user.py(User:post:action=log)
         ReqData = dbUser(username, password=True, token=True)
         if not ReqData:

@@ -24,6 +24,7 @@ def before_request():
 #每次返回数据中，带上响应头，包含API版本和本次请求的requestId，以及允许所有域跨域访问API, 记录访问日志
 @app.after_request
 def add_header(response):
+    response.headers["Content-type"]         = "application/json, charset=utf8;"
     response.headers["X-SaintIC-Media-Type"] = "saintic.v" + __version_list__[0]
     response.headers["X-SaintIC-Request-Id"] = str(g.requestId)
     response.headers["Access-Control-Allow-Origin"] = "*"
@@ -64,6 +65,7 @@ def internal_error(error=None):
 
 #Define /, make it chcek or get
 class Index(Resource):
+    @classmethod
     def get(self):
         return {"Team.Api": "Welcome %s" %request.headers.get('X-Real-Ip', request.remote_addr)}
 #Define browser small icons

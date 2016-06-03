@@ -5,38 +5,50 @@ from flask import request, g
 from flask.ext.restful import Resource
 
 class Blog(Resource):
+    @classmethod
     def get(self):
-        try:
-            num = int(request.args.get('num', 10))
-        except ValueError,e:
-            logger.warn(e)
-            return {"code":126, "msg": "num is not integer"}
-        #num, 限制列出数据数量，默认值10，不参与优先级
-        listBlogId = request.args.get('list', False) #列出博客所有id，优先级1
-        id = request.args.get('id', None)           #查看某个id的博客数据，优先级2
-        if id != None:
-            try:
-                id=int(id)
-            except ValueError,e:
-                logger.debug(type(id)+id)
-                return {"code":126, "msg": "id is invaild"}
+        """/blog资源，参数是
+        1.num, 限制列出数据数量，默认值10，另外可设置为all，列出所有blog。
+        2.id, 列出某一个id的文章。
+        """
 
-        if listBlogId == True or listBlogId == 'true':
-            sql="SELECT id FROM blog LIMIT %d" %num
+        num    = request.args.get('num', 10)
+        blogId = request.args.get('id')
+        code   = 0
+        res    = {"url": request.url, "msg": None, 'code': code}
+
+        if not isinstance(blogId, int):
+            errmsg = '"blogId" not a number'
+            logger.warn(errmsg)
+            res['msg'] = errmsg
+            res['code']= code + 1
+            return res
+        if num != "all" and type(num) not is int:
+            errmsg = '"num" not a number or all'
+            logger.warn(errmsg)
+            res['msg'] = errmsg
+            res['code']= code + 2
+            return res
+
+        if blogId:
+            sql = "SELECT id,title,author,ctime,mtime,content,tag,category FROM blog WHERE id=%d" %blogId  #这条SQL中LIMIT没有意义，省略，所以`num`无意义。
         else:
-            if id:
-                sql="SELECT * FROM blog WHERE id='%s'" % id
+            if num = "all":
+                sql = "SELECT id,title,author,ctime,mtime,content,tag,category FROM blog"
             else:
-                sql="SELECT * FROM blog LIMIT %d" % num
+                sql = "SELECT id,title,author,ctime,mtime,content,tag,category FROM blog LIMIT %d" %num
         try:
-            data=mysql.get(sql)
-            logger.info(sql)
-            code=0
+            data = mysql.get(sql)
+            logger.info({"Blog:get:SQL": sql})
         except Exception,e:
             logger.error(e)
-            code=127
-        _result={'code':code, 'msg':'Get Blogs', 'data':data}
-        logger.info(_result)
-        return _result
-
-
+            errmsg = 'get blog error'
+            logger.warn(errmsg)
+            res['msg'] = errmsg
+            res['code']= code + 3
+            return res
+        else:
+            res['msg'] = success
+            logger.info(res)
+            return res
+    def post(self):pass
