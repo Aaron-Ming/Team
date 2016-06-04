@@ -13,25 +13,15 @@ class Token(Resource):
         """
         code= 1030
         res = {"url": request.url, "msg": None, 'code': code}
-        """
-        if request.json: #header ask: "Content-type: application/json"
-            username = request.json.get('username', None)
-            password = request.json.get('password', None)
-        else:            #this is default form ask
-            logger.debug("No request.json, start request.form")
-            logger.error({"request.json.data": request.json, "request.json.type": type(request.json), "message": "No request.json, return"})
-            try:
-                username = request.form.get('username', None)
-                password = request.form.get('password', None)
-            except Exception, e:
-                logger.error(e)
-                res['msg'] = 'No username or password in request, you maybe set headers with "Content-Type: application/json" next time.'
-                res['code']= code + 1
-                return res
-        """
         _Pd = postData(request, res)
         logger.debug({"Token:tool:postData": _Pd})
-        username, password, email, res = _Pd.get("data").get("username"), _Pd.get("data").get("password"), _Pd.get("data").get("email"), _Pd.get("res")
+        try:
+            username, password, email, res = _Pd.get("data")[0], _Pd.get("data")[1],  _Pd.get("data")[2], _Pd.get("res")
+        except (AttributeError, IndexError), e:
+            res.update({'msg': "Server Error", "code": 500})
+            logger.error(res)
+            logger.error(e)
+            return res
         #login check(as a function), in user.py(User:post:action=log)
         ReqData = dbUser(username, password=True, token=True)
         if not ReqData:

@@ -23,7 +23,7 @@ class Blog(Resource):
             res['msg'] = errmsg
             res['code']= code + 1
             return res
-        if num != "all" and type(num) not is int:
+        if num != "all" and not type(num) is int:
             errmsg = '"num" not a number or all'
             logger.warn(errmsg)
             res['msg'] = errmsg
@@ -33,7 +33,7 @@ class Blog(Resource):
         if blogId:
             sql = "SELECT id,title,author,ctime,mtime,content,tag,category FROM blog WHERE id=%d" %blogId  #这条SQL中LIMIT没有意义，省略，所以`num`无意义。
         else:
-            if num = "all":
+            if num == "all":
                 sql = "SELECT id,title,author,ctime,mtime,content,tag,category FROM blog"
             else:
                 sql = "SELECT id,title,author,ctime,mtime,content,tag,category FROM blog LIMIT %d" %num

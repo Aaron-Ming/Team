@@ -45,7 +45,6 @@ class TeamApiTest(unittest.TestCase):
     def test_login(self, username=None, password=None):
         Login = self.login(self.username, self.password)
         data  = json.loads(Login.data)
-        print data
         self.assertEqual(data.get('code'), 0)
         assert 'authentication success' in data.get('msg')
         self.assertEqual(data.get('data').get('username'), self.username)
@@ -57,14 +56,11 @@ class TeamApiTest(unittest.TestCase):
             follow_redirects=True,
         )
     def test_registry(self):
-        print '\n'
         Registry = self.registry(self.username, self.password, self.email)
         data = json.loads(Registry.data)
-        print data
         if data.get('code') == 0:
             self.test_login(username=self.username, password=self.password)
         else:
-            print 'registry fail, enter assert'
             assert 'already exists' in data.get('msg')
             self.assertEqual(data.get('data').get('username'), self.username)
             self.assertEqual(data.get('data').get('email'), self.email)
@@ -79,7 +75,6 @@ class TeamApiTest(unittest.TestCase):
     def test_token(self):
         Token = self.token(username=self.username, password=self.password)
         data = json.loads(Token.data)
-        print data
         if data.get('code') ==  0:
             assert 'authentication success' in data.get('msg')
             assert 'created' in data.get('msg')

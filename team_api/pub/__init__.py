@@ -4,7 +4,7 @@
 
 import config
 from db import DB
-from tool import logger, gen_token, gen_requestId, md5, dbUser, mail_check, chinese_check
+from tool import logger, gen_token, gen_requestId, md5, dbUser, mail_check, chinese_check, postData
 from errors import RunEnvError
 mysql = DB()
 
