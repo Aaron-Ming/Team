@@ -18,13 +18,13 @@ class Blog(Resource):
         res    = {"url": request.url, "msg": None, 'code': code}
 
         if not isinstance(blogId, int):
-            errmsg = '"blogId" not a number'
+            errmsg = 'blogId not a number'
             logger.warn(errmsg)
             res['msg'] = errmsg
             res['code']= code + 1
             return res
         if num != "all" and not type(num) is int:
-            errmsg = '"num" not a number or all'
+            errmsg = 'num not a number or all'
             logger.warn(errmsg)
             res['msg'] = errmsg
             res['code']= code + 2

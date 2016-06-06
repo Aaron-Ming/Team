@@ -4,7 +4,7 @@ import json
 from pub import logger, gen_requestId
 from flask import Flask, request, g, redirect, jsonify, Response
 from flask.ext.restful import Api, Resource
-from core import (User, Blog, Token)
+from core import (User, Blog, Token, Conf)
 
 __author__  = 'SaintIC <staugur@saintic.com>'
 __doc__     = "Team Blog Api System for SaintIC, the GitHub URL is https://github.com/saintic/Team, now branch is api."
@@ -26,7 +26,7 @@ def before_request():
 def add_header(response):
     response.headers["Content-type"]         = "application/json, charset=utf8;"
     response.headers["X-SaintIC-Media-Type"] = "saintic.v" + __version_list__[0]
-    response.headers["X-SaintIC-Request-Id"] = str(g.requestId)
+    response.headers["X-SaintIC-Request-Id"] = g.requestId
     response.headers["Access-Control-Allow-Origin"] = "*"
     logger.info(json.dumps({
         "AccessLog": {
@@ -68,6 +68,7 @@ class Index(Resource):
     @classmethod
     def get(self):
         return {"Team.Api": "Welcome %s" %request.headers.get('X-Real-Ip', request.remote_addr)}
+
 #Define browser small icons
 @app.route('/favicon.ico')
 def favicon():
@@ -78,6 +79,7 @@ api.add_resource(Index, '/', endpoint='index')
 api.add_resource(User, '/user', '/user/', endpoint='user')
 api.add_resource(Token, '/token', '/token/', endpoint='token')
 api.add_resource(Blog, '/blog', '/blog/', endpoint='blog')
+api.add_resource(Conf, '/conf', '/conf/', endpoint='conf')
 
 if __name__ == '__main__':
     from pub.config import GLOBAL

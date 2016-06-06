@@ -17,7 +17,7 @@ GLOBAL={
     "Port": 10040,
     #Application run port, default port;
 
-   "Debug": True,
+    "Debug": True,
     #The development environment is open, the production environment is closed, which is also the default configuration.
 
     "LogLevel": "DEBUG",
@@ -51,4 +51,17 @@ MYSQL={
 #博客配置项
 BLOG={
     "AdminGroup": ("admin", "taochengwei"),
+}
+
+#配置控制中心(ConfigControlCenter, C3)
+C3={
+    "GLOBAL": {
+        "Environment":  GLOBAL.get("Environment"),
+        "Host":         GLOBAL.get("Host"),
+        "Port":         10060,
+        "LogLevel":     GLOBAL.get("LogLevel"),
+        "ProcessName":  "Team.Front",
+        "ProductType":  PRODUCT.get("ProductType"),
+    },
+    "BLOG": BLOG,
 }

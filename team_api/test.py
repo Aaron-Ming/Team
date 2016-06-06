@@ -82,5 +82,11 @@ class TeamApiTest(unittest.TestCase):
             assert 'Token already exists' in data.get('msg')
             self.assertEqual(len(data.get('token')), 32)
 
+    def test_conf(self):
+        data = json.loads(self.app.get('/conf').data)
+        C3=data.get("C3")
+        assert "GLOBAL" in C3
+        assert "BLOG" in C3
+
 if __name__ == '__main__':
     unittest.main()

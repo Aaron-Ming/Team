@@ -87,23 +87,6 @@ class User(Resource):
             logger.error(res)
             logger.error(e)
             return res
-        """
-        logger.debug({"request.json": request.json, "request.json.type": type(request.json)})
-        if request.json: #header ask: "Content-type: application/json"
-            username = request.json.get('username', None)
-            password = request.json.get('password', None)
-            email    = request.json.get('email')
-        else:            #this is default form ask
-            logger.debug("No request.json, start request.form")
-            try:
-                username = request.form.get('username', None)
-                password = request.form.get('password', None)
-                email    = request.form.get('email')
-            except Exception, e:
-                logger.error(e)
-                res.update({'msg': 'No username or password in request', 'code': 1015}) #code:1015, 获取不到相关的请求(username and password)
-                return res
-        """
         if not username or not password:
             logger.debug({"User:post:request.json(user, pass)": (username, password), "res": res.update({'msg': 'Invaild username or password', 'code': 1016})}) #code:1016, 请求的username或password为空。
             return res
