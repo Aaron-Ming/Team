@@ -14,57 +14,55 @@ class User(Resource):
     3. #put:    Update user profile
     4. #delete: Delete user
     """
+
     def get(self):
         """Public func, no token, with url args:
-        1. num, 展现的数量,默认是10条。
+        1. num, 展现的数量,默认是10条,可为all
         2. username|email, 用户名或邮箱，数据库主键，唯一。
         3. token, if true, display token info.
 
         返回数据样例，{'msg':'success or error(errmsg)', 'code':'http code', 'data':data, 'url':request_url}
         """
         res={"code": 200, "url": request.url, "msg": None, "data": None}
-        try:
-            _num = int(request.args.get('num', 10))
-        except ValueError, e:
-            logger.warn(e)
-            res.update({"msg": "the num is not integer", "code": 1000}) #code:1000, for get, the error is num error when request
-            return res
-        else:
-            _email    = request.args.get('email', None)
-            _username = request.args.get('username', None)
-            logger.debug({"email": _email, "username": _username, "requestId": str(g.requestId)})
-            if _username: #username's priority is greater than email
-                sql="SELECT username,email,cname,motto,url,extra FROM user WHERE username='%s' LIMIT %d" %(_username, _num)
-            elif _email:
-                emails=mysql.get("SELECT email FROM user")
-                logger.debug({"The start email": emails, "requestId": str(g.requestId)})
-                emails=[ email.email for email in emails if email.email ]
-                logger.debug({"The end email": emails, "requestId": str(g.requestId)})
-                if not _email in emails: #check email in mysql
-                    res.update({"msg": "no such email", "code": 1001}) #code:1001, request email not in mysql
-                    logger.info(res)
-                    return res
-                if mail_check.match(_email):
-                    sql="SELECT username,email,cname,motto,url,extra FROM user WHERE email='%s' LIMIT %d" %(_email, _num)
-                else:
-                    res.update({"msg": "mail format error", "code": 1002}) #code:1002, email format error with mail.match(re)
-                    logger.info(res)
-                    return res
-            else: #url args no username and email
-                #this is default sql and display
-                sql="SELECT username,email,cname,motto,url,extra FROM user LIMIT %d" %  _num
-            #try...except...else(if...elif...else) is end, write log sql and requestId
-            logger.info({"requestId": g.requestId, "User Get End SQL": sql})
+        _num      = request.args.get('num', 10)
+        _email    = request.args.get('email', None)
+        _username = request.args.get('username', None)
+        logger.debug({"email": _email, "username": _username, "requestId": g.requestId})
+
+        if _num != "all" and not type(_num) is int:
+            res['msg'] = 'num not a number or all'
+            res['code']= 1000
+            logger.warn(res)
+            return res 
+
+        if _username: #username's priority is greater than email
+            sql="SELECT username,email,cname,motto,url,time,extra FROM user WHERE username='%s' LIMIT 1" % _username
+        elif _email:
+            emails=[ email.email for email in mysql.get("SELECT email FROM user") if email.email ]
+            logger.debug({"The mysql emails": emails, "requestId": str(g.requestId)})
+            if mail_check.match(_email) and _email in emails: #check email in mysql and format
+                sql="SELECT username,email,cname,motto,url,time,extra FROM user WHERE email='%s' LIMIT 1" % _email
+            else:
+                res.update({"msg": "email format error or no such email", "code": 1001}) #code:1001, email format error or no email
+                logger.info(res)
+                return res
+        else: #url args no username and email, this is default sql and display
+            if _num == "all":
+                sql="SELECT username,email,cname,motto,url,time,extra FROM user"
+            else:
+                sql="SELECT username,email,cname,motto,url,time,extra FROM user LIMIT %d" %  _num
+        #(if...elif...else) is end, write log sql and requestId
+        logger.info({"requestId": g.requestId, "User Get End SQL": sql})
         try:
             data=mysql.get(sql)
         except Exception,e:
             logger.error(e)
-            res.update({"msg": "get user info error, %s" %e, "code": 1003}) #code:1003, exec sql error from mysql.
+            res.update({"msg": "get user info error, %s" %e, "code": 1002}) #code:1002, exec sql error from mysql.
         else:
             if data:
                 res.update({"msg": "success", "data": data, "code": 0})
             else:
-                res.update({"msg": "fail, no data, maybe no such username", "code": 1004}) #code:1004, maybe no username
+                res.update({"msg": "fail, no data, maybe no such username", "code": 1003}) #code:1003, maybe no username
         logger.info(res)
         return res
 

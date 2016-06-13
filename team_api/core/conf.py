@@ -19,14 +19,15 @@ class Conf(Resource):
         _ReqToken = request.headers.get("token", None)
         _ReqUser  = request.args.get("username", None)
         _ReqMysql = request.args.get("mysql", False)
-        sql = "SELECT username,token FROM user WHERE username='%s' AND token='%s'" %(_ReqUser, _ReqToken)
+        sql = "SELECT username,token FROM user WHERE username='%s' AND token='%s' LIMIT 1" %(_ReqUser, _ReqToken)
         if _ReqMysql == "true" or _ReqMysql == True:
             try:
                 if mysql.get(sql):
-                    res["C3"] = config.C3
+                    res["C3"]   = config.C3
                     res["C3"]["MYSQL"] = config.MYSQL
+                    res["msg"]  = "C3: username match token successful"
                 else:
-                    res["msg"]  = "username validation token success"
+                    res["msg"]  = "C3: username match token failed"
                     res["code"] = 1040
             except Exception,e:
                 logger.error(e)

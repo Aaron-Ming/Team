@@ -5,6 +5,7 @@ from flask import request, g
 from flask.ext.restful import Resource
 
 class Blog(Resource):
+
     @classmethod
     def get(self):
         """/blog资源，参数是
@@ -51,4 +52,5 @@ class Blog(Resource):
             res['msg'] = success
             logger.info(res)
             return res
+
     def post(self):pass

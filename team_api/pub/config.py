@@ -4,7 +4,7 @@
 GLOBAL={
 
     "Environment": "dev",
-    #"Environment": "product",
+    "Environment": "product",
     #1. The meaning of the representative is the application of the environment, the value of dev, product;
     #2. When the value is dev, only exec app.run() with flask.
     #3. When the value is product, will start server with tornado or gevent.
@@ -31,8 +31,8 @@ PRODUCT={
     "ProcessName": "Team.Api",
     #Custom process, you can see it with "ps aux|grep ProcessName".
 
-    "ProductType": "tornado",
-    #生产环境启动方法，可选`gevent`与`tornado`,其中tornado log level是WARNNING，也就是低于WARN级别的日志不会打印或写入日志中。
+    "ProductType": "gevent",
+    #生产环境启动方法，可选`gevent`, `tornado`, `uwsgi`,其中tornado log level是WARNNING，也就是低于WARN级别的日志不会打印或写入日志中。
 }
 
 
@@ -50,7 +50,10 @@ MYSQL={
 
 #博客配置项
 BLOG={
+   "IndexPageNum": 8,
+    #首页文章展现术,
     "AdminGroup": ("admin", "taochengwei"),
+    #管理员权限组
 }
 
 #配置控制中心(ConfigControlCenter, C3)
@@ -58,7 +61,7 @@ C3={
     "GLOBAL": {
         "Environment":  GLOBAL.get("Environment"),
         "Host":         GLOBAL.get("Host"),
-        "Port":         10060,
+        "Port":         10050,
         "LogLevel":     GLOBAL.get("LogLevel"),
         "ProcessName":  "Team.Front",
         "ProductType":  PRODUCT.get("ProductType"),
