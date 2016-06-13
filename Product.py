@@ -1,15 +1,14 @@
-#!/usr/bin/python -O
 #product environment start application with `tornado IOLoop` and `gevent server`
 
-from team_front.api import app
-from team_front.pub import logger, RunEnvError
-from team_front.pub.config import GLOBAL, PRODUCT
+from team_front.main import app
+from team_front.pub import logger
+from team_front.pub import GLOBAL
 
 Host = GLOBAL.get('Host')
 Port = GLOBAL.get('Port')
 Environment = GLOBAL.get('Environment')
-ProcessName = PRODUCT.get('ProcessName')
-ProductType = PRODUCT.get('ProductType')
+ProcessName = GLOBAL.get('ProcessName')
+ProductType = GLOBAL.get('ProductType')
 
 try:
     import setproctitle
@@ -23,7 +22,7 @@ else:
 if Environment != 'product':
     errmsg="The %s isn't product, process exit!!!" % Environment
     logger.error(msg)
-    raise RunEnvError(msg)
+    raise RuntimeError(msg)
 
 try:
     logger.info('%s has been launched, %s:%d' %(ProcessName, Host, Port))
@@ -43,7 +42,7 @@ try:
     else:
         errmsg='Start the program does not support with %s, abnormal exit!' %ProductType
         logger.error(errmsg)
-        raise RunEnvError(errmsg)
+        raise RuntimeError(errmsg)
 
 except Exception,e:
     print e

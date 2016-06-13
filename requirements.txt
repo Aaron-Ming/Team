@@ -5,3 +5,5 @@ flask-RESTful
 MySQL-python
 torndb
 setproctitle
+requests
+sh
