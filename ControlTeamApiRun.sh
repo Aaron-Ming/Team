@@ -37,7 +37,7 @@ function _status()
         echo "  pid: $pid"
         echo -e "  state:" "\033[39;32mrunning\033[0m"
         echo -e "  process start time:" "\033[39;32m$(ps -eO lstart | grep $procname | grep -vE "worker|grep" | awk '{print $6"-"$3"-"$4,$5}')\033[0m"
-        echo -e "  process running time:" "\033[39;32m$(ps -eO etime| grep $pidfile  | grep -vE "worker|grep" | awk '{print $2}')\033[0m"
+        echo -e "  process running time:" "\033[39;32m$(ps -eO etime| grep $(cat $pidfile) | grep -vE "worker|grep" | awk '{print $2}')\033[0m"
     fi
 
 }
