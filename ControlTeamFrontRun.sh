@@ -27,7 +27,7 @@ function _status()
 
 case $1 in
 start)
-    [ -d ${dir}/team_front/logs/ ] || mkdir -p ${dir}/team_front/logs/
+    [ -d ${dir}/src/logs/ ] || mkdir -p ${dir}/src/logs/
     if [ -f $pidfile ]; then
         if [[ $(ps aux | grep $(cat $pidfile) | grep -v grep | wc -l) -lt 1 ]]; then
             $(which python) -O ${dir}/Product.py &> /dev/null &

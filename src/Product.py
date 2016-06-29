@@ -1,8 +1,8 @@
 #product environment start application with `tornado IOLoop` and `gevent server`
 
-from team_front.main import app
-from team_front.pub import logger
-from team_front.pub import GLOBAL
+from main import app
+from pub import logger
+from pub import GLOBAL
 
 Host = GLOBAL.get('Host')
 Port = GLOBAL.get('Port')
