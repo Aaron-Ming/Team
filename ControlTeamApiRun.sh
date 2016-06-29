@@ -1,13 +1,13 @@
 #!/bin/bash
 
 dir=$(cd $(dirname $0); pwd)
-procname=$(grep '"ProcessName":' ${dir}/team_api/pub/config.py | awk '{print $2}' | awk -F \" '{print $2}'|head -1)
-productype=$(grep '"ProductType":' ${dir}/team_api/pub/config.py | awk '{print $2}' | awk -F \" '{print $2}'|head -1)
+procname=$(grep '"ProcessName":' ${dir}/src/pub/config.py | awk '{print $2}' | awk -F \" '{print $2}'|head -1)
+productype=$(grep '"ProductType":' ${dir}/src/pub/config.py | awk '{print $2}' | awk -F \" '{print $2}'|head -1)
 pidfile=/tmp/${procname}.pid
 
 function _start()
 {
-    $(which python) -O ${dir}/team_api/Product.py &> /dev/null &
+    $(which python) -O ${dir}/src/Product.py &> /dev/null &
     pid=$!
     echo $pid > $pidfile
     echo "$procname start over."
@@ -44,7 +44,7 @@ function _status()
 
 case $1 in
 start)
-    [ -d ${dir}/team_api/logs/ ] || mkdir -p ${dir}/team_api/logs/
+    [ -d ${dir}/src/logs/ ] || mkdir -p ${dir}/src/logs/
     if [ -f $pidfile ]; then
         if [[ $(ps aux | grep $(cat $pidfile) | grep -v grep | wc -l) -lt 1 ]]; then
             _start

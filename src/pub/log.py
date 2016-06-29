@@ -30,9 +30,10 @@ class Syslog:
             return Syslog.logger
 
         Syslog.logger = logging.Logger("loggingmodule.Syslog")
-        log_handler = logging.handlers.RotatingFileHandler(filename = Syslog.log_file,
-                              maxBytes = Syslog.log_max_byte,
-                              backupCount = Syslog.log_backup_count)
+        log_handler = logging.handlers.TimedRotatingFileHandler(filename = Syslog.log_file,
+                              backupCount = Syslog.log_backup_count,
+                              when = "D")
+        log_handler.suffix = "%Y%m%d"
         log_fmt = logging.Formatter('%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s', datefmt=Syslog.log_datefmt)
         log_handler.setFormatter(log_fmt)
         Syslog.logger.addHandler(log_handler)
