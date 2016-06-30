@@ -1,7 +1,8 @@
 # -*- coding:utf8 -*-
 
 import os
-import pub import gen_requestId, logger
+import json
+from pub import gen_requestId, logger
 from flask import Flask, render_template, g, request
 
 __version__ = '0.1.0'
@@ -55,4 +56,18 @@ def index():
     return render_template('index.html')
 
 if __name__ == "__main__":
-    app.run(debug=pub.GLOBAL.get("Debug", True), host=pub.GLOBAL.get("Host", "0.0.0.0"), port=pub.GLOBAL.get("Port", 10050))
+    from pub.config import GLOBAL
+    Host = GLOBAL.get('Host')
+    Port = GLOBAL.get('Port')
+    Environment = GLOBAL.get('Environment')
+    Environment='dev'
+    Debug = GLOBAL.get('Debug', True)
+
+    if Environment == "dev":
+        app.run(host=Host, port=int(Port), debug=Debug)
+    elif Environment == "super debug":
+        from werkzeug.contrib.profiler import ProfilerMiddleware
+        app.config['PROFILE'] = True
+        app.wsgi_app = ProfilerMiddleware(app.wsgi_app, restrictions = [30])
+        app.run(debug=Debug, host=Host, port=int(Port))
+
