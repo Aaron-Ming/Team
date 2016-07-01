@@ -53,7 +53,15 @@ def internal_error(error=None):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('front/index.html')
+
+@app.route('/login')
+def login():
+    return render_template("front/login.html")
+
+@app.route('/uc')
+def uc():
+    return render_template("uc/home.html", data={})
 
 if __name__ == "__main__":
     from pub.config import GLOBAL

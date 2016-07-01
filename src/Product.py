@@ -2,13 +2,13 @@
 
 from main import app
 from pub import logger
-from pub import GLOBAL
+from pub.config import GLOBAL, PRODUCT
 
 Host = GLOBAL.get('Host')
 Port = GLOBAL.get('Port')
 Environment = GLOBAL.get('Environment')
-ProcessName = GLOBAL.get('ProcessName')
-ProductType = GLOBAL.get('ProductType')
+ProcessName = PRODUCT.get('ProcessName')
+ProductType = PRODUCT.get('ProductType')
 
 try:
     import setproctitle

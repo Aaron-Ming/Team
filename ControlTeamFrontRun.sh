@@ -1,7 +1,8 @@
 #!/bin/bash
 
 dir=$(cd $(dirname $0); pwd)
-procname=$(curl -sL https://api.saintic.com/conf | jq .C3.GLOBAL.ProcessName | awk -F \" '{print $2}')
+#procname=$(curl -sL https://api.saintic.com/conf | jq .C3.GLOBAL.ProcessName | awk -F \" '{print $2}')
+procname=$(grep '"ProcessName":' ${dir}/src/pub/config.py | awk '{print $2}' | awk -F \" '{print $2}'|head -1)
 pidfile=/tmp/${procname}.pid
 
 function _status()
@@ -30,13 +31,13 @@ start)
     [ -d ${dir}/src/logs/ ] || mkdir -p ${dir}/src/logs/
     if [ -f $pidfile ]; then
         if [[ $(ps aux | grep $(cat $pidfile) | grep -v grep | wc -l) -lt 1 ]]; then
-            $(which python) -O ${dir}/Product.py &> /dev/null &
+            $(which python) -O ${dir}/src/Product.py &> /dev/null &
             pid=$!
             echo $pid > $pidfile
             echo "$procname start over."
         fi
     else
-        $(which python) -O ${dir}/Product.py &> /dev/null &
+        $(which python) -O ${dir}/src/Product.py &> /dev/null &
         pid=$!
         echo $pid > $pidfile
         echo "$procname start over."
