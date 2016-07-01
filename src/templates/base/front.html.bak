@@ -1,5 +1,29 @@
-{% extends "base/frame.html" %}
-{% block body %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/front/reset.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/front/main.css') }}">
+    <link href="{{ url_for('static', filename='img/favicon.ico') }}" rel="icon" type="image/x-icon" />
+    <link href="{{ url_for('static', filename='img/favicon.ico') }}" rel="shortcut icon" type="image/x-icon" />
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <header>
+        <div class="wrapper">
+            <a href="#"><img src="/static/img/logo.png" class="h_logo" alt="SaintIC" title=""></a>
+            <nav>
+            <ul class="main_nav">
+                <li class="current"><a href="{{ url_for('index') }}">Index</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="{{ url_for('uc') }}">UserCenter</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+            </ul>
+            </nav>
+        </div>
+    </header><!-- Header End -->
+
     <section class="main2 wrapper">
         <section class="content">
             <article>
@@ -47,4 +71,6 @@
             </ul>
         </div>
     </footer><!-- Footer End -->
-{% endblock %}
+
+</body>
+</html>
