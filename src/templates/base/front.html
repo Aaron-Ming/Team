@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <title>{% block title %}</title>
+    <title>{% block title %}{% endblock %}</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/front/reset.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/front/main.css') }}">
+    {% block head %}{% endblock %}
 </head>
 <body>
     <header>
         <div class="wrapper">
-            <a href="#"><img src="/static/img/logo.png" class="h_logo" alt="Blogin" title=""></a>
+            <a href="#"><img src="/static/img/logo.png" class="h_logo" alt="SaintIC" title=""></a>
             <nav>
             <ul class="main_nav">
-                <li class="current"><a href="#">Index</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">UserCenter</a></li>
-                <li><a href="#">Login</a></li>
+                <li class="current"><a href="{{ url_for('index') }}">Index</a></li>
+                {% block nav }{% endblock %}
             </ul>
             </nav>
         </div>
@@ -24,44 +23,42 @@
     <section class="main2 wrapper">
         <section class="content">
             <article>
-                Continue Reading
+                {% block article %}{% endblock %}
             </article>
         </section><!-- Content End -->
         <aside class="sidebar">
             <section class="widget">
-                <h3 class="widget-title">About Blogin.</h3>
+                <h3 class="widget-title">About SaintIC Team</h3>
                 <div class="textwidget">
-                    <p>Duis aute irure dolor in rhenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-                    <p>Excepteur sint occaecat sunt in culpa qui officia deserunt mollit anim id est laborum.</p>	
+                    <p>关于我们的介绍，我也不知道改写什么好！</p>
                 </div>
             </section>
 
             <section class="widget">
-                <h3 class="widget-title">Search.</h3>
+                <h3 class="widget-title">Search</h3>
                     <form class="search_widget">
                         <input type="text" id="search-field" class="search-field" placeholder="What are you looking for?"/>
                     </form>
             </section>
 
             <section class="widget">
-                <a href="#">
-                    <img src="/static/img/ads.jpg" alt="" title="">
-                </a>
+                <!-- ad -->
+                {% block ad %}{% endblock %}
             </section>
         </aside><!-- aside(sidebar) End -->
 
         <nav class="pagination">
-            <a href="#" class="previous"><i></i>Previous</a>
-            <a href="#" class="next">Next<i></i></a>
+            <a href="#" class="previous"><i></i>上一页</a>
+            <a href="#" class="next">下一页<i></i></a>
         </nav><!-- pagination End -->
 
     </section><!-- Main2 End -->
 
     <footer>
         <div class="wrapper">
-            <img class="logo_footer" src="/static/img/logo_footer.png" alt="Blogin" title="">
-            <p class="rights">© 2014 Blogin.com  -  All Rights Reserved  -  Find more free Templates at <a href="http://Pixelhint.com" target="_blink">Pixelhint.com</a> </p>
+            <img class="logo_footer" src="{{ url_for('static', filename='img/logo_footer.png') }}" alt="SaintIC" title="">
             {% include "base/footer.html" %}
+            <!-- share -->
             <ul class="social_profiles">
                 <li class="f"><a href="http://facebook.com/pixelhint" target="_blink"></a></li>
                 <li class="t"><a href="http://twitter.com/pixelhint" target="_blink"></a></li>
