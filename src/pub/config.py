@@ -32,7 +32,7 @@ PRODUCT={
     "ProcessName": "Team.Front",
     #Custom process, you can see it with "ps aux|grep ProcessName".
 
-    "ProductType": "gevent",
+    "ProductType": "tornado",
     #生产环境启动方法，可选`gevent`, `tornado`, `uwsgi`,其中tornado log level是WARNNING，也就是低于WARN级别的日志不会打印或写入日志中。
 }
 

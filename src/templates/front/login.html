@@ -1,19 +1,18 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-    <title>SaintIC Team User Login Registry Center</title>
+{% extends "base/frame.html" %}
+{% block title %}SaintIC Team User Login Registry Center{% endblock %}
+{% block head %}
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="{{ url_for('static', filename='css/ulr/login.css') }}" rel="stylesheet" type="text/css" media="all"/>
-    <link href="{{ url_for('static', filename='img/favicon.ico') }}" rel="icon" type="image/x-icon" />
-    <link href="{{ url_for('static', filename='img/favicon.ico') }}" rel="shortcut icon" type="image/x-icon" />
-</head>
-<body>
+{% endblock %}
+{% block body %}
+</br>
+</br>
 <div class="login">
     <h2>SaintIC Team</h2>
     <div class="login-top">
       <!-- Login System -->
       {% if error %}<h3>Error: {{ error }}</h3>{% endif %}
-      <form action='/login' method='POST'>
+      <form action="{{ url_for('login') }}" method='POST'>
         <input type="text" name="username" required>
         <input type="password" name="password" required>
 	<div class="forgot">
@@ -23,9 +22,8 @@
       </form>
     </div>
     <div class="login-bottom">
-        <!--<h3>新用户 &nbsp;<a href="#">注册</a>&nbsp 这里</h3>-->
+        <h3>新用户 &nbsp;<a href="#">注册</a>&nbsp 这里</h3>
         <h3><a href="/">返回首页</a></h3>
     </div>
-</div>	
-</body>
-</html>
+</div>
+{% endblock %}

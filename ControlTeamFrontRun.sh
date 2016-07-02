@@ -1,7 +1,6 @@
 #!/bin/bash
 
 dir=$(cd $(dirname $0); pwd)
-#procname=$(curl -sL https://api.saintic.com/conf | jq .C3.GLOBAL.ProcessName | awk -F \" '{print $2}')
 procname=$(grep '"ProcessName":' ${dir}/src/pub/config.py | awk '{print $2}' | awk -F \" '{print $2}'|head -1)
 pidfile=/tmp/${procname}.pid
 

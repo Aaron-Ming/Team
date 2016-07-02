@@ -67,7 +67,6 @@ if __name__ == "__main__":
     from pub.config import GLOBAL
     Host = GLOBAL.get('Host')
     Port = GLOBAL.get('Port')
-    Environment = GLOBAL.get('Environment')
     Environment='dev'
     Debug = GLOBAL.get('Debug', True)
 
