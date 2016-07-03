@@ -17,7 +17,7 @@ mail_check    = re.compile(r'([0-9a-zA-Z\_*\.*\-*]+)@([a-zA-Z0-9\-*\_*\.*]+)\.([
 chinese_check = re.compile(u"[\u4e00-\u9fa5]+")
 
 #API所需要的公共函数
-def dbUser(username=None, password=False, token=False):
+def dbUser(username=None, password=False, token=False, uid=False):
     """
     1. 获取数据库中所有用户或是否存在某个具体用户(方法: username=username)。
     2. 当username为真，password=True, 获取用户及密码。
@@ -50,13 +50,14 @@ def dbUser(username=None, password=False, token=False):
 
 def postData(request, res):
     logger.debug(request.headers)
-    if request.headers.get("Content-Type").find("json") >= 0:
+    logger.debug(request.json)
+    logger.debug(request.form)
+    try:
         username = request.json.get('username', None)
         password = request.json.get('password', None)
         email    = request.json.get('email', None)
-    else:
-        logger.debug("No request.json, start request.form")
-        logger.error({"request.json.data": request.json, "request.json.type": type(request.json)})
+    except Exception,e:
+        logger.warn("No request.json, start request.form, get exceptions %s"%e)
         try:
             username = request.form.get('username', None)
             password = request.form.get('password', None)
