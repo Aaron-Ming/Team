@@ -49,6 +49,7 @@ BLOG={
 def getConf():
     import json
     import requests
+    #If need, please `pip install requests`
     url     = "https://api.saintic.com/conf?username=admin&mysql=true"
     headers = {"token": "7h8l4uiKZEopBxjJHGHGduQYLA42Xfbr", 'Content-Type': 'application/json'}
     try:
