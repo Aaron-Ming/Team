@@ -55,7 +55,7 @@ def internal_error(error=None):
 def index():
     return render_template('front/index.html')
 
-@app.route('/login')
+@app.route('/login', methods=["GET", "POST"])
 def login():
     return render_template("front/login.html")
 

@@ -101,6 +101,32 @@ body{
   -moz-transition: 0.5s all;
   -o-transition: 0.5s all;
 }
+/*test button*/
+.forgot input[type="button"] {
+  background: #F45B4B;
+  color: #FFF;
+  font-size: 17px;
+  font-weight: 400;
+  padding: 8px 7px;
+  width: 20%;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 6px;
+  -webkit-border-radius: 19px;
+  -moz-border-radius: 6px;
+  -o-border-radius: 6px;
+  margin: 0px 7px 0px 3px;
+  outline: none;
+  border: none;
+}
+.forgot input[type="button"]:hover {
+  background:#818181;
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+}
+/* test button end*/
 .forgot {
   text-align: right;
 }

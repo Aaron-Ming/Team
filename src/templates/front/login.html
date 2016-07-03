@@ -3,6 +3,7 @@
 {% block head %}
     <!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">-->
     <link href="{{ url_for('static', filename='css/ulr/login.css') }}" rel="stylesheet" type="text/css" media="all"/>
+    <script src="{{ url_for('static', filename='js/jquery-1.9.0.js') }}" type="text/javascript"></script>
 {% endblock %}
 {% block body %}
 </br>
@@ -10,16 +11,39 @@
 <div class="login">
     <h2>SaintIC Team</h2>
     <div class="login-top">
-      <!-- Login System -->
-      {% if error %}<h3>Error: {{ error }}</h3>{% endif %}
-      <form action="{{ url_for('login') }}" method='POST'>
-        <input type="text" name="username" required>
-        <input type="password" name="password" required>
-	<div class="forgot">
-	  <a href="#">忘记密码</a>
-          <input type="submit" value="登录" >
-        </div>
-      </form>
+        <form action="" method="post" id="UserLoginFormId">
+            <p style="color:red; text-align: center" id="error"></p>
+            <input type="text" id="username" name="username" required>
+            <input type="password" id="password" name="password" required>
+            <div class="forgot">
+                <a href="#">忘记密码</a>
+                <input onclick="postForm('/uc')" type="button" value="登录">
+            </div>
+        </form>
+        <script type="text/javascript">
+            var username=document.getElementById("username").value;
+            var password=document.getElementById("password").value;
+            function postForm(nextUrl) {
+                $.ajax({
+                    url: 'https://api.saintic.com/user?action=log',
+                    method: 'POST',
+                    datatype: 'json',
+                    data: $('#UserLoginFormId').serialize(),
+                    success: function(success) {
+                        console.log(success);
+                        var code = success.code;
+                        var username = success.data.username;
+                        if (code == 0){
+                            window.location.href=nextUrl;
+                        }
+                    },
+                    error: function(error){
+                        console.log(error);
+                        document.getElementById("error").innerHTML("invalid username or password");
+                    }
+                });
+            };
+        </script>
     </div>
     <div class="login-bottom">
         <!--<h3>新用户 &nbsp;<a href="#">注册</a>&nbsp 这里</h3>-->
