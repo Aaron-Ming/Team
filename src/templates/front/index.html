@@ -14,3 +14,12 @@
         </div>
     </article>
 {% endblock %}
+{% block script %}
+<script language="javascript" type="text/javascript">
+    var NavId=null;
+    var As=document.getElementById('nav').getElementsByTagName('li');
+    NavId = As[0];
+    console.log(NavId);
+    NavId.className='current';
+</script>
+{% endblock %}
