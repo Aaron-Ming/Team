@@ -1,12 +1,10 @@
 #-*- coding:utf8 -*-
 
-__all__ = ["GLOBAL", "PRODUCT", "BLOG"]
-
 #全局配置端
 GLOBAL={
 
-    "Environment": "dev",
-    "Environment": "product",
+    "Environment": "super debug",
+    #"Environment": "product",
     #1. The meaning of the representative is the application of the environment, the value of dev, product;
     #2. When the value is dev, only exec app.run() with flask.
     #3. When the value is product, will start server with tornado or gevent.
@@ -45,29 +43,16 @@ BLOG={
     #管理员权限组
 }
 
-
-def getConf():
-    import json
-    import requests
-    #If need, please `pip install requests`
-    url     = "https://api.saintic.com/conf?username=admin&mysql=true"
-    headers = {"token": "7h8l4uiKZEopBxjJHGHGduQYLA42Xfbr", 'Content-Type': 'application/json'}
-    try:
-        _r   = requests.post(url, headers=headers, verify=False)
-        data = _r.json()
-    except Exception,e:
-        from sh import curl
-        data = curl("-s", "-L", "-H", "Content-Type: application/json", "-H", "token:%s"%headers.get("token"), "-X", "POST", url)
-
-    if type(data) is dict:
-        C3 = data.get("C3")
-    else:
-        for _j in data:
-            C3 = json.loads(_j).get("C3")
-            break
-    if not isinstance(C3, dict):
-        raise TypeError("C3 not dict when access conf api")
-
-    return C3.get("GLOBAL"), C3.get("MYSQL"), C3.get("BLOG")
-#GLOBAL, MYSQL, BLOG = getConf()
-
+#插件配置项
+PLUGINS={
+    "session_cluster": {
+        "type": "redis_cluster",
+        #指定session集群，暂时支持redis、redis cluster,
+        "host": "127.0.0.1",
+        #指定session集群存储应用host/ip,
+        "port": 10010,
+        #指定session集群存储应用port,
+        "auth": None
+        #验证密码(目前仅支持单实例版redis)
+        },
+}

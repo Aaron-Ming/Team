@@ -29,11 +29,11 @@
                     data: $('#UserLoginFormId').serialize(),
                     success: function(res) {
                         console.log(res);
-                        var username = res.data.username;
-                        var uid = res.data.uid;
+                        //var username = res.data.username;
+                        //var uid = res.data.uid;
                         if (res.code == 0){
                             window.location.href=nextUrl;
-                            document.cookie = "cookieId=" + username + uid;
+                            //document.cookie = "cookieId=" + username + uid;
                         }
                     },
                     error: function(error){

@@ -3,6 +3,7 @@
 import os
 import json
 from pub import gen_requestId, logger
+#from plugins import session_redis_connect
 from flask import Flask, render_template, g, request
 
 __version__ = '0.1.0'
@@ -19,12 +20,13 @@ app.secret_key = os.urandom(24)
 @app.before_request
 def before_request():
     g.requestId = gen_requestId()
+    #g.session   = session_redis_connect
     logger.info("Start Once Access, and this requestId is %s" % g.requestId)
 
 #每次返回数据中，带上响应头，包含API版本和本次请求的requestId，以及允许所有域跨域访问API, 记录访问日志
 @app.after_request
 def add_header(response):
-    response.headers["X-SaintIC-App-Type"] = "Team.Front"
+    response.headers["X-SaintIC-App-Name"] = "Team.Front"
     response.headers["X-SaintIC-Request-Id"] = g.requestId
     logger.info(json.dumps({
         "AccessLog": {
@@ -34,7 +36,7 @@ def add_header(response):
             "url": request.url,
             "referer": request.headers.get('Referer'),
             "agent": request.headers.get("User-Agent"),
-            "requestId": g.requestId,
+            "requestId": g.requestId
             }
         }
     ))
@@ -57,7 +59,6 @@ def index():
 
 @app.route('/login', methods=["GET",])
 def login():
-    logger.debug(request.cookie)
     return render_template("front/login.html")
 
 @app.route('/uc')
@@ -68,7 +69,7 @@ if __name__ == "__main__":
     from pub.config import GLOBAL
     Host = GLOBAL.get('Host')
     Port = GLOBAL.get('Port')
-    Environment='dev'
+    Environment = GLOBAL.get("Environment")
     Debug = GLOBAL.get('Debug', True)
 
     if Environment == "dev":
