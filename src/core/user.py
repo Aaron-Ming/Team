@@ -129,7 +129,6 @@ class User(Resource):
                 res.update({'msg': 'Password authentication success at sign in', 'code': 0}) #code:0, it's successful
             else:
                 res.update({'msg': 'Password authentication failed at sign in', 'code': 1011}) #code:1011, request pass != mysql pass
-            logger.debug(request.cookie.__str__())
             logger.info(res)
             return res
         elif action == 'reg':

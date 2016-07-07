@@ -621,7 +621,9 @@ Traceback (most recent call last):
   File "/usr/lib/python2.6/site-packages/werkzeug/local.py", line 343, in __getattr__
     return getattr(self._get_current_object(), name)
 AttributeError: 'Request' object has no attribute 'cookie'
-0:19:37 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'', u'', None)}}
+ * Detected change in '/data/Py2.7/taochengwei/team.api/src/pub/config.py', reloading
+ * Restarting with stat
+g', 'msg': None, 'data': None}, 'data': (u'', u'', None)}}
 2016-07-04 00:19:37 user.py[line:89] DEBUG {'res': None, 'User:post:request.json(user, pass)': (u'', u'')}
 2016-07-04 00:19:37 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "http://127.0.0.1:10050/login", "requestId": "cd74e64f-4cf1-4294-b41a-5a3896f8b663", "ip": "120.52.24.157", "method": "POST"}}
 2016-07-04 00:19:37 api.py[line:22] INFO Start Once Access, and this requestId is 89a2da89-5f58-45b5-8c02-eca977fa318c
