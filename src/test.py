@@ -10,8 +10,8 @@ class TeamApiTest(unittest.TestCase):
         self.logger = pub.logger
         self.app    = app.test_client()
         self.base_url = 'http://api.team.saintic.com'
-        self.username = "test_case10"
-        self.password = "123456"
+        self.username = "admin"
+        self.password = "910323"
         self.email    = None
 
     def tearDown(self):

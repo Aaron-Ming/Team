@@ -28,14 +28,26 @@ def dbUser(username=None, password=False, token=False, uid=False):
     if username:
         if password == True:
             if token == True:
-                sql = "SELECT username,password,token FROM user WHERE username='%s'" % username
+                if uid == True:
+                    sql = "SELECT ic,username,password,token FROM user WHERE username='%s'" % username
+                else:
+                    sql = "SELECT username,password,token FROM user WHERE username='%s'" % username
             else:
-                sql = "SELECT username,password FROM user WHERE username='%s'" % username
+                if uid == True:
+                    sql = "SELECT id,username,password FROM user WHERE username='%s'" % username
+                else:
+                    sql = "SELECT username,password FROM user WHERE username='%s'" % username
         else:
             if token == True:
-                sql = "SELECT username,token FROM user WHERE username='%s'" % username
+                if uid == True:
+                    sql = "SELECT id,username,token FROM user WHERE username='%s'" % username
+                else:
+                    sql = "SELECT username,token FROM user WHERE username='%s'" % username
             else:
-                sql = "SELECT username FROM user WHERE username='%s'" % username
+                if uid == True:
+                    sql = "SELECT id,username FROM user WHERE username='%s'" % username
+                else:
+                    sql = "SELECT username FROM user WHERE username='%s'" % username
     else:#All user from mysql(team.user)
         sql = "SELECT username FROM user"
     logger.info({"func:dbUser:sql":sql})
@@ -43,7 +55,6 @@ def dbUser(username=None, password=False, token=False, uid=False):
         data = mysql.get(sql)
     except Exception, e:
         logger.warn(e)
-        logger.error({"func:dbUser:exec_sql":sql})
         return None
     else:
         return data
@@ -67,6 +78,31 @@ def postData(request, res):
             res['msg'] = 'No username or password in request, you maybe set headers with "Content-Type: application/json" next time.'
             res['code']= code + 1
     return {"data":(username, password, email), "res": res}
+
+# 计算加密cookie:
+def make_signed_cookie(uid, password, max_age):
+    expires = str(int(time.time() + max_age))
+    L = [uid, expires, hashlib.md5('%s-%s-%s-%s' % (uid, password, expires, _COOKIE_KEY)).hexdigest()]
+    return '-'.join(L)
+
+# 解密cookie:
+def parse_signed_cookie(cookie_str):
+    try:
+        L = cookie_str.split('-')
+        if len(L) != 3:
+            return None
+        id, expires, md5 = L
+        if int(expires) < time.time():
+            return None
+        user = User.get(id)
+        if user is None:
+            return None
+        if md5 != hashlib.md5('%s-%s-%s-%s' % (id, user.password, expires, _COOKIE_KEY)).hexdigest():
+            return None
+        return user
+    except:
+        return None
+
 
 if __name__ == "__main__":
     import sys

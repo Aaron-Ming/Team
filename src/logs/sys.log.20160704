@@ -1,0 +1,1720 @@
+ * Running on http://0.0.0.0:10040/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 257-558-080
+127.0.0.1 - - [03/Jul/2016 21:29:52] "POST /user HTTP/1.0" 200 -
+127.0.0.1 - - [03/Jul/2016 21:30:14] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [03/Jul/2016 21:32:57] "POST /user HTTP/1.0" 200 -
+127.0.0.1 - - [03/Jul/2016 21:33:00] "POST /user HTTP/1.0" 200 -
+127.0.0.1 - - [03/Jul/2016 21:33:24] "POST /user?action=log&username=admin&password=910323 HTTP/1.0" 200 -
+127.0.0.1 - - [03/Jul/2016 21:35:29] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [03/Jul/2016 21:38:35] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [03/Jul/2016 22:04:37] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [03/Jul/2016 22:41:37] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [03/Jul/2016 23:21:49] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [03/Jul/2016 23:22:28] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [03/Jul/2016 23:22:58] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [03/Jul/2016 23:25:14] "POST /user?action=log HTTP/1.0" 200 -
+ * Detected change in '/data/Py2.7/taochengwei/team.api/src/pub/tool.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 257-558-080
+127.0.0.1 - - [03/Jul/2016 23:44:40] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [03/Jul/2016 23:55:03] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [03/Jul/2016 23:55:25] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [03/Jul/2016 23:56:24] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 00:00:25] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 00:00:28] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 00:18:48] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 00:19:00] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 00:19:31] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 00:19:36] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 00:19:37] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 00:19:37] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 00:19:37] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 00:19:37] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 00:19:37] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 00:19:38] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 00:19:42] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 00:19:44] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 00:19:46] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 00:20:24] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 00:20:28] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 00:31:36] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 00:31:40] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 00:32:32] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 00:32:34] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 00:32:36] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 00:32:38] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 00:34:38] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 00:37:54] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 00:38:04] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 00:39:18] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 00:39:52] "POST /users?action=log HTTP/1.0" 404 -
+127.0.0.1 - - [04/Jul/2016 00:41:21] "POST /users?action=log HTTP/1.0" 404 -
+127.0.0.1 - - [04/Jul/2016 00:41:42] "POST /users?action=log HTTP/1.0" 404 -
+127.0.0.1 - - [04/Jul/2016 01:05:16] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 01:05:40] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 01:05:46] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 01:10:07] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 01:17:58] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 01:18:54] "POST /user?action=log HTTP/1.0" 200 -
+ * Detected change in '/data/Py2.7/taochengwei/team.api/src/pub/tool.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 257-558-080
+127.0.0.1 - - [04/Jul/2016 12:26:24] "GET / HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 12:26:25] "GET /favicon.ico HTTP/1.0" 302 -
+127.0.0.1 - - [04/Jul/2016 14:53:35] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 14:53:36] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 14:53:38] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 15:06:33] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 17:23:09] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 17:25:17] "POST /user?action=log HTTP/1.0" 200 -
+ * Detected change in '/data/Py2.7/taochengwei/team.api/src/pub/tool.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 257-558-080
+ * Detected change in '/data/Py2.7/taochengwei/team.api/src/core/user.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 257-558-080
+127.0.0.1 - - [04/Jul/2016 17:38:03] "GET / HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 17:39:18] "POST /user?action=log HTTP/1.0" 200 -
+ * Detected change in '/data/Py2.7/taochengwei/team.api/src/core/user.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 257-558-080
+ * Detected change in '/data/Py2.7/taochengwei/team.api/src/core/user.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 257-558-080
+127.0.0.1 - - [04/Jul/2016 17:51:57] "POST /user?action=log HTTP/1.0" 200 -
+ * Detected change in '/data/Py2.7/taochengwei/team.api/src/pub/tool.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 257-558-080
+ * Detected change in '/data/Py2.7/taochengwei/team.api/src/core/user.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 257-558-080
+127.0.0.1 - - [04/Jul/2016 18:02:26] "POST /user?action=log HTTP/1.0" 200 -
+ * Detected change in '/data/Py2.7/taochengwei/team.api/src/core/user.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 257-558-080
+127.0.0.1 - - [04/Jul/2016 18:05:02] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 18:08:15] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 18:10:04] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 18:11:17] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 19:39:47] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 20:22:32] "POST /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [04/Jul/2016 20:28:46] "POST /user?action=log HTTP/1.0" 200 -
+ * Detected change in '/data/Py2.7/taochengwei/team.api/src/core/user.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 257-558-080
+ * Detected change in '/data/Py2.7/taochengwei/team.api/src/pub/tool.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 257-558-080
+ * Detected change in '/data/Py2.7/taochengwei/team.api/src/pub/tool.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 257-558-080
+ * Detected change in '/data/Py2.7/taochengwei/team.api/src/core/user.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 257-558-080
+127.0.0.1 - - [05/Jul/2016 06:37:35] "GET /robots.txt HTTP/1.0" 404 -
+127.0.0.1 - - [05/Jul/2016 10:19:25] "GET / HTTP/1.0" 200 -
+127.0.0.1 - - [05/Jul/2016 10:19:27] "GET /favicon.ico HTTP/1.0" 302 -
+127.0.0.1 - - [05/Jul/2016 11:29:14] "GET / HTTP/1.0" 200 -
+127.0.0.1 - - [05/Jul/2016 11:29:14] "GET /favicon.ico HTTP/1.0" 302 -
+127.0.0.1 - - [05/Jul/2016 11:29:15] "GET /index.js.map HTTP/1.0" 404 -
+127.0.0.1 - - [05/Jul/2016 19:04:34] "GET / HTTP/1.0" 200 -
+127.0.0.1 - - [05/Jul/2016 19:04:36] "GET /favicon.ico HTTP/1.0" 302 -
+127.0.0.1 - - [06/Jul/2016 11:23:38] "GET / HTTP/1.0" 200 -
+127.0.0.1 - - [06/Jul/2016 12:47:58] "GET / HTTP/1.0" 200 -
+127.0.0.1 - - [06/Jul/2016 12:47:58] "GET /favicon.ico HTTP/1.0" 302 -
+127.0.0.1 - - [06/Jul/2016 21:54:45] "POST /user?action=log HTTP/1.0" 500 -
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 268, in error_router
+    return self.handle_error(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 268, in error_router
+    return self.handle_error(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 477, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 587, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/data/Py2.7/taochengwei/team.api/src/core/user.py", line 132, in post
+    logger.debug(request.cookie.__str__())
+  File "/usr/lib/python2.6/site-packages/werkzeug/local.py", line 343, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'Request' object has no attribute 'cookie'
+127.0.0.1 - - [06/Jul/2016 21:54:47] "POST /user?action=log HTTP/1.0" 500 -
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 268, in error_router
+    return self.handle_error(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 268, in error_router
+    return self.handle_error(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 477, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 587, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/data/Py2.7/taochengwei/team.api/src/core/user.py", line 132, in post
+    logger.debug(request.cookie.__str__())
+  File "/usr/lib/python2.6/site-packages/werkzeug/local.py", line 343, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'Request' object has no attribute 'cookie'
+127.0.0.1 - - [06/Jul/2016 21:54:50] "POST /user?action=log HTTP/1.0" 500 -
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 268, in error_router
+    return self.handle_error(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 268, in error_router
+    return self.handle_error(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 477, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 587, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/data/Py2.7/taochengwei/team.api/src/core/user.py", line 132, in post
+    logger.debug(request.cookie.__str__())
+  File "/usr/lib/python2.6/site-packages/werkzeug/local.py", line 343, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'Request' object has no attribute 'cookie'
+127.0.0.1 - - [06/Jul/2016 23:10:30] "POST /user?action=log HTTP/1.0" 500 -
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 268, in error_router
+    return self.handle_error(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 268, in error_router
+    return self.handle_error(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 477, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 587, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/data/Py2.7/taochengwei/team.api/src/core/user.py", line 132, in post
+    logger.debug(request.cookie.__str__())
+  File "/usr/lib/python2.6/site-packages/werkzeug/local.py", line 343, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'Request' object has no attribute 'cookie'
+127.0.0.1 - - [06/Jul/2016 23:10:38] "GET /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [06/Jul/2016 23:16:37] "POST /user?action=log HTTP/1.0" 500 -
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 268, in error_router
+    return self.handle_error(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 268, in error_router
+    return self.handle_error(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 477, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 587, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/data/Py2.7/taochengwei/team.api/src/core/user.py", line 132, in post
+    logger.debug(request.cookie.__str__())
+  File "/usr/lib/python2.6/site-packages/werkzeug/local.py", line 343, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'Request' object has no attribute 'cookie'
+127.0.0.1 - - [06/Jul/2016 23:20:43] "GET /user?action=log HTTP/1.0" 200 -
+127.0.0.1 - - [06/Jul/2016 23:20:43] "GET /favicon.ico HTTP/1.0" 302 -
+127.0.0.1 - - [06/Jul/2016 23:20:48] "POST /user?action=log HTTP/1.0" 500 -
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 268, in error_router
+    return self.handle_error(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 268, in error_router
+    return self.handle_error(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 477, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 587, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/data/Py2.7/taochengwei/team.api/src/core/user.py", line 132, in post
+    logger.debug(request.cookie.__str__())
+  File "/usr/lib/python2.6/site-packages/werkzeug/local.py", line 343, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'Request' object has no attribute 'cookie'
+127.0.0.1 - - [06/Jul/2016 23:20:49] "POST /user?action=log HTTP/1.0" 500 -
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 268, in error_router
+    return self.handle_error(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 268, in error_router
+    return self.handle_error(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 477, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 587, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/data/Py2.7/taochengwei/team.api/src/core/user.py", line 132, in post
+    logger.debug(request.cookie.__str__())
+  File "/usr/lib/python2.6/site-packages/werkzeug/local.py", line 343, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'Request' object has no attribute 'cookie'
+127.0.0.1 - - [06/Jul/2016 23:20:51] "POST /user?action=log HTTP/1.0" 500 -
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 268, in error_router
+    return self.handle_error(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 268, in error_router
+    return self.handle_error(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 477, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 587, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/data/Py2.7/taochengwei/team.api/src/core/user.py", line 132, in post
+    logger.debug(request.cookie.__str__())
+  File "/usr/lib/python2.6/site-packages/werkzeug/local.py", line 343, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'Request' object has no attribute 'cookie'
+127.0.0.1 - - [06/Jul/2016 23:21:55] "POST /user?action=log HTTP/1.0" 500 -
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 268, in error_router
+    return self.handle_error(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 268, in error_router
+    return self.handle_error(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 477, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 587, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/data/Py2.7/taochengwei/team.api/src/core/user.py", line 132, in post
+    logger.debug(request.cookie.__str__())
+  File "/usr/lib/python2.6/site-packages/werkzeug/local.py", line 343, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'Request' object has no attribute 'cookie'
+127.0.0.1 - - [06/Jul/2016 23:23:12] "POST /user?action=log HTTP/1.0" 500 -
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 268, in error_router
+    return self.handle_error(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 268, in error_router
+    return self.handle_error(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 477, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 587, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/data/Py2.7/taochengwei/team.api/src/core/user.py", line 132, in post
+    logger.debug(request.cookie.__str__())
+  File "/usr/lib/python2.6/site-packages/werkzeug/local.py", line 343, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'Request' object has no attribute 'cookie'
+127.0.0.1 - - [06/Jul/2016 23:23:13] "POST /user?action=log HTTP/1.0" 500 -
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 268, in error_router
+    return self.handle_error(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 268, in error_router
+    return self.handle_error(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 477, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 587, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/data/Py2.7/taochengwei/team.api/src/core/user.py", line 132, in post
+    logger.debug(request.cookie.__str__())
+  File "/usr/lib/python2.6/site-packages/werkzeug/local.py", line 343, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'Request' object has no attribute 'cookie'
+127.0.0.1 - - [06/Jul/2016 23:23:14] "POST /user?action=log HTTP/1.0" 500 -
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 268, in error_router
+    return self.handle_error(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 268, in error_router
+    return self.handle_error(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 477, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 587, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/data/Py2.7/taochengwei/team.api/src/core/user.py", line 132, in post
+    logger.debug(request.cookie.__str__())
+  File "/usr/lib/python2.6/site-packages/werkzeug/local.py", line 343, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'Request' object has no attribute 'cookie'
+127.0.0.1 - - [06/Jul/2016 23:40:49] "POST /user?action=log HTTP/1.0" 500 -
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 268, in error_router
+    return self.handle_error(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 268, in error_router
+    return self.handle_error(e)
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python2.6/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 477, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/flask_restful/__init__.py", line 587, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/data/Py2.7/taochengwei/team.api/src/core/user.py", line 132, in post
+    logger.debug(request.cookie.__str__())
+  File "/usr/lib/python2.6/site-packages/werkzeug/local.py", line 343, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'Request' object has no attribute 'cookie'
+0:19:37 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'', u'', None)}}
+2016-07-04 00:19:37 user.py[line:89] DEBUG {'res': None, 'User:post:request.json(user, pass)': (u'', u'')}
+2016-07-04 00:19:37 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "http://127.0.0.1:10050/login", "requestId": "cd74e64f-4cf1-4294-b41a-5a3896f8b663", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 00:19:37 api.py[line:22] INFO Start Once Access, and this requestId is 89a2da89-5f58-45b5-8c02-eca977fa318c
+2016-07-04 00:19:37 tool.py[line:52] DEBUG Referer: http://127.0.0.1:10050/login
+Origin: http://127.0.0.1:10050
+X-Real-Ip: 120.52.24.157
+Content-Length: 19
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 120.52.24.157
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 00:19:37 tool.py[line:53] DEBUG None
+2016-07-04 00:19:37 tool.py[line:54] DEBUG ImmutableMultiDict([('username', u''), ('password', u'')])
+2016-07-04 00:19:37 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 00:19:37 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'', u'', None)}}
+2016-07-04 00:19:37 user.py[line:89] DEBUG {'res': None, 'User:post:request.json(user, pass)': (u'', u'')}
+2016-07-04 00:19:37 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "http://127.0.0.1:10050/login", "requestId": "89a2da89-5f58-45b5-8c02-eca977fa318c", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 00:19:37 api.py[line:22] INFO Start Once Access, and this requestId is ef7a3758-db60-4ca0-aa6b-d0ca6b4deaa7
+2016-07-04 00:19:37 tool.py[line:52] DEBUG Referer: http://127.0.0.1:10050/login
+Origin: http://127.0.0.1:10050
+X-Real-Ip: 120.52.24.157
+Content-Length: 19
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 120.52.24.157
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 00:19:37 tool.py[line:53] DEBUG None
+2016-07-04 00:19:37 tool.py[line:54] DEBUG ImmutableMultiDict([('username', u''), ('password', u'')])
+2016-07-04 00:19:37 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 00:19:37 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'', u'', None)}}
+2016-07-04 00:19:37 user.py[line:89] DEBUG {'res': None, 'User:post:request.json(user, pass)': (u'', u'')}
+2016-07-04 00:19:37 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "http://127.0.0.1:10050/login", "requestId": "ef7a3758-db60-4ca0-aa6b-d0ca6b4deaa7", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 00:19:38 api.py[line:22] INFO Start Once Access, and this requestId is 2057f053-26e6-4494-8a22-2851df629b52
+2016-07-04 00:19:38 tool.py[line:52] DEBUG Referer: http://127.0.0.1:10050/login
+Origin: http://127.0.0.1:10050
+X-Real-Ip: 120.52.24.157
+Content-Length: 19
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 120.52.24.157
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 00:19:38 tool.py[line:53] DEBUG None
+2016-07-04 00:19:38 tool.py[line:54] DEBUG ImmutableMultiDict([('username', u''), ('password', u'')])
+2016-07-04 00:19:38 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 00:19:38 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'', u'', None)}}
+2016-07-04 00:19:38 user.py[line:89] DEBUG {'res': None, 'User:post:request.json(user, pass)': (u'', u'')}
+2016-07-04 00:19:38 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "http://127.0.0.1:10050/login", "requestId": "2057f053-26e6-4494-8a22-2851df629b52", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 00:19:42 api.py[line:22] INFO Start Once Access, and this requestId is ea094e51-728c-4ab8-b19d-0ea1c8ba9edc
+2016-07-04 00:19:42 tool.py[line:52] DEBUG Referer: http://127.0.0.1:10050/login
+Origin: http://127.0.0.1:10050
+X-Real-Ip: 120.52.24.157
+Content-Length: 19
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 120.52.24.157
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 00:19:42 tool.py[line:53] DEBUG None
+2016-07-04 00:19:42 tool.py[line:54] DEBUG ImmutableMultiDict([('username', u''), ('password', u'')])
+2016-07-04 00:19:42 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 00:19:42 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'', u'', None)}}
+2016-07-04 00:19:42 user.py[line:89] DEBUG {'res': None, 'User:post:request.json(user, pass)': (u'', u'')}
+2016-07-04 00:19:42 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "http://127.0.0.1:10050/login", "requestId": "ea094e51-728c-4ab8-b19d-0ea1c8ba9edc", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 00:19:44 api.py[line:22] INFO Start Once Access, and this requestId is 0641e917-b3be-4fc6-aae3-5412696f6e56
+2016-07-04 00:19:44 tool.py[line:52] DEBUG Referer: http://127.0.0.1:10050/login
+Origin: http://127.0.0.1:10050
+X-Real-Ip: 120.52.24.157
+Content-Length: 19
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 120.52.24.157
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 00:19:44 tool.py[line:53] DEBUG None
+2016-07-04 00:19:44 tool.py[line:54] DEBUG ImmutableMultiDict([('username', u''), ('password', u'')])
+2016-07-04 00:19:44 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 00:19:44 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'', u'', None)}}
+2016-07-04 00:19:44 user.py[line:89] DEBUG {'res': None, 'User:post:request.json(user, pass)': (u'', u'')}
+2016-07-04 00:19:44 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "http://127.0.0.1:10050/login", "requestId": "0641e917-b3be-4fc6-aae3-5412696f6e56", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 00:19:46 api.py[line:22] INFO Start Once Access, and this requestId is bcfe4975-beec-43e4-a1d9-e96402efce99
+2016-07-04 00:19:46 tool.py[line:52] DEBUG Referer: http://127.0.0.1:10050/login
+Origin: http://127.0.0.1:10050
+X-Real-Ip: 120.52.24.157
+Content-Length: 19
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 120.52.24.157
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 00:19:46 tool.py[line:53] DEBUG None
+2016-07-04 00:19:46 tool.py[line:54] DEBUG ImmutableMultiDict([('username', u''), ('password', u'')])
+2016-07-04 00:19:46 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 00:19:46 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'', u'', None)}}
+2016-07-04 00:19:46 user.py[line:89] DEBUG {'res': None, 'User:post:request.json(user, pass)': (u'', u'')}
+2016-07-04 00:19:46 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "http://127.0.0.1:10050/login", "requestId": "bcfe4975-beec-43e4-a1d9-e96402efce99", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 00:20:24 api.py[line:22] INFO Start Once Access, and this requestId is de313bac-6711-414e-9fad-c376f3129f4a
+2016-07-04 00:20:24 tool.py[line:52] DEBUG Referer: http://127.0.0.1:10050/login
+Origin: http://127.0.0.1:10050
+X-Real-Ip: 120.52.24.157
+Content-Length: 19
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 120.52.24.157
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 00:20:24 tool.py[line:53] DEBUG None
+2016-07-04 00:20:24 tool.py[line:54] DEBUG ImmutableMultiDict([('username', u''), ('password', u'')])
+2016-07-04 00:20:24 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 00:20:24 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'', u'', None)}}
+2016-07-04 00:20:24 user.py[line:89] DEBUG {'res': None, 'User:post:request.json(user, pass)': (u'', u'')}
+2016-07-04 00:20:24 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "http://127.0.0.1:10050/login", "requestId": "de313bac-6711-414e-9fad-c376f3129f4a", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 00:20:28 api.py[line:22] INFO Start Once Access, and this requestId is 19c5a5cf-180f-4632-a9db-da1a2300ebdd
+2016-07-04 00:20:28 tool.py[line:52] DEBUG Referer: http://127.0.0.1:10050/login
+Origin: http://127.0.0.1:10050
+X-Real-Ip: 120.52.24.157
+Content-Length: 19
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 120.52.24.157
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 00:20:28 tool.py[line:53] DEBUG None
+2016-07-04 00:20:28 tool.py[line:54] DEBUG ImmutableMultiDict([('username', u''), ('password', u'')])
+2016-07-04 00:20:28 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 00:20:28 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'', u'', None)}}
+2016-07-04 00:20:28 user.py[line:89] DEBUG {'res': None, 'User:post:request.json(user, pass)': (u'', u'')}
+2016-07-04 00:20:28 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "http://127.0.0.1:10050/login", "requestId": "19c5a5cf-180f-4632-a9db-da1a2300ebdd", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 00:31:36 api.py[line:22] INFO Start Once Access, and this requestId is 5d4f3a13-70cd-470a-a1be-0782337ff7b7
+2016-07-04 00:31:36 tool.py[line:52] DEBUG Referer: http://127.0.0.1:10050/login
+Origin: http://127.0.0.1:10050
+X-Real-Ip: 120.52.24.157
+Content-Length: 0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 120.52.24.157
+Content-Type: 
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 00:31:36 tool.py[line:53] DEBUG None
+2016-07-04 00:31:36 tool.py[line:54] DEBUG ImmutableMultiDict([])
+2016-07-04 00:31:36 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 00:31:36 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (None, None, None)}}
+2016-07-04 00:31:36 user.py[line:89] DEBUG {'res': None, 'User:post:request.json(user, pass)': (None, None)}
+2016-07-04 00:31:36 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "http://127.0.0.1:10050/login", "requestId": "5d4f3a13-70cd-470a-a1be-0782337ff7b7", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 00:31:40 api.py[line:22] INFO Start Once Access, and this requestId is 77aae245-92e7-42b5-9ce7-c29203bf84db
+2016-07-04 00:31:40 tool.py[line:52] DEBUG Referer: http://127.0.0.1:10050/login
+Origin: http://127.0.0.1:10050
+X-Real-Ip: 120.52.24.157
+Content-Length: 0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 120.52.24.157
+Content-Type: 
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 00:31:40 tool.py[line:53] DEBUG None
+2016-07-04 00:31:40 tool.py[line:54] DEBUG ImmutableMultiDict([])
+2016-07-04 00:31:40 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 00:31:40 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (None, None, None)}}
+2016-07-04 00:31:40 user.py[line:89] DEBUG {'res': None, 'User:post:request.json(user, pass)': (None, None)}
+2016-07-04 00:31:40 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "http://127.0.0.1:10050/login", "requestId": "77aae245-92e7-42b5-9ce7-c29203bf84db", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 00:32:32 api.py[line:22] INFO Start Once Access, and this requestId is 60a1b796-271a-418f-a02d-d724bfbfa0cc
+2016-07-04 00:32:32 tool.py[line:52] DEBUG Referer: http://127.0.0.1:10050/login
+Origin: http://127.0.0.1:10050
+X-Real-Ip: 120.52.24.157
+Content-Length: 30
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 120.52.24.157
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 00:32:32 tool.py[line:53] DEBUG None
+2016-07-04 00:32:32 tool.py[line:54] DEBUG ImmutableMultiDict([('username', u'admin'), ('password', u'910323')])
+2016-07-04 00:32:32 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 00:32:32 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 00:32:32 tool.py[line:41] INFO {'func:dbUser:sql': u"SELECT username,password FROM user WHERE username='admin'"}
+2016-07-04 00:32:32 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': {'username': u'admin', 'password': u'8879168cbf8a9e11c296530803e93308'}}
+2016-07-04 00:32:32 user.py[line:126] DEBUG {'DBuser': u'admin', 'DBpass': u'8879168cbf8a9e11c296530803e93308', 'ReqUser': u'admin', 'ReqPassMD5': '8879168cbf8a9e11c296530803e93308'}
+2016-07-04 00:32:32 user.py[line:131] INFO {'url': u'http://api.saintic.com/user?action=log', 'msg': 'Password authentication success at sign in', 'code': 0, 'data': {'username': u'admin', 'email': None}}
+2016-07-04 00:32:32 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "http://127.0.0.1:10050/login", "requestId": "60a1b796-271a-418f-a02d-d724bfbfa0cc", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 00:32:34 api.py[line:22] INFO Start Once Access, and this requestId is de1507f9-9767-4d32-8be9-eb71633ddff1
+2016-07-04 00:32:34 tool.py[line:52] DEBUG Referer: http://127.0.0.1:10050/login
+Origin: http://127.0.0.1:10050
+X-Real-Ip: 120.52.24.157
+Content-Length: 30
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 120.52.24.157
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 00:32:34 tool.py[line:53] DEBUG None
+2016-07-04 00:32:34 tool.py[line:54] DEBUG ImmutableMultiDict([('username', u'admin'), ('password', u'910323')])
+2016-07-04 00:32:34 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 00:32:34 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 00:32:34 tool.py[line:41] INFO {'func:dbUser:sql': u"SELECT username,password FROM user WHERE username='admin'"}
+2016-07-04 00:32:34 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': {'username': u'admin', 'password': u'8879168cbf8a9e11c296530803e93308'}}
+2016-07-04 00:32:34 user.py[line:126] DEBUG {'DBuser': u'admin', 'DBpass': u'8879168cbf8a9e11c296530803e93308', 'ReqUser': u'admin', 'ReqPassMD5': '8879168cbf8a9e11c296530803e93308'}
+2016-07-04 00:32:34 user.py[line:131] INFO {'url': u'http://api.saintic.com/user?action=log', 'msg': 'Password authentication success at sign in', 'code': 0, 'data': {'username': u'admin', 'email': None}}
+2016-07-04 00:32:34 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "http://127.0.0.1:10050/login", "requestId": "de1507f9-9767-4d32-8be9-eb71633ddff1", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 00:32:36 api.py[line:22] INFO Start Once Access, and this requestId is ee94a586-65cc-4531-bab0-cf05f026f858
+2016-07-04 00:32:36 tool.py[line:52] DEBUG Referer: http://127.0.0.1:10050/login
+Origin: http://127.0.0.1:10050
+X-Real-Ip: 120.52.24.157
+Content-Length: 30
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 120.52.24.157
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 00:32:36 tool.py[line:53] DEBUG None
+2016-07-04 00:32:36 tool.py[line:54] DEBUG ImmutableMultiDict([('username', u'admin'), ('password', u'910323')])
+2016-07-04 00:32:36 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 00:32:36 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 00:32:36 tool.py[line:41] INFO {'func:dbUser:sql': u"SELECT username,password FROM user WHERE username='admin'"}
+2016-07-04 00:32:36 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': {'username': u'admin', 'password': u'8879168cbf8a9e11c296530803e93308'}}
+2016-07-04 00:32:36 user.py[line:126] DEBUG {'DBuser': u'admin', 'DBpass': u'8879168cbf8a9e11c296530803e93308', 'ReqUser': u'admin', 'ReqPassMD5': '8879168cbf8a9e11c296530803e93308'}
+2016-07-04 00:32:36 user.py[line:131] INFO {'url': u'http://api.saintic.com/user?action=log', 'msg': 'Password authentication success at sign in', 'code': 0, 'data': {'username': u'admin', 'email': None}}
+2016-07-04 00:32:36 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "http://127.0.0.1:10050/login", "requestId": "ee94a586-65cc-4531-bab0-cf05f026f858", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 00:32:38 api.py[line:22] INFO Start Once Access, and this requestId is f5b7c9ef-c461-413d-b222-1a07a1c674c7
+2016-07-04 00:32:38 tool.py[line:52] DEBUG Referer: http://127.0.0.1:10050/login
+Origin: http://127.0.0.1:10050
+X-Real-Ip: 120.52.24.157
+Content-Length: 30
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 120.52.24.157
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 00:32:38 tool.py[line:53] DEBUG None
+2016-07-04 00:32:38 tool.py[line:54] DEBUG ImmutableMultiDict([('username', u'admin'), ('password', u'910323')])
+2016-07-04 00:32:38 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 00:32:38 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 00:32:38 tool.py[line:41] INFO {'func:dbUser:sql': u"SELECT username,password FROM user WHERE username='admin'"}
+2016-07-04 00:32:38 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': {'username': u'admin', 'password': u'8879168cbf8a9e11c296530803e93308'}}
+2016-07-04 00:32:38 user.py[line:126] DEBUG {'DBuser': u'admin', 'DBpass': u'8879168cbf8a9e11c296530803e93308', 'ReqUser': u'admin', 'ReqPassMD5': '8879168cbf8a9e11c296530803e93308'}
+2016-07-04 00:32:38 user.py[line:131] INFO {'url': u'http://api.saintic.com/user?action=log', 'msg': 'Password authentication success at sign in', 'code': 0, 'data': {'username': u'admin', 'email': None}}
+2016-07-04 00:32:38 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "http://127.0.0.1:10050/login", "requestId": "f5b7c9ef-c461-413d-b222-1a07a1c674c7", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 00:34:38 api.py[line:22] INFO Start Once Access, and this requestId is 1ead6692-5f44-4030-9d71-eead9a393a82
+2016-07-04 00:34:38 tool.py[line:52] DEBUG Referer: http://127.0.0.1:10050/login
+Origin: http://127.0.0.1:10050
+X-Real-Ip: 120.52.24.157
+Content-Length: 30
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 120.52.24.157
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 00:34:38 tool.py[line:53] DEBUG None
+2016-07-04 00:34:38 tool.py[line:54] DEBUG ImmutableMultiDict([('username', u'admin'), ('password', u'910323')])
+2016-07-04 00:34:38 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 00:34:38 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 00:34:38 tool.py[line:41] INFO {'func:dbUser:sql': u"SELECT username,password FROM user WHERE username='admin'"}
+2016-07-04 00:34:38 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': {'username': u'admin', 'password': u'8879168cbf8a9e11c296530803e93308'}}
+2016-07-04 00:34:38 user.py[line:126] DEBUG {'DBuser': u'admin', 'DBpass': u'8879168cbf8a9e11c296530803e93308', 'ReqUser': u'admin', 'ReqPassMD5': '8879168cbf8a9e11c296530803e93308'}
+2016-07-04 00:34:38 user.py[line:131] INFO {'url': u'http://api.saintic.com/user?action=log', 'msg': 'Password authentication success at sign in', 'code': 0, 'data': {'username': u'admin', 'email': None}}
+2016-07-04 00:34:38 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "http://127.0.0.1:10050/login", "requestId": "1ead6692-5f44-4030-9d71-eead9a393a82", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 00:37:54 api.py[line:22] INFO Start Once Access, and this requestId is 400ab624-05d6-4066-ae4e-7915997bd1b1
+2016-07-04 00:37:54 tool.py[line:52] DEBUG Referer: http://127.0.0.1:10050/login
+Origin: http://127.0.0.1:10050
+X-Real-Ip: 120.52.24.157
+Content-Length: 30
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 120.52.24.157
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 00:37:54 tool.py[line:53] DEBUG None
+2016-07-04 00:37:54 tool.py[line:54] DEBUG ImmutableMultiDict([('username', u'admin'), ('password', u'910323')])
+2016-07-04 00:37:54 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 00:37:54 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 00:37:54 tool.py[line:41] INFO {'func:dbUser:sql': u"SELECT username,password FROM user WHERE username='admin'"}
+2016-07-04 00:37:54 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': {'username': u'admin', 'password': u'8879168cbf8a9e11c296530803e93308'}}
+2016-07-04 00:37:54 user.py[line:126] DEBUG {'DBuser': u'admin', 'DBpass': u'8879168cbf8a9e11c296530803e93308', 'ReqUser': u'admin', 'ReqPassMD5': '8879168cbf8a9e11c296530803e93308'}
+2016-07-04 00:37:54 user.py[line:131] INFO {'url': u'http://api.saintic.com/user?action=log', 'msg': 'Password authentication success at sign in', 'code': 0, 'data': {'username': u'admin', 'email': None}}
+2016-07-04 00:37:54 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "http://127.0.0.1:10050/login", "requestId": "400ab624-05d6-4066-ae4e-7915997bd1b1", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 00:38:04 api.py[line:22] INFO Start Once Access, and this requestId is 1092b1be-72ed-40b7-b892-a2ce8a9c9e8f
+2016-07-04 00:38:04 tool.py[line:52] DEBUG Referer: http://127.0.0.1:10050/login
+Origin: http://127.0.0.1:10050
+X-Real-Ip: 120.52.24.157
+Content-Length: 30
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 120.52.24.157
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 00:38:04 tool.py[line:53] DEBUG None
+2016-07-04 00:38:04 tool.py[line:54] DEBUG ImmutableMultiDict([('username', u'admin'), ('password', u'910323')])
+2016-07-04 00:38:04 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 00:38:04 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 00:38:04 tool.py[line:41] INFO {'func:dbUser:sql': u"SELECT username,password FROM user WHERE username='admin'"}
+2016-07-04 00:38:04 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': {'username': u'admin', 'password': u'8879168cbf8a9e11c296530803e93308'}}
+2016-07-04 00:38:04 user.py[line:126] DEBUG {'DBuser': u'admin', 'DBpass': u'8879168cbf8a9e11c296530803e93308', 'ReqUser': u'admin', 'ReqPassMD5': '8879168cbf8a9e11c296530803e93308'}
+2016-07-04 00:38:04 user.py[line:131] INFO {'url': u'http://api.saintic.com/user?action=log', 'msg': 'Password authentication success at sign in', 'code': 0, 'data': {'username': u'admin', 'email': None}}
+2016-07-04 00:38:04 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "http://127.0.0.1:10050/login", "requestId": "1092b1be-72ed-40b7-b892-a2ce8a9c9e8f", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 00:39:18 api.py[line:22] INFO Start Once Access, and this requestId is c319fb67-4ca6-4b5b-910b-6b5b47833481
+2016-07-04 00:39:18 tool.py[line:52] DEBUG Referer: http://127.0.0.1:10050/login
+Origin: http://127.0.0.1:10050
+X-Real-Ip: 120.52.24.157
+Content-Length: 30
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 120.52.24.157
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 00:39:18 tool.py[line:53] DEBUG None
+2016-07-04 00:39:18 tool.py[line:54] DEBUG ImmutableMultiDict([('username', u'admin'), ('password', u'910323')])
+2016-07-04 00:39:18 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 00:39:18 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 00:39:18 tool.py[line:41] INFO {'func:dbUser:sql': u"SELECT username,password FROM user WHERE username='admin'"}
+2016-07-04 00:39:18 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': {'username': u'admin', 'password': u'8879168cbf8a9e11c296530803e93308'}}
+2016-07-04 00:39:18 user.py[line:126] DEBUG {'DBuser': u'admin', 'DBpass': u'8879168cbf8a9e11c296530803e93308', 'ReqUser': u'admin', 'ReqPassMD5': '8879168cbf8a9e11c296530803e93308'}
+2016-07-04 00:39:18 user.py[line:131] INFO {'url': u'http://api.saintic.com/user?action=log', 'msg': 'Password authentication success at sign in', 'code': 0, 'data': {'username': u'admin', 'email': None}}
+2016-07-04 00:39:18 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "http://127.0.0.1:10050/login", "requestId": "c319fb67-4ca6-4b5b-910b-6b5b47833481", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 00:39:52 api.py[line:22] INFO Start Once Access, and this requestId is 2a9a8ed8-deb1-4990-bb1d-94a163f976a5
+2016-07-04 00:39:52 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/users?action=log", "status_code": 404, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "http://127.0.0.1:10050/login", "requestId": "2a9a8ed8-deb1-4990-bb1d-94a163f976a5", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 00:41:21 api.py[line:22] INFO Start Once Access, and this requestId is 4dcd9c28-2204-4679-9fe6-55726f557166
+2016-07-04 00:41:21 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/users?action=log", "status_code": 404, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "http://127.0.0.1:10050/login", "requestId": "4dcd9c28-2204-4679-9fe6-55726f557166", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 00:41:42 api.py[line:22] INFO Start Once Access, and this requestId is 67ba2fb4-aab5-408b-9a0f-fb604125f5b2
+2016-07-04 00:41:42 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/users?action=log", "status_code": 404, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "http://127.0.0.1:10050/login", "requestId": "67ba2fb4-aab5-408b-9a0f-fb604125f5b2", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 01:05:16 api.py[line:22] INFO Start Once Access, and this requestId is 6fbd708c-ce17-4fe4-be64-ec790aeeeae7
+2016-07-04 01:05:16 tool.py[line:52] DEBUG Referer: http://127.0.0.1:10050/login
+Origin: http://127.0.0.1:10050
+X-Real-Ip: 120.52.24.157
+Content-Length: 30
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 120.52.24.157
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 01:05:16 tool.py[line:53] DEBUG None
+2016-07-04 01:05:16 tool.py[line:54] DEBUG ImmutableMultiDict([('username', u'admin'), ('password', u'910323')])
+2016-07-04 01:05:16 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 01:05:16 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 01:05:16 tool.py[line:41] INFO {'func:dbUser:sql': u"SELECT username,password FROM user WHERE username='admin'"}
+2016-07-04 01:05:16 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': {'username': u'admin', 'password': u'8879168cbf8a9e11c296530803e93308'}}
+2016-07-04 01:05:16 user.py[line:126] DEBUG {'DBuser': u'admin', 'DBpass': u'8879168cbf8a9e11c296530803e93308', 'ReqUser': u'admin', 'ReqPassMD5': '8879168cbf8a9e11c296530803e93308'}
+2016-07-04 01:05:16 user.py[line:131] INFO {'url': u'http://api.saintic.com/user?action=log', 'msg': 'Password authentication success at sign in', 'code': 0, 'data': {'username': u'admin', 'email': None}}
+2016-07-04 01:05:16 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "http://127.0.0.1:10050/login", "requestId": "6fbd708c-ce17-4fe4-be64-ec790aeeeae7", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 01:05:40 api.py[line:22] INFO Start Once Access, and this requestId is 077c2803-2cb3-485f-90fe-e732edff4b42
+2016-07-04 01:05:40 tool.py[line:52] DEBUG Referer: http://127.0.0.1:10050/login
+Origin: http://127.0.0.1:10050
+X-Real-Ip: 120.52.24.157
+Content-Length: 30
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 120.52.24.157
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 01:05:40 tool.py[line:53] DEBUG None
+2016-07-04 01:05:40 tool.py[line:54] DEBUG ImmutableMultiDict([('username', u'admin'), ('password', u'910323')])
+2016-07-04 01:05:40 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 01:05:40 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 01:05:40 tool.py[line:41] INFO {'func:dbUser:sql': u"SELECT username,password FROM user WHERE username='admin'"}
+2016-07-04 01:05:40 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': {'username': u'admin', 'password': u'8879168cbf8a9e11c296530803e93308'}}
+2016-07-04 01:05:40 user.py[line:126] DEBUG {'DBuser': u'admin', 'DBpass': u'8879168cbf8a9e11c296530803e93308', 'ReqUser': u'admin', 'ReqPassMD5': '8879168cbf8a9e11c296530803e93308'}
+2016-07-04 01:05:40 user.py[line:131] INFO {'url': u'http://api.saintic.com/user?action=log', 'msg': 'Password authentication success at sign in', 'code': 0, 'data': {'username': u'admin', 'email': None}}
+2016-07-04 01:05:40 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "http://127.0.0.1:10050/login", "requestId": "077c2803-2cb3-485f-90fe-e732edff4b42", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 01:05:46 api.py[line:22] INFO Start Once Access, and this requestId is 4d05a53f-a03f-4a79-9622-f6fb0bbbc438
+2016-07-04 01:05:46 tool.py[line:52] DEBUG Referer: http://127.0.0.1:10050/login
+Origin: http://127.0.0.1:10050
+X-Real-Ip: 120.52.24.157
+Content-Length: 30
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 120.52.24.157
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 01:05:46 tool.py[line:53] DEBUG None
+2016-07-04 01:05:46 tool.py[line:54] DEBUG ImmutableMultiDict([('username', u'admin'), ('password', u'910323')])
+2016-07-04 01:05:46 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 01:05:46 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 01:05:46 tool.py[line:41] INFO {'func:dbUser:sql': u"SELECT username,password FROM user WHERE username='admin'"}
+2016-07-04 01:05:46 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': {'username': u'admin', 'password': u'8879168cbf8a9e11c296530803e93308'}}
+2016-07-04 01:05:46 user.py[line:126] DEBUG {'DBuser': u'admin', 'DBpass': u'8879168cbf8a9e11c296530803e93308', 'ReqUser': u'admin', 'ReqPassMD5': '8879168cbf8a9e11c296530803e93308'}
+2016-07-04 01:05:46 user.py[line:131] INFO {'url': u'http://api.saintic.com/user?action=log', 'msg': 'Password authentication success at sign in', 'code': 0, 'data': {'username': u'admin', 'email': None}}
+2016-07-04 01:05:46 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "http://127.0.0.1:10050/login", "requestId": "4d05a53f-a03f-4a79-9622-f6fb0bbbc438", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 01:10:07 api.py[line:22] INFO Start Once Access, and this requestId is bbc55792-b6f6-460a-be61-917a5149d628
+2016-07-04 01:10:07 tool.py[line:52] DEBUG Referer: http://127.0.0.1:10050/login
+Origin: http://127.0.0.1:10050
+X-Real-Ip: 120.52.24.157
+Content-Length: 30
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 120.52.24.157
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 01:10:07 tool.py[line:53] DEBUG None
+2016-07-04 01:10:07 tool.py[line:54] DEBUG ImmutableMultiDict([('username', u'admin'), ('password', u'910323')])
+2016-07-04 01:10:07 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 01:10:07 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 01:10:07 tool.py[line:41] INFO {'func:dbUser:sql': u"SELECT username,password FROM user WHERE username='admin'"}
+2016-07-04 01:10:07 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': {'username': u'admin', 'password': u'8879168cbf8a9e11c296530803e93308'}}
+2016-07-04 01:10:07 user.py[line:126] DEBUG {'DBuser': u'admin', 'DBpass': u'8879168cbf8a9e11c296530803e93308', 'ReqUser': u'admin', 'ReqPassMD5': '8879168cbf8a9e11c296530803e93308'}
+2016-07-04 01:10:07 user.py[line:131] INFO {'url': u'http://api.saintic.com/user?action=log', 'msg': 'Password authentication success at sign in', 'code': 0, 'data': {'username': u'admin', 'email': None}}
+2016-07-04 01:10:07 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "http://127.0.0.1:10050/login", "requestId": "bbc55792-b6f6-460a-be61-917a5149d628", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 01:17:58 api.py[line:22] INFO Start Once Access, and this requestId is a73cfd8d-4bcd-4635-89ea-942de7c471b7
+2016-07-04 01:17:58 tool.py[line:52] DEBUG Referer: http://127.0.0.1:10050/login
+Origin: http://127.0.0.1:10050
+X-Real-Ip: 120.52.24.157
+Content-Length: 30
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 120.52.24.157
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 01:17:58 tool.py[line:53] DEBUG None
+2016-07-04 01:17:58 tool.py[line:54] DEBUG ImmutableMultiDict([('username', u'admin'), ('password', u'910323')])
+2016-07-04 01:17:58 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 01:17:58 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 01:17:58 tool.py[line:41] INFO {'func:dbUser:sql': u"SELECT username,password FROM user WHERE username='admin'"}
+2016-07-04 01:17:58 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': {'username': u'admin', 'password': u'8879168cbf8a9e11c296530803e93308'}}
+2016-07-04 01:17:58 user.py[line:126] DEBUG {'DBuser': u'admin', 'DBpass': u'8879168cbf8a9e11c296530803e93308', 'ReqUser': u'admin', 'ReqPassMD5': '8879168cbf8a9e11c296530803e93308'}
+2016-07-04 01:17:58 user.py[line:131] INFO {'url': u'http://api.saintic.com/user?action=log', 'msg': 'Password authentication success at sign in', 'code': 0, 'data': {'username': u'admin', 'email': None}}
+2016-07-04 01:17:58 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "http://127.0.0.1:10050/login", "requestId": "a73cfd8d-4bcd-4635-89ea-942de7c471b7", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 01:18:54 api.py[line:22] INFO Start Once Access, and this requestId is 84db8d2e-61cf-452a-8fd9-c4591267edad
+2016-07-04 01:18:54 tool.py[line:52] DEBUG Referer: http://127.0.0.1:10050/login
+Origin: http://127.0.0.1:10050
+X-Real-Ip: 120.52.24.157
+Content-Length: 30
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 120.52.24.157
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 01:18:54 tool.py[line:53] DEBUG None
+2016-07-04 01:18:54 tool.py[line:54] DEBUG ImmutableMultiDict([('username', u'admin'), ('password', u'910323')])
+2016-07-04 01:18:54 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 01:18:54 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 01:18:54 tool.py[line:41] INFO {'func:dbUser:sql': u"SELECT username,password FROM user WHERE username='admin'"}
+2016-07-04 01:18:54 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': {'username': u'admin', 'password': u'8879168cbf8a9e11c296530803e93308'}}
+2016-07-04 01:18:54 user.py[line:126] DEBUG {'DBuser': u'admin', 'DBpass': u'8879168cbf8a9e11c296530803e93308', 'ReqUser': u'admin', 'ReqPassMD5': '8879168cbf8a9e11c296530803e93308'}
+2016-07-04 01:18:54 user.py[line:131] INFO {'url': u'http://api.saintic.com/user?action=log', 'msg': 'Password authentication success at sign in', 'code': 0, 'data': {'username': u'admin', 'email': None}}
+2016-07-04 01:18:54 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "http://127.0.0.1:10050/login", "requestId": "84db8d2e-61cf-452a-8fd9-c4591267edad", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 02:26:13 Product.py[line:20] INFO The process is Team.Api
+2016-07-04 02:26:13 Product.py[line:24] ERROR The dev isn't product, process exit!!!
+2016-07-04 12:26:24 api.py[line:22] INFO Start Once Access, and this requestId is b55629a3-0850-46e5-8f01-e3c541319a96
+2016-07-04 12:26:24 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/", "status_code": 200, "agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.75 Safari/537.36 Google Favicon", "referer": null, "requestId": "b55629a3-0850-46e5-8f01-e3c541319a96", "ip": "66.249.85.233", "method": "GET"}}
+2016-07-04 12:26:25 api.py[line:22] INFO Start Once Access, and this requestId is 202c8dc4-b00d-40b1-ac5c-50a8788d7245
+2016-07-04 12:26:25 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/favicon.ico", "status_code": 302, "agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.75 Safari/537.36 Google Favicon", "referer": null, "requestId": "202c8dc4-b00d-40b1-ac5c-50a8788d7245", "ip": "66.249.85.230", "method": "GET"}}
+2016-07-04 14:53:35 api.py[line:22] INFO Start Once Access, and this requestId is 091f0e1d-f296-4f5d-8d60-0b7f2a62a1f5
+2016-07-04 14:53:35 tool.py[line:52] DEBUG Referer: https://blog.saintic.com/login
+Origin: https://blog.saintic.com
+X-Real-Ip: 123.59.17.109
+Content-Length: 19
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 123.59.17.109
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 14:53:35 tool.py[line:53] DEBUG None
+2016-07-04 14:53:35 tool.py[line:54] DEBUG ImmutableMultiDict([('username', u''), ('password', u'')])
+2016-07-04 14:53:35 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 14:53:35 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'', u'', None)}}
+2016-07-04 14:53:35 user.py[line:89] DEBUG {'res': None, 'User:post:request.json(user, pass)': (u'', u'')}
+2016-07-04 14:53:35 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "https://blog.saintic.com/login", "requestId": "091f0e1d-f296-4f5d-8d60-0b7f2a62a1f5", "ip": "123.59.17.109", "method": "POST"}}
+2016-07-04 14:53:36 api.py[line:22] INFO Start Once Access, and this requestId is 40fb0cf2-1eb5-4159-9bfb-38393fa5f715
+2016-07-04 14:53:36 tool.py[line:52] DEBUG Referer: https://blog.saintic.com/login
+Origin: https://blog.saintic.com
+X-Real-Ip: 123.59.17.109
+Content-Length: 19
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 123.59.17.109
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 14:53:36 tool.py[line:53] DEBUG None
+2016-07-04 14:53:36 tool.py[line:54] DEBUG ImmutableMultiDict([('username', u''), ('password', u'')])
+2016-07-04 14:53:36 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 14:53:36 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'', u'', None)}}
+2016-07-04 14:53:36 user.py[line:89] DEBUG {'res': None, 'User:post:request.json(user, pass)': (u'', u'')}
+2016-07-04 14:53:36 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "https://blog.saintic.com/login", "requestId": "40fb0cf2-1eb5-4159-9bfb-38393fa5f715", "ip": "123.59.17.109", "method": "POST"}}
+2016-07-04 14:53:38 api.py[line:22] INFO Start Once Access, and this requestId is 25cf821d-37ed-4763-9f61-030ff5c218d5
+2016-07-04 14:53:38 tool.py[line:52] DEBUG Referer: https://blog.saintic.com/login
+Origin: https://blog.saintic.com
+X-Real-Ip: 123.59.17.109
+Content-Length: 19
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 123.59.17.109
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 14:53:38 tool.py[line:53] DEBUG None
+2016-07-04 14:53:38 tool.py[line:54] DEBUG ImmutableMultiDict([('username', u''), ('password', u'')])
+2016-07-04 14:53:38 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 14:53:38 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'', u'', None)}}
+2016-07-04 14:53:38 user.py[line:89] DEBUG {'res': None, 'User:post:request.json(user, pass)': (u'', u'')}
+2016-07-04 14:53:38 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "https://blog.saintic.com/login", "requestId": "25cf821d-37ed-4763-9f61-030ff5c218d5", "ip": "123.59.17.109", "method": "POST"}}
+2016-07-04 15:06:33 api.py[line:22] INFO Start Once Access, and this requestId is 7a810e09-26ef-46ff-8b95-3cf06c952850
+2016-07-04 15:06:33 tool.py[line:52] DEBUG Referer: https://blog.saintic.com/login
+Origin: https://blog.saintic.com
+X-Real-Ip: 123.59.17.109
+Content-Length: 30
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 123.59.17.109
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 15:06:33 tool.py[line:53] DEBUG None
+2016-07-04 15:06:33 tool.py[line:54] DEBUG ImmutableMultiDict([('username', u'admin'), ('password', u'910323')])
+2016-07-04 15:06:33 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 15:06:33 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 15:06:33 tool.py[line:41] INFO {'func:dbUser:sql': u"SELECT username,password FROM user WHERE username='admin'"}
+2016-07-04 15:06:33 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': {'username': u'admin', 'password': u'8879168cbf8a9e11c296530803e93308'}}
+2016-07-04 15:06:33 user.py[line:126] DEBUG {'DBuser': u'admin', 'DBpass': u'8879168cbf8a9e11c296530803e93308', 'ReqUser': u'admin', 'ReqPassMD5': '8879168cbf8a9e11c296530803e93308'}
+2016-07-04 15:06:33 user.py[line:131] INFO {'url': u'http://api.saintic.com/user?action=log', 'msg': 'Password authentication success at sign in', 'code': 0, 'data': {'username': u'admin', 'email': None}}
+2016-07-04 15:06:33 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "https://blog.saintic.com/login", "requestId": "7a810e09-26ef-46ff-8b95-3cf06c952850", "ip": "123.59.17.109", "method": "POST"}}
+2016-07-04 17:23:09 api.py[line:22] INFO Start Once Access, and this requestId is 05573d90-9b07-46d4-987c-800726539c67
+2016-07-04 17:23:09 tool.py[line:52] DEBUG Referer: https://blog.saintic.com/login
+Origin: https://blog.saintic.com
+X-Real-Ip: 120.52.24.157
+Content-Length: 30
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 120.52.24.157
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 17:23:09 tool.py[line:53] DEBUG None
+2016-07-04 17:23:09 tool.py[line:54] DEBUG ImmutableMultiDict([('username', u'admin'), ('password', u'910323')])
+2016-07-04 17:23:09 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 17:23:09 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 17:23:09 tool.py[line:41] INFO {'func:dbUser:sql': u"SELECT username,password FROM user WHERE username='admin'"}
+2016-07-04 17:23:09 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': {'username': u'admin', 'password': u'8879168cbf8a9e11c296530803e93308'}}
+2016-07-04 17:23:09 user.py[line:126] DEBUG {'DBuser': u'admin', 'DBpass': u'8879168cbf8a9e11c296530803e93308', 'ReqUser': u'admin', 'ReqPassMD5': '8879168cbf8a9e11c296530803e93308'}
+2016-07-04 17:23:09 user.py[line:131] INFO {'url': u'http://api.saintic.com/user?action=log', 'msg': 'Password authentication success at sign in', 'code': 0, 'data': {'username': u'admin', 'email': None}}
+2016-07-04 17:23:09 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "https://blog.saintic.com/login", "requestId": "05573d90-9b07-46d4-987c-800726539c67", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 17:25:17 api.py[line:22] INFO Start Once Access, and this requestId is 629e5bd2-17c3-4b11-91ba-6505209f664d
+2016-07-04 17:25:17 tool.py[line:52] DEBUG Referer: https://blog.saintic.com/login
+Origin: https://blog.saintic.com
+X-Real-Ip: 120.52.24.157
+Content-Length: 30
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 120.52.24.157
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 17:25:17 tool.py[line:53] DEBUG None
+2016-07-04 17:25:17 tool.py[line:54] DEBUG ImmutableMultiDict([('username', u'admin'), ('password', u'910323')])
+2016-07-04 17:25:17 tool.py[line:60] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 17:25:17 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 17:25:17 tool.py[line:41] INFO {'func:dbUser:sql': u"SELECT username,password FROM user WHERE username='admin'"}
+2016-07-04 17:25:17 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': {'username': u'admin', 'password': u'8879168cbf8a9e11c296530803e93308'}}
+2016-07-04 17:25:17 user.py[line:126] DEBUG {'DBuser': u'admin', 'DBpass': u'8879168cbf8a9e11c296530803e93308', 'ReqUser': u'admin', 'ReqPassMD5': '8879168cbf8a9e11c296530803e93308'}
+2016-07-04 17:25:17 user.py[line:131] INFO {'url': u'http://api.saintic.com/user?action=log', 'msg': 'Password authentication success at sign in', 'code': 0, 'data': {'username': u'admin', 'email': None}}
+2016-07-04 17:25:17 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "https://blog.saintic.com/login", "requestId": "629e5bd2-17c3-4b11-91ba-6505209f664d", "ip": "120.52.24.157", "method": "POST"}}
+2016-07-04 17:35:08 api.py[line:22] INFO Start Once Access, and this requestId is f61f6974-f86e-486b-b5c5-34a7d6b82657
+2016-07-04 17:35:08 conf.py[line:13] INFO {'url': u'http://localhost/conf', 'msg': 'ConfigControlCenter(C3)', 'code': 0, 'C3': {'BLOG': {'AdminGroup': ('admin', 'taochengwei'), 'IndexPageNum': 8}, 'GLOBAL': {'LogLevel': 'DEBUG', 'Environment': 'dev', 'ProcessName': 'Team.Front', 'Host': '0.0.0.0', 'ProductType': 'gevent', 'Port': 10050}}}
+2016-07-04 17:35:08 api.py[line:39] INFO {"AccessLog": {"url": "http://localhost/conf", "status_code": 200, "agent": null, "referer": null, "requestId": "f61f6974-f86e-486b-b5c5-34a7d6b82657", "ip": null, "method": "GET"}}
+2016-07-04 17:35:08 test.py[line:18] DEBUG test case
+2016-07-04 17:35:08 api.py[line:22] INFO Start Once Access, and this requestId is 22a5a032-d4c5-4f10-8e39-6e4c2f8da8b0
+2016-07-04 17:35:08 tool.py[line:64] DEBUG Host: localhost
+Content-Length: 36
+Content-Type: application/x-www-form-urlencoded
+
+
+2016-07-04 17:35:08 tool.py[line:65] DEBUG None
+2016-07-04 17:35:08 tool.py[line:66] DEBUG ImmutableMultiDict([('username', u'test_case10'), ('password', u'123456')])
+2016-07-04 17:35:08 tool.py[line:72] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 17:35:08 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://localhost/user?action=log', 'msg': None, 'data': None}, 'data': (u'test_case10', u'123456', None)}}
+2016-07-04 17:35:08 tool.py[line:53] INFO {'func:dbUser:sql': u"SELECT username,password FROM user WHERE username='test_case10'"}
+2016-07-04 17:35:08 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': None}
+2016-07-04 17:35:08 user.py[line:115] WARNING {'url': u'http://localhost/user?action=log', 'msg': 'User not exists', 'code': 1018, 'data': {'username': u'test_case10', 'email': None}}
+2016-07-04 17:35:08 api.py[line:39] INFO {"AccessLog": {"url": "http://localhost/user?action=log", "status_code": 200, "agent": null, "referer": null, "requestId": "22a5a032-d4c5-4f10-8e39-6e4c2f8da8b0", "ip": null, "method": "POST"}}
+2016-07-04 17:35:08 test.py[line:18] DEBUG test case
+2016-07-04 17:35:08 test.py[line:18] DEBUG test case
+2016-07-04 17:35:08 test.py[line:18] DEBUG test case
+2016-07-04 17:35:08 api.py[line:22] INFO Start Once Access, and this requestId is 3cd7dfcf-37e1-4932-b79e-beae2aa40821
+2016-07-04 17:35:08 tool.py[line:64] DEBUG Host: localhost
+Content-Length: 36
+Content-Type: application/x-www-form-urlencoded
+
+
+2016-07-04 17:35:08 tool.py[line:65] DEBUG None
+2016-07-04 17:35:08 tool.py[line:66] DEBUG ImmutableMultiDict([('username', u'test_case10'), ('password', u'123456')])
+2016-07-04 17:35:08 tool.py[line:72] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 17:35:08 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://localhost/user?action=reg', 'msg': None, 'data': None}, 'data': (u'test_case10', u'123456', None)}}
+2016-07-04 17:35:08 tool.py[line:53] INFO {'func:dbUser:sql': u"SELECT username,password FROM user WHERE username='test_case10'"}
+2016-07-04 17:35:08 user.py[line:110] DEBUG {'request.action': u'reg', 'ReqData': None}
+2016-07-04 17:35:08 user.py[line:145] INFO {'User:post:reg:sql': u"INSERT INTO user (username, password, email) VALUES('test_case10', 'e10adc3949ba59abbe56e057f20f883e', 'None')"}
+2016-07-04 17:35:08 user.py[line:151] INFO {'url': u'http://localhost/user?action=reg', 'msg': 'Sign up success', 'code': 0, 'data': {'username': u'test_case10', 'email': None}}
+2016-07-04 17:35:08 api.py[line:39] INFO {"AccessLog": {"url": "http://localhost/user?action=reg", "status_code": 200, "agent": null, "referer": null, "requestId": "3cd7dfcf-37e1-4932-b79e-beae2aa40821", "ip": null, "method": "POST"}}
+2016-07-04 17:35:08 api.py[line:22] INFO Start Once Access, and this requestId is 124c54b3-694a-424b-8a73-31ad9cfdf489
+2016-07-04 17:35:08 tool.py[line:64] DEBUG Host: localhost
+Content-Length: 36
+Content-Type: application/x-www-form-urlencoded
+
+
+2016-07-04 17:35:08 tool.py[line:65] DEBUG None
+2016-07-04 17:35:08 tool.py[line:66] DEBUG ImmutableMultiDict([('username', u'test_case10'), ('password', u'123456')])
+2016-07-04 17:35:08 tool.py[line:72] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 17:35:08 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://localhost/user?action=log', 'msg': None, 'data': None}, 'data': (u'test_case10', u'123456', None)}}
+2016-07-04 17:35:08 tool.py[line:53] INFO {'func:dbUser:sql': u"SELECT username,password FROM user WHERE username='test_case10'"}
+2016-07-04 17:35:08 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': {'username': u'test_case10', 'password': u'e10adc3949ba59abbe56e057f20f883e'}}
+2016-07-04 17:35:08 user.py[line:126] DEBUG {'DBuser': u'test_case10', 'DBpass': u'e10adc3949ba59abbe56e057f20f883e', 'ReqUser': u'test_case10', 'ReqPassMD5': 'e10adc3949ba59abbe56e057f20f883e'}
+2016-07-04 17:35:08 user.py[line:131] INFO {'url': u'http://localhost/user?action=log', 'msg': 'Password authentication success at sign in', 'code': 0, 'data': {'username': u'test_case10', 'email': None}}
+2016-07-04 17:35:08 api.py[line:39] INFO {"AccessLog": {"url": "http://localhost/user?action=log", "status_code": 200, "agent": null, "referer": null, "requestId": "124c54b3-694a-424b-8a73-31ad9cfdf489", "ip": null, "method": "POST"}}
+2016-07-04 17:35:08 test.py[line:18] DEBUG test case
+2016-07-04 17:35:08 api.py[line:22] INFO Start Once Access, and this requestId is b7fef379-6ffc-4cba-8b03-94da1318a170
+2016-07-04 17:35:08 tool.py[line:64] DEBUG Host: api.team.saintic.com
+Content-Length: 36
+Content-Type: application/x-www-form-urlencoded
+
+
+2016-07-04 17:35:08 tool.py[line:65] DEBUG None
+2016-07-04 17:35:08 tool.py[line:66] DEBUG ImmutableMultiDict([('username', u'test_case10'), ('password', u'123456')])
+2016-07-04 17:35:08 tool.py[line:72] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 17:35:08 token.py[line:17] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.team.saintic.com/token', 'msg': None, 'code': 1030}, 'data': (u'test_case10', u'123456', None)}}
+2016-07-04 17:35:08 tool.py[line:53] INFO {'func:dbUser:sql': u"SELECT username,password,token FROM user WHERE username='test_case10'"}
+2016-07-04 17:35:08 token.py[line:47] INFO Token:post:create_token:sql--> "UPDATE user SET token='xrK6HNUvRnqD2wfMHCTIb0ucg+YcjF//' WHERE username='test_case10'"
+2016-07-04 17:35:08 token.py[line:54] INFO {'msg': 'username + password authentication success, token has been created.', 'token': 'xrK6HNUvRnqD2wfMHCTIb0ucg+YcjF//', 'code': 0, 'url': u'http://api.team.saintic.com/token'}
+2016-07-04 17:35:08 api.py[line:39] INFO {"AccessLog": {"url": "http://api.team.saintic.com/token", "status_code": 200, "agent": null, "referer": null, "requestId": "b7fef379-6ffc-4cba-8b03-94da1318a170", "ip": null, "method": "POST"}}
+2016-07-04 17:35:08 test.py[line:18] DEBUG test case
+2016-07-04 17:35:08 api.py[line:22] INFO Start Once Access, and this requestId is 6f43025e-7c72-4a4f-b60a-5fb3e707095d
+2016-07-04 17:35:08 api.py[line:39] INFO {"AccessLog": {"url": "http://api.team.saintic.com/", "status_code": 200, "agent": null, "referer": null, "requestId": "6f43025e-7c72-4a4f-b60a-5fb3e707095d", "ip": null, "method": "GET"}}
+2016-07-04 17:35:08 test.py[line:18] DEBUG test case
+2016-07-04 17:35:08 api.py[line:22] INFO Start Once Access, and this requestId is 31de3a9e-59d2-4f7d-9235-7b6f3969e962
+2016-07-04 17:35:08 user.py[line:30] DEBUG {'username': None, 'email': None, 'requestId': '31de3a9e-59d2-4f7d-9235-7b6f3969e962'}
+2016-07-04 17:35:08 user.py[line:55] INFO {'User Get End SQL': 'SELECT username,email,cname,motto,url,time,extra FROM user LIMIT 10', 'requestId': '31de3a9e-59d2-4f7d-9235-7b6f3969e962'}
+2016-07-04 17:35:08 db.py[line:28] WARNING Multiple rows returned for Database.get() query
+2016-07-04 17:35:08 user.py[line:66] INFO {'msg': 'success', 'code': 0, 'url': u'http://api.team.saintic.com/user', 'data': [{'username': u'admin', 'extra': u'Python\u5199\u7684\u535a\u5ba2\u5e94\u7528\uff0c\u91c7\u7528flask\u6846\u67b6\u3002', 'url': u'https://www.saintic.com', 'cname': u'\u9676\u6210\u4f1f', 'time': None, 'motto': u'\u539f\u8c05\u6211\u4e00\u751f\u653e\u8361\u4e0d\u7f81\u7231\u81ea\u7531', 'email': u'staugur@saintic.com'}, {'username': u'test_case10', 'extra': None, 'url': None, 'cname': None, 'time': None, 'motto': None, 'email': u'None'}]}
+2016-07-04 17:35:08 api.py[line:39] INFO {"AccessLog": {"url": "http://api.team.saintic.com/user", "status_code": 200, "agent": null, "referer": null, "requestId": "31de3a9e-59d2-4f7d-9235-7b6f3969e962", "ip": null, "method": "GET"}}
+2016-07-04 17:35:08 test.py[line:18] DEBUG test case
+2016-07-04 17:36:34 api.py[line:22] INFO Start Once Access, and this requestId is 62ef6097-41b7-4383-83af-997d01e9f35d
+2016-07-04 17:36:34 conf.py[line:13] INFO {'url': u'http://localhost/conf', 'msg': 'ConfigControlCenter(C3)', 'code': 0, 'C3': {'BLOG': {'AdminGroup': ('admin', 'taochengwei'), 'IndexPageNum': 8}, 'GLOBAL': {'LogLevel': 'DEBUG', 'Environment': 'dev', 'ProcessName': 'Team.Front', 'Host': '0.0.0.0', 'ProductType': 'gevent', 'Port': 10050}}}
+2016-07-04 17:36:34 api.py[line:39] INFO {"AccessLog": {"url": "http://localhost/conf", "status_code": 200, "agent": null, "referer": null, "requestId": "62ef6097-41b7-4383-83af-997d01e9f35d", "ip": null, "method": "GET"}}
+2016-07-04 17:36:34 test.py[line:18] DEBUG test case
+2016-07-04 17:36:34 api.py[line:22] INFO Start Once Access, and this requestId is b71fbb2e-376e-46d7-827e-29104b36560b
+2016-07-04 17:36:34 tool.py[line:64] DEBUG Host: localhost
+Content-Length: 30
+Content-Type: application/x-www-form-urlencoded
+
+
+2016-07-04 17:36:34 tool.py[line:65] DEBUG None
+2016-07-04 17:36:34 tool.py[line:66] DEBUG ImmutableMultiDict([('username', u'admin'), ('password', u'910323')])
+2016-07-04 17:36:34 tool.py[line:72] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 17:36:34 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://localhost/user?action=log', 'msg': None, 'data': None}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 17:36:34 tool.py[line:53] INFO {'func:dbUser:sql': u"SELECT username,password FROM user WHERE username='admin'"}
+2016-07-04 17:36:34 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': {'username': u'admin', 'password': u'8879168cbf8a9e11c296530803e93308'}}
+2016-07-04 17:36:34 user.py[line:126] DEBUG {'DBuser': u'admin', 'DBpass': u'8879168cbf8a9e11c296530803e93308', 'ReqUser': u'admin', 'ReqPassMD5': '8879168cbf8a9e11c296530803e93308'}
+2016-07-04 17:36:34 user.py[line:131] INFO {'url': u'http://localhost/user?action=log', 'msg': 'Password authentication success at sign in', 'code': 0, 'data': {'username': u'admin', 'email': None}}
+2016-07-04 17:36:34 api.py[line:39] INFO {"AccessLog": {"url": "http://localhost/user?action=log", "status_code": 200, "agent": null, "referer": null, "requestId": "b71fbb2e-376e-46d7-827e-29104b36560b", "ip": null, "method": "POST"}}
+2016-07-04 17:36:34 test.py[line:18] DEBUG test case
+2016-07-04 17:36:34 test.py[line:18] DEBUG test case
+2016-07-04 17:36:34 test.py[line:18] DEBUG test case
+2016-07-04 17:36:34 api.py[line:22] INFO Start Once Access, and this requestId is 654095a8-f5b1-412e-b808-84e386e78ab2
+2016-07-04 17:36:34 tool.py[line:64] DEBUG Host: localhost
+Content-Length: 30
+Content-Type: application/x-www-form-urlencoded
+
+
+2016-07-04 17:36:34 tool.py[line:65] DEBUG None
+2016-07-04 17:36:34 tool.py[line:66] DEBUG ImmutableMultiDict([('username', u'admin'), ('password', u'910323')])
+2016-07-04 17:36:34 tool.py[line:72] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 17:36:34 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://localhost/user?action=reg', 'msg': None, 'data': None}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 17:36:34 tool.py[line:53] INFO {'func:dbUser:sql': u"SELECT username,password FROM user WHERE username='admin'"}
+2016-07-04 17:36:34 user.py[line:110] DEBUG {'request.action': u'reg', 'ReqData': {'username': u'admin', 'password': u'8879168cbf8a9e11c296530803e93308'}}
+2016-07-04 17:36:34 user.py[line:137] WARNING {'url': u'http://localhost/user?action=reg', 'msg': 'User already exists, cannot be registered!', 'code': 1014, 'data': {'username': u'admin', 'email': None}}
+2016-07-04 17:36:34 api.py[line:39] INFO {"AccessLog": {"url": "http://localhost/user?action=reg", "status_code": 200, "agent": null, "referer": null, "requestId": "654095a8-f5b1-412e-b808-84e386e78ab2", "ip": null, "method": "POST"}}
+2016-07-04 17:36:34 test.py[line:18] DEBUG test case
+2016-07-04 17:36:34 api.py[line:22] INFO Start Once Access, and this requestId is b8616cdb-34bf-4a5a-874b-254849e4e81b
+2016-07-04 17:36:34 tool.py[line:64] DEBUG Host: api.team.saintic.com
+Content-Length: 30
+Content-Type: application/x-www-form-urlencoded
+
+
+2016-07-04 17:36:34 tool.py[line:65] DEBUG None
+2016-07-04 17:36:34 tool.py[line:66] DEBUG ImmutableMultiDict([('username', u'admin'), ('password', u'910323')])
+2016-07-04 17:36:34 tool.py[line:72] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 17:36:34 token.py[line:17] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.team.saintic.com/token', 'msg': None, 'code': 1030}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 17:36:34 tool.py[line:53] INFO {'func:dbUser:sql': u"SELECT username,password,token FROM user WHERE username='admin'"}
+2016-07-04 17:36:34 token.py[line:39] WARNING {'msg': 'Token already exists', 'token': u'7h8l4uiKZEopBxjJHGHGduQYLA42Xfbr', 'code': 1033, 'url': u'http://api.team.saintic.com/token'}
+2016-07-04 17:36:34 api.py[line:39] INFO {"AccessLog": {"url": "http://api.team.saintic.com/token", "status_code": 200, "agent": null, "referer": null, "requestId": "b8616cdb-34bf-4a5a-874b-254849e4e81b", "ip": null, "method": "POST"}}
+2016-07-04 17:36:34 test.py[line:18] DEBUG test case
+2016-07-04 17:36:34 api.py[line:22] INFO Start Once Access, and this requestId is dbed80a1-99a6-45a0-8665-9d39558fdb75
+2016-07-04 17:36:34 api.py[line:39] INFO {"AccessLog": {"url": "http://api.team.saintic.com/", "status_code": 200, "agent": null, "referer": null, "requestId": "dbed80a1-99a6-45a0-8665-9d39558fdb75", "ip": null, "method": "GET"}}
+2016-07-04 17:36:34 test.py[line:18] DEBUG test case
+2016-07-04 17:36:34 api.py[line:22] INFO Start Once Access, and this requestId is 5f96df7f-01bd-459e-8e48-327e72bb8254
+2016-07-04 17:36:34 user.py[line:30] DEBUG {'username': None, 'email': None, 'requestId': '5f96df7f-01bd-459e-8e48-327e72bb8254'}
+2016-07-04 17:36:34 user.py[line:55] INFO {'User Get End SQL': 'SELECT username,email,cname,motto,url,time,extra FROM user LIMIT 10', 'requestId': '5f96df7f-01bd-459e-8e48-327e72bb8254'}
+2016-07-04 17:36:34 db.py[line:28] WARNING Multiple rows returned for Database.get() query
+2016-07-04 17:36:34 user.py[line:66] INFO {'msg': 'success', 'code': 0, 'url': u'http://api.team.saintic.com/user', 'data': [{'username': u'admin', 'extra': u'Python\u5199\u7684\u535a\u5ba2\u5e94\u7528\uff0c\u91c7\u7528flask\u6846\u67b6\u3002', 'url': u'https://www.saintic.com', 'cname': u'\u9676\u6210\u4f1f', 'time': None, 'motto': u'\u539f\u8c05\u6211\u4e00\u751f\u653e\u8361\u4e0d\u7f81\u7231\u81ea\u7531', 'email': u'staugur@saintic.com'}, {'username': u'test_case10', 'extra': None, 'url': None, 'cname': None, 'time': None, 'motto': None, 'email': u'None'}]}
+2016-07-04 17:36:34 api.py[line:39] INFO {"AccessLog": {"url": "http://api.team.saintic.com/user", "status_code": 200, "agent": null, "referer": null, "requestId": "5f96df7f-01bd-459e-8e48-327e72bb8254", "ip": null, "method": "GET"}}
+2016-07-04 17:36:34 test.py[line:18] DEBUG test case
+2016-07-04 17:38:03 api.py[line:22] INFO Start Once Access, and this requestId is fef5227a-fd21-44f9-8198-97d4406e10fa
+2016-07-04 17:38:03 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": null, "requestId": "fef5227a-fd21-44f9-8198-97d4406e10fa", "ip": "120.52.24.157", "method": "GET"}}
+2016-07-04 17:39:18 api.py[line:22] INFO Start Once Access, and this requestId is 8459486f-f786-46ad-9bec-a947e194c0e1
+2016-07-04 17:39:18 tool.py[line:64] DEBUG X-Real-Ip: 101.200.125.9
+Content-Length: 40
+User-Agent: SaintIC Api Tool
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+X-Forwarded-For: 101.200.125.9
+Content-Type: application/json
+
+
+2016-07-04 17:39:18 tool.py[line:65] DEBUG {u'username': u'admin', u'password': u'910323'}
+2016-07-04 17:39:18 tool.py[line:66] DEBUG ImmutableMultiDict([])
+2016-07-04 17:39:18 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 17:39:18 tool.py[line:53] INFO {'func:dbUser:sql': u"SELECT id,username,password FROM user WHERE username='admin'"}
+2016-07-04 17:39:18 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': {'username': u'admin', 'password': u'8879168cbf8a9e11c296530803e93308', 'id': 1L}}
+2016-07-04 17:39:18 user.py[line:126] DEBUG {'DBuser': u'admin', 'DBpass': u'8879168cbf8a9e11c296530803e93308', 'ReqUser': u'admin', 'ReqPassMD5': '8879168cbf8a9e11c296530803e93308'}
+2016-07-04 17:39:18 user.py[line:131] INFO {'url': u'http://api.saintic.com/user?action=log', 'msg': 'Password authentication success at sign in', 'code': 0, 'data': {'username': u'admin', 'email': None}}
+2016-07-04 17:39:18 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "SaintIC Api Tool", "referer": null, "requestId": "8459486f-f786-46ad-9bec-a947e194c0e1", "ip": "101.200.125.9", "method": "POST"}}
+2016-07-04 17:51:57 api.py[line:22] INFO Start Once Access, and this requestId is 45379162-d606-4998-b801-1ecf895a1e6d
+2016-07-04 17:51:57 tool.py[line:64] DEBUG X-Real-Ip: 101.200.125.9
+Content-Length: 40
+User-Agent: SaintIC Api Tool
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+X-Forwarded-For: 101.200.125.9
+Content-Type: application/json
+
+
+2016-07-04 17:51:57 tool.py[line:65] DEBUG {u'username': u'admin', u'password': u'910323'}
+2016-07-04 17:51:57 tool.py[line:66] DEBUG ImmutableMultiDict([])
+2016-07-04 17:51:57 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 17:51:57 tool.py[line:53] INFO {'func:dbUser:sql': u"SELECT id,username,password FROM user WHERE username='admin'"}
+2016-07-04 17:51:57 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': {'username': u'admin', 'password': u'8879168cbf8a9e11c296530803e93308', 'id': 1L}}
+2016-07-04 17:51:57 user.py[line:127] DEBUG {'DBuser': u'admin', 'DBpass': u'8879168cbf8a9e11c296530803e93308', 'ReqUser': u'admin', 'ReqPassMD5': '8879168cbf8a9e11c296530803e93308'}
+2016-07-04 17:51:57 user.py[line:132] INFO {'url': u'http://api.saintic.com/user?action=log', 'msg': 'Password authentication success at sign in', 'code': 0, 'data': {'username': u'admin', 'email': None}}
+2016-07-04 17:51:57 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "SaintIC Api Tool", "referer": null, "requestId": "45379162-d606-4998-b801-1ecf895a1e6d", "ip": "101.200.125.9", "method": "POST"}}
+2016-07-04 18:02:26 api.py[line:22] INFO Start Once Access, and this requestId is b1351d44-d859-41bd-8757-891a48e3b9f0
+2016-07-04 18:02:26 tool.py[line:63] DEBUG X-Real-Ip: 101.200.125.9
+Content-Length: 40
+User-Agent: SaintIC Api Tool
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+X-Forwarded-For: 101.200.125.9
+Content-Type: application/json
+
+
+2016-07-04 18:02:26 tool.py[line:64] DEBUG {u'username': u'admin', u'password': u'910323'}
+2016-07-04 18:02:26 tool.py[line:65] DEBUG ImmutableMultiDict([])
+2016-07-04 18:02:26 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 18:02:26 tool.py[line:53] INFO {'func:dbUser:sql': u"SELECT id,username,password FROM user WHERE username='admin'"}
+2016-07-04 18:02:26 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': {'username': u'admin', 'password': u'8879168cbf8a9e11c296530803e93308', 'id': 1L}}
+2016-07-04 18:02:26 user.py[line:127] DEBUG {'DBuser': u'admin', 'DBpass': u'8879168cbf8a9e11c296530803e93308', 'ReqUser': u'admin', 'ReqPassMD5': '8879168cbf8a9e11c296530803e93308'}
+2016-07-04 18:02:26 user.py[line:132] INFO {'url': u'http://api.saintic.com/user?action=log', 'msg': 'Password authentication success at sign in', 'code': 0, 'data': {'username': u'admin', 'email': None}}
+2016-07-04 18:02:26 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "SaintIC Api Tool", "referer": null, "requestId": "b1351d44-d859-41bd-8757-891a48e3b9f0", "ip": "101.200.125.9", "method": "POST"}}
+2016-07-04 18:05:02 api.py[line:22] INFO Start Once Access, and this requestId is bf782088-d89c-457d-a345-c4ee12a81331
+2016-07-04 18:05:02 tool.py[line:63] DEBUG X-Real-Ip: 101.200.125.9
+Content-Length: 40
+User-Agent: SaintIC Api Tool
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+X-Forwarded-For: 101.200.125.9
+Content-Type: application/json
+
+
+2016-07-04 18:05:02 tool.py[line:64] DEBUG {u'username': u'admin', u'password': u'910323'}
+2016-07-04 18:05:02 tool.py[line:65] DEBUG ImmutableMultiDict([])
+2016-07-04 18:05:02 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 18:05:02 tool.py[line:53] INFO {'func:dbUser:sql': u"SELECT id,username,password FROM user WHERE username='admin'"}
+2016-07-04 18:05:02 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': {'username': u'admin', 'password': u'8879168cbf8a9e11c296530803e93308', 'id': 1L}}
+2016-07-04 18:05:02 user.py[line:127] DEBUG {'DBuser': u'admin', 'DBpass': u'8879168cbf8a9e11c296530803e93308', 'ReqUser': u'admin', 'ReqPassMD5': '8879168cbf8a9e11c296530803e93308'}
+2016-07-04 18:05:02 user.py[line:132] INFO {'url': u'http://api.saintic.com/user?action=log', 'msg': 'Password authentication success at sign in', 'code': 0, 'data': {'username': u'admin', 'email': None, 'uid': 1L}}
+2016-07-04 18:05:02 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "SaintIC Api Tool", "referer": null, "requestId": "bf782088-d89c-457d-a345-c4ee12a81331", "ip": "101.200.125.9", "method": "POST"}}
+2016-07-04 18:08:15 api.py[line:22] INFO Start Once Access, and this requestId is f1950a23-8797-4038-9a61-29ccf837091b
+2016-07-04 18:08:15 tool.py[line:63] DEBUG X-Real-Ip: 101.200.125.9
+Content-Length: 40
+User-Agent: SaintIC Api Tool
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+X-Forwarded-For: 101.200.125.9
+Content-Type: application/json
+
+
+2016-07-04 18:08:15 tool.py[line:64] DEBUG {u'username': u'admin', u'password': u'910323'}
+2016-07-04 18:08:15 tool.py[line:65] DEBUG ImmutableMultiDict([])
+2016-07-04 18:08:15 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 18:08:15 tool.py[line:53] INFO {'func:dbUser:sql': u"SELECT id,username,password FROM user WHERE username='admin'"}
+2016-07-04 18:08:15 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': {'username': u'admin', 'password': u'8879168cbf8a9e11c296530803e93308', 'id': 1L}}
+2016-07-04 18:08:15 user.py[line:127] DEBUG {'DBuser': u'admin', 'DBpass': u'8879168cbf8a9e11c296530803e93308', 'ReqUser': u'admin', 'ReqPassMD5': '8879168cbf8a9e11c296530803e93308'}
+2016-07-04 18:08:15 user.py[line:132] INFO {'url': u'http://api.saintic.com/user?action=log', 'msg': 'Password authentication success at sign in', 'code': 0, 'data': {'username': u'admin', 'email': None, 'uid': 1L}}
+2016-07-04 18:08:15 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "SaintIC Api Tool", "referer": null, "requestId": "f1950a23-8797-4038-9a61-29ccf837091b", "ip": "101.200.125.9", "method": "POST"}}
+2016-07-04 18:10:04 api.py[line:22] INFO Start Once Access, and this requestId is 7bff1dfa-eafe-4644-ae98-f10ae85f68e5
+2016-07-04 18:10:04 tool.py[line:63] DEBUG X-Real-Ip: 101.200.125.9
+Content-Length: 40
+User-Agent: SaintIC Api Tool
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+X-Forwarded-For: 101.200.125.9
+Content-Type: application/json
+
+
+2016-07-04 18:10:04 tool.py[line:64] DEBUG {u'username': u'admin', u'password': u'910323'}
+2016-07-04 18:10:04 tool.py[line:65] DEBUG ImmutableMultiDict([])
+2016-07-04 18:10:04 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 18:10:04 tool.py[line:53] INFO {'func:dbUser:sql': u"SELECT id,username,password FROM user WHERE username='admin'"}
+2016-07-04 18:10:04 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': {'username': u'admin', 'password': u'8879168cbf8a9e11c296530803e93308', 'id': 1L}}
+2016-07-04 18:10:04 user.py[line:127] DEBUG {'DBuser': u'admin', 'DBpass': u'8879168cbf8a9e11c296530803e93308', 'ReqUser': u'admin', 'ReqPassMD5': '8879168cbf8a9e11c296530803e93308'}
+2016-07-04 18:10:04 user.py[line:132] INFO {'url': u'http://api.saintic.com/user?action=log', 'msg': 'Password authentication success at sign in', 'code': 0, 'data': {'username': u'admin', 'email': None, 'uid': 1L}}
+2016-07-04 18:10:04 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "SaintIC Api Tool", "referer": null, "requestId": "7bff1dfa-eafe-4644-ae98-f10ae85f68e5", "ip": "101.200.125.9", "method": "POST"}}
+2016-07-04 18:11:17 api.py[line:22] INFO Start Once Access, and this requestId is 626a9fdb-52dc-42d4-ac5c-f2d42faf0a35
+2016-07-04 18:11:17 tool.py[line:63] DEBUG X-Real-Ip: 101.200.125.9
+Content-Length: 40
+User-Agent: SaintIC Api Tool
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+X-Forwarded-For: 101.200.125.9
+Content-Type: application/json
+
+
+2016-07-04 18:11:17 tool.py[line:64] DEBUG {u'username': u'admin', u'password': u'910323'}
+2016-07-04 18:11:17 tool.py[line:65] DEBUG ImmutableMultiDict([])
+2016-07-04 18:11:17 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 18:11:17 tool.py[line:53] INFO {'func:dbUser:sql': u"SELECT id,username,password FROM user WHERE username='admin'"}
+2016-07-04 18:11:17 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': {'username': u'admin', 'password': u'8879168cbf8a9e11c296530803e93308', 'id': 1L}}
+2016-07-04 18:11:17 user.py[line:127] DEBUG {'DBuser': u'admin', 'DBpass': u'8879168cbf8a9e11c296530803e93308', 'ReqUser': u'admin', 'ReqPassMD5': '8879168cbf8a9e11c296530803e93308'}
+2016-07-04 18:11:17 user.py[line:132] INFO {'url': u'http://api.saintic.com/user?action=log', 'msg': 'Password authentication success at sign in', 'code': 0, 'data': {'username': u'admin', 'email': None, 'uid': 1L}}
+2016-07-04 18:11:17 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "SaintIC Api Tool", "referer": null, "requestId": "626a9fdb-52dc-42d4-ac5c-f2d42faf0a35", "ip": "101.200.125.9", "method": "POST"}}
+2016-07-04 19:39:47 api.py[line:22] INFO Start Once Access, and this requestId is bc22aadb-fc70-4bbb-9080-8f4da606fe7a
+2016-07-04 19:39:47 tool.py[line:63] DEBUG Referer: https://blog.saintic.com/login
+Origin: https://blog.saintic.com
+X-Real-Ip: 111.161.77.196
+Content-Length: 30
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 111.161.77.196
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 19:39:47 tool.py[line:64] DEBUG None
+2016-07-04 19:39:47 tool.py[line:65] DEBUG ImmutableMultiDict([('username', u'admin'), ('password', u'910323')])
+2016-07-04 19:39:47 tool.py[line:71] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 19:39:47 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 19:39:47 tool.py[line:53] INFO {'func:dbUser:sql': u"SELECT id,username,password FROM user WHERE username='admin'"}
+2016-07-04 19:39:47 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': {'username': u'admin', 'password': u'8879168cbf8a9e11c296530803e93308', 'id': 1L}}
+2016-07-04 19:39:47 user.py[line:127] DEBUG {'DBuser': u'admin', 'DBpass': u'8879168cbf8a9e11c296530803e93308', 'ReqUser': u'admin', 'ReqPassMD5': '8879168cbf8a9e11c296530803e93308'}
+2016-07-04 19:39:47 user.py[line:132] INFO {'url': u'http://api.saintic.com/user?action=log', 'msg': 'Password authentication success at sign in', 'code': 0, 'data': {'username': u'admin', 'email': None, 'uid': 1L}}
+2016-07-04 19:39:47 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "https://blog.saintic.com/login", "requestId": "bc22aadb-fc70-4bbb-9080-8f4da606fe7a", "ip": "111.161.77.196", "method": "POST"}}
+2016-07-04 20:22:32 api.py[line:22] INFO Start Once Access, and this requestId is 16deb708-830f-4efb-b147-d6f0c42aab70
+2016-07-04 20:22:32 tool.py[line:63] DEBUG Referer: https://blog.saintic.com/login
+Origin: https://blog.saintic.com
+X-Real-Ip: 111.161.77.196
+Content-Length: 30
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 111.161.77.196
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 20:22:32 tool.py[line:64] DEBUG None
+2016-07-04 20:22:32 tool.py[line:65] DEBUG ImmutableMultiDict([('username', u'admin'), ('password', u'910323')])
+2016-07-04 20:22:32 tool.py[line:71] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 20:22:32 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 20:22:32 tool.py[line:53] INFO {'func:dbUser:sql': u"SELECT id,username,password FROM user WHERE username='admin'"}
+2016-07-04 20:22:32 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': {'username': u'admin', 'password': u'8879168cbf8a9e11c296530803e93308', 'id': 1L}}
+2016-07-04 20:22:32 user.py[line:127] DEBUG {'DBuser': u'admin', 'DBpass': u'8879168cbf8a9e11c296530803e93308', 'ReqUser': u'admin', 'ReqPassMD5': '8879168cbf8a9e11c296530803e93308'}
+2016-07-04 20:22:32 user.py[line:132] INFO {'url': u'http://api.saintic.com/user?action=log', 'msg': 'Password authentication success at sign in', 'code': 0, 'data': {'username': u'admin', 'email': None, 'uid': 1L}}
+2016-07-04 20:22:32 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "https://blog.saintic.com/login", "requestId": "16deb708-830f-4efb-b147-d6f0c42aab70", "ip": "111.161.77.196", "method": "POST"}}
+2016-07-04 20:28:46 api.py[line:22] INFO Start Once Access, and this requestId is be7929d5-7022-4b56-8835-c1a528149ab9
+2016-07-04 20:28:46 tool.py[line:63] DEBUG Referer: https://blog.saintic.com/login
+Origin: https://blog.saintic.com
+X-Real-Ip: 111.161.77.196
+Content-Length: 30
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36
+Connection: close
+X-Forwarded-Proto: https
+Host: api.saintic.com
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8
+X-Forwarded-For: 111.161.77.196
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept-Encoding: gzip, deflate, br
+
+
+2016-07-04 20:28:46 tool.py[line:64] DEBUG None
+2016-07-04 20:28:46 tool.py[line:65] DEBUG ImmutableMultiDict([('username', u'admin'), ('password', u'910323')])
+2016-07-04 20:28:46 tool.py[line:71] WARNING No request.json, start request.form, get exceptions 'NoneType' object has no attribute 'get'
+2016-07-04 20:28:46 user.py[line:80] DEBUG {'Token:tool:postData': {'res': {'url': u'http://api.saintic.com/user?action=log', 'msg': None, 'data': None}, 'data': (u'admin', u'910323', None)}}
+2016-07-04 20:28:46 tool.py[line:53] INFO {'func:dbUser:sql': u"SELECT id,username,password FROM user WHERE username='admin'"}
+2016-07-04 20:28:46 user.py[line:110] DEBUG {'request.action': u'log', 'ReqData': {'username': u'admin', 'password': u'8879168cbf8a9e11c296530803e93308', 'id': 1L}}
+2016-07-04 20:28:46 user.py[line:127] DEBUG {'DBuser': u'admin', 'DBpass': u'8879168cbf8a9e11c296530803e93308', 'ReqUser': u'admin', 'ReqPassMD5': '8879168cbf8a9e11c296530803e93308'}
+2016-07-04 20:28:46 user.py[line:132] INFO {'url': u'http://api.saintic.com/user?action=log', 'msg': 'Password authentication success at sign in', 'code': 0, 'data': {'username': u'admin', 'email': None, 'uid': 1L}}
+2016-07-04 20:28:46 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/user?action=log", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36", "referer": "https://blog.saintic.com/login", "requestId": "be7929d5-7022-4b56-8835-c1a528149ab9", "ip": "111.161.77.196", "method": "POST"}}
+2016-07-05 06:37:35 api.py[line:22] INFO Start Once Access, and this requestId is c984ec57-440f-4243-be9f-a89c3ddefb6c
+2016-07-05 06:37:35 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/robots.txt", "status_code": 404, "agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36", "referer": null, "requestId": "c984ec57-440f-4243-be9f-a89c3ddefb6c", "ip": "220.181.51.105", "method": "GET"}}
+2016-07-05 10:19:25 api.py[line:22] INFO Start Once Access, and this requestId is 114c7fd1-670b-4e08-bab2-45f68c367b57
+2016-07-05 10:19:25 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/", "status_code": 200, "agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.75 Safari/537.36 Google Favicon", "referer": null, "requestId": "114c7fd1-670b-4e08-bab2-45f68c367b57", "ip": "66.249.84.221", "method": "GET"}}
+2016-07-05 10:19:27 api.py[line:22] INFO Start Once Access, and this requestId is 8714edd0-5b6c-47ce-9c6a-3244bc557097
+2016-07-05 10:19:27 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/favicon.ico", "status_code": 302, "agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.75 Safari/537.36 Google Favicon", "referer": null, "requestId": "8714edd0-5b6c-47ce-9c6a-3244bc557097", "ip": "66.249.84.225", "method": "GET"}}
+2016-07-05 11:29:14 api.py[line:22] INFO Start Once Access, and this requestId is 9479c578-d017-4f78-af4a-1095dbd1d08d
+2016-07-05 11:29:14 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/", "status_code": 200, "agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36", "referer": null, "requestId": "9479c578-d017-4f78-af4a-1095dbd1d08d", "ip": "119.40.53.2", "method": "GET"}}
+2016-07-05 11:29:14 api.py[line:22] INFO Start Once Access, and this requestId is 51678f63-79c5-4dbb-a022-937088c8fe8c
+2016-07-05 11:29:14 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/favicon.ico", "status_code": 302, "agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36", "referer": "https://api.saintic.com/", "requestId": "51678f63-79c5-4dbb-a022-937088c8fe8c", "ip": "119.40.53.2", "method": "GET"}}
+2016-07-05 11:29:15 api.py[line:22] INFO Start Once Access, and this requestId is 9aef63a4-0f44-428c-b3f2-ca2704957fbd
+2016-07-05 11:29:15 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/index.js.map", "status_code": 404, "agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36", "referer": null, "requestId": "9aef63a4-0f44-428c-b3f2-ca2704957fbd", "ip": "119.40.53.2", "method": "GET"}}
+2016-07-05 19:04:34 api.py[line:22] INFO Start Once Access, and this requestId is 7f7ddefb-b5a4-4fa9-8532-f735f014cd0a
+2016-07-05 19:04:34 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/", "status_code": 200, "agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.75 Safari/537.36 Google Favicon", "referer": null, "requestId": "7f7ddefb-b5a4-4fa9-8532-f735f014cd0a", "ip": "66.249.85.230", "method": "GET"}}
+2016-07-05 19:04:36 api.py[line:22] INFO Start Once Access, and this requestId is 0da5e237-e212-4b82-a8d6-a343f48f7acf
+2016-07-05 19:04:36 api.py[line:39] INFO {"AccessLog": {"url": "http://api.saintic.com/favicon.ico", "status_code": 302, "agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.75 Safari/537.36 Google Favicon", "referer": null, "requestId": "0da5e237-e212-4b82-a8d6-a343f48f7acf", "ip": "66.249.85.236", "method": "GET"}}

@@ -105,7 +105,7 @@ class User(Resource):
         #Start Action with (log, reg)
         _MD5pass = md5(password)
         action   = request.args.get("action") #log or reg (登录or注册)
-        ReqData  = dbUser(username, password=True)
+        ReqData  = dbUser(username, password=True, uid=True)
         #ReqData is True(user is exists), it's dict, eg:{'username': u'xxxxx', 'password': u'xxxxxxxxxx'}
         logger.debug({"request.action": action, 'ReqData': ReqData})
         if action == 'log':
@@ -117,6 +117,7 @@ class User(Resource):
             try:
                 _DBuser  = ReqData.get('username')
                 _DBpass  = ReqData.get('password')
+                res['data']['uid'] = ReqData.get('id')
             except AttributeError,e:
                 logger.error(e)
                 res.update({'msg':'User not exists', 'code': 1018}) #code:1018, 登录请求时，请求中的username在数据库中获取不到信息(没有此用户)。
@@ -128,6 +129,7 @@ class User(Resource):
                 res.update({'msg': 'Password authentication success at sign in', 'code': 0}) #code:0, it's successful
             else:
                 res.update({'msg': 'Password authentication failed at sign in', 'code': 1011}) #code:1011, request pass != mysql pass
+            logger.debug(request.cookie.__str__())
             logger.info(res)
             return res
         elif action == 'reg':
