@@ -2,6 +2,7 @@
 
 import os
 import json
+import time
 from pub import gen_requestId, logger
 from plugins import session_redis_connect
 from flask import Flask, render_template, g, request
@@ -19,6 +20,7 @@ app.secret_key = os.urandom(24)
 #每个URL请求之前，定义requestId并绑定到g.
 @app.before_request
 def before_request():
+    g.startTime = time.time()
     g.requestId = gen_requestId()
     g.session   = session_redis_connect
     logger.info("Start Once Access, and this requestId is %s" % g.requestId)
@@ -36,7 +38,8 @@ def add_header(response):
             "url": request.url,
             "referer": request.headers.get('Referer'),
             "agent": request.headers.get("User-Agent"),
-            "requestId": g.requestId
+            "requestId": g.requestId,
+            "OneTimeInterval": "%0.2fs" %float(time.time() - g.startTime)
             }
         }
     ))
@@ -59,9 +62,8 @@ def index():
 
 @app.route('/login', methods=["GET",])
 def login():
-    logger.debug(dir(g.session))
+    #if g.session.get("")
     g.session.set(g.requestId, True)
-    logger.debug(g.session.keys)
     return render_template("front/login.html")
 
 @app.route('/uc')
