@@ -3,7 +3,7 @@
 import os
 import json
 from pub import gen_requestId, logger
-#from plugins import session_redis_connect
+from plugins import session_redis_connect
 from flask import Flask, render_template, g, request
 
 __version__ = '0.1.0'
@@ -20,7 +20,7 @@ app.secret_key = os.urandom(24)
 @app.before_request
 def before_request():
     g.requestId = gen_requestId()
-    #g.session   = session_redis_connect
+    g.session   = session_redis_connect
     logger.info("Start Once Access, and this requestId is %s" % g.requestId)
 
 #每次返回数据中，带上响应头，包含API版本和本次请求的requestId，以及允许所有域跨域访问API, 记录访问日志
@@ -59,6 +59,9 @@ def index():
 
 @app.route('/login', methods=["GET",])
 def login():
+    logger.debug(dir(g.session))
+    g.session.set(g.requestId, True)
+    logger.debug(g.session.keys)
     return render_template("front/login.html")
 
 @app.route('/uc')

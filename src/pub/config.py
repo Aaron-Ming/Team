@@ -3,7 +3,8 @@
 #全局配置端
 GLOBAL={
 
-    "Environment": "super debug",
+    #"Environment": "super debug",
+    "Environment": "dev",
     #"Environment": "product",
     #1. The meaning of the representative is the application of the environment, the value of dev, product;
     #2. When the value is dev, only exec app.run() with flask.
@@ -50,7 +51,7 @@ PLUGINS={
         #指定session集群，暂时支持redis、redis cluster,
         "host": "127.0.0.1",
         #指定session集群存储应用host/ip,
-        "port": 10010,
+        "port": 10101,
         #指定session集群存储应用port,
         "auth": None
         #验证密码(目前仅支持单实例版redis)
