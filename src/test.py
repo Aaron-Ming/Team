@@ -38,6 +38,7 @@ class TeamApiTest(unittest.TestCase):
 
     def login(self, username, password):
         url = self.base_url + '/user?action=log'
+        print url
         return self.app.post('/user?action=log',
             data=dict(username=username, password=password),
             follow_redirects=True,

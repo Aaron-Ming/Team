@@ -3,7 +3,7 @@
 dir=$(cd $(dirname $0); pwd)
 procname=$(grep '"ProcessName":' ${dir}/src/pub/config.py | awk '{print $2}' | awk -F \" '{print $2}'|head -1)
 productype=$(grep '"ProductType":' ${dir}/src/pub/config.py | awk '{print $2}' | awk -F \" '{print $2}'|head -1)
-pidfile=/tmp/${procname}.pid
+pidfile=/tmp/${procname}.master.pid
 
 function _start()
 {
@@ -15,7 +15,7 @@ function _start()
 
 function _status()
 {
-    pid=$(ps aux | grep $procname | grep -vE "grep|worker" | awk '{print $2}')
+    pid=$(ps aux | grep $procname | grep -vE "grep|worker|Team.Api\." | awk '{print $2}')
     if [ ! -f $pidfile ]; then
         echo -e "\033[39;31m${procname} has stopped.\033[0m"
         exit
@@ -29,15 +29,15 @@ function _status()
             echo -e "\033[39;33m${procname}\033[0m":
             echo "  pid: $pid"
             echo -e "  state:" "\033[39;32mrunning\033[0m"
-            echo -e "  process start time:" "\033[39;32m$(ps -eO lstart | grep $procname | grep -vE "worker|grep" | awk '{print $6"-"$3"-"$4,$5}')\033[0m"
-            echo -e "  process running time:" "\033[39;32m$(ps -eO etime| grep $pid | grep -v grep | awk '{print $2}')\033[0m"
+            echo -e "  process start time:" "\033[39;32m$(ps -eO lstart | grep $procname | grep -vE "worker|grep|Team.Api\." | awk '{print $6"-"$3"-"$4,$5}')\033[0m"
+            echo -e "  process running time:" "\033[39;32m$(ps -eO etime| grep $pid | grep -vE "grep|worker|Team.Api\." | awk '{print $2}')\033[0m"
         fi
     else
         echo -e "\033[39;33m${procname}\033[0m":
         echo "  pid: $pid"
         echo -e "  state:" "\033[39;32mrunning\033[0m"
-        echo -e "  process start time:" "\033[39;32m$(ps -eO lstart | grep $procname | grep -vE "worker|grep" | awk '{print $6"-"$3"-"$4,$5}')\033[0m"
-        echo -e "  process running time:" "\033[39;32m$(ps -eO etime| grep $(cat $pidfile) | grep -vE "worker|grep" | awk '{print $2}')\033[0m"
+        echo -e "  process start time:" "\033[39;32m$(ps -eO lstart | grep $procname | grep -vE "worker|grep|Team.Api\." | awk '{print $6"-"$3"-"$4,$5}')\033[0m"
+        echo -e "  process running time:" "\033[39;32m$(ps -eO etime| grep $(cat $pidfile) | grep -vE "worker|grep|Team.Api\." | awk '{print $2}')\033[0m"
     fi
 
 }
