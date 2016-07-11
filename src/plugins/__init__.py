@@ -4,6 +4,7 @@
 from pub.config import PLUGINS
 from redis_plugin import Redis_connect
 from redis_cluster_plugin import Redis_cluster_connect
+from authentication import UserAuth
 
 __all__ = ["session_redis_connect", ]
 
@@ -16,3 +17,4 @@ if _session_type == "redis_cluster":
     session_redis_connect = Redis_cluster_connect(_session_host, _session_port)
 elif _session_type == "redis":
     session_redis_connect = Redis_connect(_session_host, _session_port, _session_auth)
+

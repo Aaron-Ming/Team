@@ -34,7 +34,7 @@ class Syslog:
                               backupCount = Syslog.log_backup_count,
                               when = "D")
         log_handler.suffix = "%Y%m%d"
-        log_fmt = logging.Formatter('%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s', datefmt=Syslog.log_datefmt)
+        log_fmt = logging.Formatter('%(asctime)s %(filename)s:%(threadName)s:%(lineno)d %(levelname)s %(message)s', datefmt=Syslog.log_datefmt)
         log_handler.setFormatter(log_fmt)
         Syslog.logger.addHandler(log_handler)
         Syslog.logger.setLevel(Syslog.levels.get(Syslog.log_level))

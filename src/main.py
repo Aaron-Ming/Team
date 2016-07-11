@@ -3,8 +3,8 @@
 import os
 import json
 import time
-from pub import gen_requestId, logger
-from plugins import session_redis_connect
+from pub import config, gen_requestId, logger
+from plugins import session_redis_connect, UserAuth
 from flask import Flask, render_template, g, request
 
 __version__ = '0.1.0'
@@ -12,7 +12,7 @@ __date      = '2016-06-29'
 __org__     = 'SaintIC'
 __author__  = 'Mr.tao <staugur@saintic.com>'
 __url__     = 'www.saintic.com'
-__doc__     = 'Team Blog Front'
+__doc__     = 'SaintIC Team Blog Front'
 
 app=Flask(__name__)
 app.secret_key = os.urandom(24)
@@ -23,12 +23,13 @@ def before_request():
     g.startTime = time.time()
     g.requestId = gen_requestId()
     g.session   = session_redis_connect
+    g.user      = UserAuth()
     logger.info("Start Once Access, and this requestId is %s" % g.requestId)
 
-#每次返回数据中，带上响应头，包含API版本和本次请求的requestId，以及允许所有域跨域访问API, 记录访问日志
+#每次返回数据中，带上响应头，包含版本和请求的requestId, 记录访问日志
 @app.after_request
 def add_header(response):
-    response.headers["X-SaintIC-App-Name"] = "Team.Front"
+    response.headers["X-SaintIC-App-Name"] = config.PRODUCT.get("ProcessName", "Team.Front")
     response.headers["X-SaintIC-Request-Id"] = g.requestId
     logger.info(json.dumps({
         "AccessLog": {
@@ -60,11 +61,27 @@ def internal_error(error=None):
 def index():
     return render_template('front/index.html')
 
-@app.route('/login', methods=["GET",])
+@app.route('/login', methods=["GET", "POST"])
 def login():
-    #if g.session.get("")
-    g.session.set(g.requestId, True)
-    return render_template("front/login.html")
+    error = None
+    username = _user = ""
+    if request.method == "GET":
+        #session rule is session_`username`
+        #username = g.user.get("name", None)
+        if username and g.session.get(username):
+            return redirect(request.args.get('next') or url_for('index'))
+        else:
+            return render_template("front/login.html", error=error)
+    if request.method == "POST":
+        _user = request.form.get("username")
+        _pass = request.form.get("password")
+        if g.user.login(_user, _pass) == True:
+            _ukey = "session_%s" %_user
+            g.session.set(_ukey, True)
+            logger.info("Add a session, key is %s" %_ukey)
+        else:
+            error = "Login fail, invaild username or password."
+        redirect(url_for("login"))
 
 @app.route('/uc')
 def uc():

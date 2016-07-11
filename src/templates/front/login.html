@@ -11,15 +11,17 @@
 <div class="login">
     <h2>SaintIC Team</h2>
     <div class="login-top">
-        <form action="" method="post" id="UserLoginFormId">
+        <form action="/post" method="post" id="UserLoginFormId">
             <p style="color:red; text-align: center" id="error"></p>
             <input type="text" id="username" name="username" required>
             <input type="password" id="password" name="password" required>
             <div class="forgot">
                 <a href="#">忘记密码</a>
-                <input onclick="postForm('/uc')" type="button" value="登录">
+                <!--<input onclick="postForm('/uc')" type="button" value="登录">-->
+                <input type="submit" value="登录">
             </div>
         </form>
+        <!--
         <script type="text/javascript">
             function postForm(nextUrl) {
                 $.ajax({
@@ -42,6 +44,7 @@
                 });
             };
         </script>
+        -->
     </div>
     <div class="login-bottom">
         <!--<h3>新用户 &nbsp;<a href="#">注册</a>&nbsp 这里</h3>-->
