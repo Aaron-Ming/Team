@@ -20,8 +20,7 @@ class Syslog:
     log_dir = os.path.join(os.path.dirname(CODE_HOME), 'logs')
     if not os.path.exists(log_dir): os.mkdir(log_dir)
     log_file = os.path.join(log_dir, 'sys.log')
-    log_max_byte = 10 * 1024 * 1024;
-    log_backup_count = 5
+    log_backup_count = 10
     log_datefmt = '%Y-%m-%d %H:%M:%S'
 
     @staticmethod

@@ -5,7 +5,7 @@ import json
 import time
 from pub import config, gen_requestId, logger
 from plugins import session_redis_connect, UserAuth
-from flask import Flask, render_template, g, request
+from flask import Flask, render_template, g, request, redirect, url_for
 
 __version__ = '0.1.0'
 __date      = '2016-06-29'
@@ -64,7 +64,8 @@ def index():
 @app.route('/login', methods=["GET", "POST"])
 def login():
     error = None
-    username = _user = ""
+    _user = ''
+    username = _user
     if request.method == "GET":
         #session rule is session_`username`
         #username = g.user.get("name", None)
