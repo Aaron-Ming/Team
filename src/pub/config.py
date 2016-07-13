@@ -31,14 +31,14 @@ PRODUCT={
     "ProcessName": "Team.Api",
     #Custom process, you can see it with "ps aux|grep ProcessName".
 
-    "ProductType": "gevent",
+    "ProductType": "tornado",
     #生产环境启动方法，可选`gevent`, `tornado`, `uwsgi`,其中tornado log level是WARNNING，也就是低于WARN级别的日志不会打印或写入日志中。
 }
 
 
 #数据库配置段
 MYSQL={
-    "Host": "127.0.0.1",
+    "Host": "101.200.125.9",
     "Port": 3306,
     "Database": "team",
     "User": "root",

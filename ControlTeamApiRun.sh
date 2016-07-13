@@ -1,13 +1,15 @@
 #!/bin/bash
 
 dir=$(cd $(dirname $0); pwd)
+log_dir=${dir}/src/logs
+[ -d $log_dir ] || mkdir $log_dir
 procname=$(grep '"ProcessName":' ${dir}/src/pub/config.py | awk '{print $2}' | awk -F \" '{print $2}'|head -1)
 productype=$(grep '"ProductType":' ${dir}/src/pub/config.py | awk '{print $2}' | awk -F \" '{print $2}'|head -1)
-pidfile=/tmp/${procname}.master.pid
+pidfile=${log_dir}/${procname}.pid
 
 function _start()
 {
-    $(which python) -O ${dir}/src/Product.py &> /dev/null &
+    $(which python) -O ${dir}/src/Product.py &> ${log_dir}/output.log &
     pid=$!
     echo $pid > $pidfile
     echo "$procname start over."
@@ -15,36 +17,28 @@ function _start()
 
 function _status()
 {
-    pid=$(ps aux | grep $procname | grep -vE "grep|worker|Team.Api\." | awk '{print $2}')
+    #pid=$(ps aux | grep $procname | grep -vE "grep|worker|Team.Api\." | awk '{print $2}')
     if [ ! -f $pidfile ]; then
         echo -e "\033[39;31m${procname} has stopped.\033[0m"
         exit
     fi
-    if [[ $pid != $(cat $pidfile) ]]; then
-        if [ $productype != "uwsgi" ]; then
-            echo -e "\033[39;31m异常，pid文件与系统pid值不相等。\033[0m"
-            echo -e "\033[39;34m  系统pid：${pid}\033[0m"
-            echo -e "\033[39;34m  pid文件：$(cat ${pidfile})($(echo $pidfile))\033[0m"
-        else
-            echo -e "\033[39;33m${procname}\033[0m":
-            echo "  pid: $pid"
-            echo -e "  state:" "\033[39;32mrunning\033[0m"
-            echo -e "  process start time:" "\033[39;32m$(ps -eO lstart | grep $procname | grep -vE "worker|grep|Team.Api\." | awk '{print $6"-"$3"-"$4,$5}')\033[0m"
-            echo -e "  process running time:" "\033[39;32m$(ps -eO etime| grep $pid | grep -vE "grep|worker|Team.Api\." | awk '{print $2}')\033[0m"
-        fi
+    pid=$(cat $pidfile)
+    procnum=$(ps aux | grep -v grep | grep $pid | grep $procname | wc -l)
+    if [[ "$procnum" != "1" ]]; then
+        echo -e "\033[39;31m异常，pid文件与系统pid数量不相等。\033[0m"
+        echo -e "\033[39;34m  pid数量：${procnum}\033[0m"
+        echo -e "\033[39;34m  pid文件：${pid}($pidfile)\033[0m"
     else
         echo -e "\033[39;33m${procname}\033[0m":
         echo "  pid: $pid"
         echo -e "  state:" "\033[39;32mrunning\033[0m"
-        echo -e "  process start time:" "\033[39;32m$(ps -eO lstart | grep $procname | grep -vE "worker|grep|Team.Api\." | awk '{print $6"-"$3"-"$4,$5}')\033[0m"
-        echo -e "  process running time:" "\033[39;32m$(ps -eO etime| grep $(cat $pidfile) | grep -vE "worker|grep|Team.Api\." | awk '{print $2}')\033[0m"
+        echo -e "  process start time:" "\033[39;32m$(ps -eO lstart | grep $pid | grep $procname | grep -vE "worker|grep|Team.Api\." | awk '{print $6"-"$3"-"$4,$5}')\033[0m"
+        echo -e "  process running time:" "\033[39;32m$(ps -eO etime| grep $pid | grep $procname | grep -vE "worker|grep|Team.Api\." | awk '{print $2}')\033[0m"
     fi
-
 }
 
 case $1 in
 start)
-    [ -d ${dir}/src/logs/ ] || mkdir -p ${dir}/src/logs/
     if [ -f $pidfile ]; then
         if [[ $(ps aux | grep $(cat $pidfile) | grep -v grep | wc -l) -lt 1 ]]; then
             _start
@@ -55,16 +49,9 @@ start)
     ;;
 
 stop)
-    pid=$(ps aux | grep $procname | grep -vE "grep|worker" | awk '{print $2}')
-    if [ $productype = "uwsgi" ]; then
-        kill -9 $pid &> /dev/null ; sleep 1
-    else
-        killall $procname &> /dev/null
-    fi
+    pid=$(cat $pidfile)
+    kill $pid
     retval=$?
-    if [ $retval -ne 0 ]; then
-        [ -f $pidfile ] && kill -9 `cat $pidfile` &> /dev/null
-    fi
     rm -f $pidfile
     echo "$procname stop over."
     ;;
