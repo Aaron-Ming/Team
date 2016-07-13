@@ -14,10 +14,12 @@ class Redis_cluster_connect(object):
         else:
             self.rc = StrictRedisCluster(startup_nodes=[{"host": host, "port": port}], decode_responses=True, socket_timeout=3)
 
-    def set(self, key, value):
+    def set(self, key, value, time=3600):
         #set a key <=> value
         logger.info("Record a k/v for %s,%s" %(key, value))
-        return self.rc.set(key, value)
+        self.rc.set(key, value)
+        self.expire(key, time)
+        return value
 
     def get(self, key):
         #get a value of key
@@ -31,6 +33,16 @@ class Redis_cluster_connect(object):
 
     def info(self, section=None):
         return self.rc.info(section)
+
+    def expire(self, key, time=3600):
+        #expire a key
+        logger.info("expire key")
+        return self.rc.expire(key, time)
+
+    def ttl(self, key):
+        #get ttl
+        logger.info("get ttl")
+        return self.rc.ttl(key)
 
     @property
     def ping(self):
