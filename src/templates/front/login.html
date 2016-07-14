@@ -12,7 +12,7 @@
     <h2>SaintIC Team</h2>
     <div class="login-top">
         <form action="/login" method="post" id="UserLoginFormId">
-            <p style="color:red; text-align: center" id="error"></p>
+            <p style="color:red; text-align: center" id="error">{% if error %}{{ error }}{% endif %}</p>
             <input type="text" id="username" name="username" required>
             <input type="password" id="password" name="password" required>
             <div class="forgot">

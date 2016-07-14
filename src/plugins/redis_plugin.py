@@ -32,7 +32,7 @@ class Redis_connect(object):
 
     def expire(self, key, time=3600):
         #expire a key
-        logger.info("expire key")
+        logger.info("expire key %s" %key)
         return self.rc.expire(key, time)
 
     def ttl(self, key):

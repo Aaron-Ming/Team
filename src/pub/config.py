@@ -5,7 +5,7 @@ GLOBAL={
 
     #"Environment": "super debug",
     "Environment": "dev",
-    "Environment": "product",
+    #"Environment": "product",
     #1. The meaning of the representative is the application of the environment, the value of dev, product;
     #2. When the value is dev, only exec app.run() with flask.
     #3. When the value is product, will start server with tornado or gevent.
@@ -47,11 +47,11 @@ BLOG={
 #插件配置项
 PLUGINS={
     "session_cluster": {
-        "type": "redis",
+        "type": "redis_cluster",
         #指定session集群，暂时支持redis、redis cluster,
         "host": "127.0.0.1",
         #指定session集群存储应用host/ip,
-        "port": 6379,
+        "port": 10101,
         #指定session集群存储应用port,
         "auth": None
         #验证密码(目前仅支持单实例版redis)

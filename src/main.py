@@ -24,6 +24,7 @@ def before_request():
     g.requestId = gen_requestId()
     g.session   = session_redis_connect
     g.user      = UserAuth()
+    g.username  = "anonymous"
     logger.info("Start Once Access, and this requestId is %s" % g.requestId)
 
 #每次返回数据中，带上响应头，包含版本和请求的requestId, 记录访问日志
@@ -66,21 +67,28 @@ def login():
     username = request.form.get("username")
     password = request.form.get("password")
     error = None
+    if username == None:
+        username = g.username
+    logger.debug("username(%s), password(%s), error(%s), g.username(%s)" %(username, password, error, g.username))
     if request.method == "GET":
-        if username and g.session.get(username):
+        if g.username != "anonymous":
+        #if username and g.session.get(username):
             return redirect(request.args.get('next', url_for('index')))
         else:
             return render_template("front/login.html", error=error)
-    if request.method == "POST":
-        if username and g.session.get(username):
+    elif request.method == "POST":
+        #if username and g.session.get(username):
+        if g.username != "anonymous":
             return redirect(request.args.get('next', url_for('index')))
-        if g.user.login(_user, _pass) == True:
-            _ukey = "session_%s" %_user
+        elif g.user.login(username, password) == True:
+            _ukey = "session_%s" %username
             g.session.set(_ukey, True)
+            g.username=username
             logger.info("Add a session, key is %s" %_ukey)
         else:
             error = "Login fail, invaild username or password."
-        redirect(url_for("login"))
+            return redirect(url_for("login"))
+        return redirect(request.args.get('next', url_for('index')))
 
 @app.route('/uc')
 def uc():

@@ -17,7 +17,11 @@
             <ul class="main_nav">
                 <li><a href="{{ url_for('index') }}">Index</a></li>
                 <li><a href="{{ url_for('uc') }}">UserCenter</a></li>
-                <li><a href="{{ url_for('login') }}">Login</a></li>
+                {% if g.username != "anonymous" %}
+                    <li><a href="#">My</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                {% endif %}
             </ul>   
             </nav>
         </div>  
