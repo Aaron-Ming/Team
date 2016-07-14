@@ -20,7 +20,7 @@ else:
     logger.info("The process is %s" % ProcessName)
 
 if Environment != 'product':
-    errmsg="The %s isn't product, process exit!!!" % Environment
+    msg="The %s isn't product, process exit!!!" % Environment
     logger.error(msg)
     raise RuntimeError(msg)
 
