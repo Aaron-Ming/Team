@@ -63,19 +63,17 @@ def index():
 
 @app.route('/login', methods=["GET", "POST"])
 def login():
+    username = request.form.get("username")
+    password = request.form.get("password")
     error = None
-    _user = ''
-    username = _user
     if request.method == "GET":
-        #session rule is session_`username`
-        #username = g.user.get("name", None)
         if username and g.session.get(username):
-            return redirect(request.args.get('next') or url_for('index'))
+            return redirect(request.args.get('next', url_for('index')))
         else:
             return render_template("front/login.html", error=error)
     if request.method == "POST":
-        _user = request.form.get("username")
-        _pass = request.form.get("password")
+        if username and g.session.get(username):
+            return redirect(request.args.get('next', url_for('index')))
         if g.user.login(_user, _pass) == True:
             _ukey = "session_%s" %_user
             g.session.set(_ukey, True)
