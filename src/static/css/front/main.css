@@ -142,7 +142,7 @@ ul.main_nav li a:hover{
 	font-family: 'LatoBold', 'Helvetica', arial;
 	font-weight: bold;
 	font-size: 28px;
-	text-transform: uppercase;
+	//text-transform: uppercase;
 	line-height: 30px;
 	margin-bottom: 50px;
 }

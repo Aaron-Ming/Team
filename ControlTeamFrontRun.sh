@@ -1,8 +1,10 @@
 #!/bin/bash
 
 dir=$(cd $(dirname $0); pwd)
+log_dir=${dir}/src/logs
+[ -d $log_dir ] || mkdir $log_dir
 procname=$(grep '"ProcessName":' ${dir}/src/pub/config.py | awk '{print $2}' | awk -F \" '{print $2}'|head -1)
-pidfile=/tmp/${procname}.pid
+pidfile=${log_dir}/${procname}.pid
 
 function _status()
 {
@@ -27,16 +29,15 @@ function _status()
 
 case $1 in
 start)
-    [ -d ${dir}/src/logs/ ] || mkdir -p ${dir}/src/logs/
     if [ -f $pidfile ]; then
         if [[ $(ps aux | grep $(cat $pidfile) | grep -v grep | wc -l) -lt 1 ]]; then
-            $(which python) -O ${dir}/src/Product.py &> /dev/null &
+            $(which python) -O ${dir}/src/Product.py &> ${log_dir}/output.log &
             pid=$!
             echo $pid > $pidfile
             echo "$procname start over."
         fi
     else
-        $(which python) -O ${dir}/src/Product.py &> /dev/null &
+        $(which python) -O ${dir}/src/Product.py &> ${log_dir}/output.log &
         pid=$!
         echo $pid > $pidfile
         echo "$procname start over."

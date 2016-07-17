@@ -1,0 +1,25 @@
+{% extends "base/front.html" %}
+{% block title %}SaintIC Team Blog{% endblock %}
+{% block article %}
+    <article id="article">
+        <script>
+            $.ajax({
+                url: "https://api.saintic.com/blog?blogId=" + {{ blogId }},
+                method: 'GET',
+                datatype: 'json',
+                success: function(res) {
+                    console.log({{ blogId }});
+                    console.log(res);
+                    var data= res.data;
+                    var str = '<div class="post"><p>' + data.content + '</p></div>';
+                    document.getElementById('article').innerHTML=str;
+                    document.title = document.title + " | " + data.title;
+                },
+                error: function(error){
+                    alert(error);
+                }
+            });
+        </script>
+        {{ blog }}
+    </article>
+{% endblock %}

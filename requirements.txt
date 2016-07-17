@@ -3,4 +3,5 @@ gevent
 flask
 flask-RESTful
 setproctitle
+redis
 redis-py-cluster

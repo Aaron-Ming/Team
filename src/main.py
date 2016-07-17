@@ -5,7 +5,7 @@ import json
 import time
 from pub import config, gen_requestId, logger
 from plugins import session_redis_connect, UserAuth
-from flask import Flask, render_template, g, request, redirect, url_for
+from flask import Flask, render_template, g, request, redirect, url_for, session
 
 __version__ = '0.1.0'
 __date      = '2016-06-29'
@@ -23,8 +23,7 @@ def before_request():
     g.startTime = time.time()
     g.requestId = gen_requestId()
     g.session   = session_redis_connect
-    g.user      = UserAuth()
-    g.username  = "anonymous"
+    g.auth      = UserAuth()
     logger.info("Start Once Access, and this requestId is %s" % g.requestId)
 
 #每次返回数据中，带上响应头，包含版本和请求的requestId, 记录访问日志
@@ -64,35 +63,43 @@ def index():
 
 @app.route('/login', methods=["GET", "POST"])
 def login():
-    username = request.form.get("username")
-    password = request.form.get("password")
     error = None
-    if username == None:
-        username = g.username
-    logger.debug("username(%s), password(%s), error(%s), g.username(%s)" %(username, password, error, g.username))
     if request.method == "GET":
-        if g.username != "anonymous":
-        #if username and g.session.get(username):
+        if session.get("username"):
             return redirect(request.args.get('next', url_for('index')))
         else:
             return render_template("front/login.html", error=error)
     elif request.method == "POST":
-        #if username and g.session.get(username):
-        if g.username != "anonymous":
+        username = request.form.get("username")
+        password = request.form.get("password")
+        if session.get("username"):
             return redirect(request.args.get('next', url_for('index')))
-        elif g.user.login(username, password) == True:
-            _ukey = "session_%s" %username
-            g.session.set(_ukey, True)
-            g.username=username
-            logger.info("Add a session, key is %s" %_ukey)
         else:
-            error = "Login fail, invaild username or password."
-            return redirect(url_for("login"))
-        return redirect(request.args.get('next', url_for('index')))
+            if g.auth.login(username, password) == True:
+                ukey = "Team.Front.Session.%s" %username
+                g.session.set(ukey, True)
+                session["username"] = True
+                logger.info("Add a redis session, key is %s" %ukey)
+                return redirect(request.args.get('next', url_for('index')))
+            else:
+                error = "Login fail, invaild username or password."
+                return redirect(url_for("login"))
+
+@app.route('/logout')
+def logout():
+    try:
+        session.pop('username')
+    except Exception:
+        pass
+    return redirect(request.args.get('next', url_for('index')))
 
 @app.route('/uc')
 def uc():
     return render_template("uc/home.html", data={})
+
+@app.route('/blog/<int:bid>.html')
+def blog(bid):
+    return render_template("front/blog.html", blogId=bid)
 
 if __name__ == "__main__":
     from pub.config import GLOBAL

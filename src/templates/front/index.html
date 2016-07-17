@@ -1,17 +1,39 @@
 {% extends "base/front.html" %}
 {% block title %}SaintIC Team Indexer{% endblock %}
 {% block article %}
-    <article>
-        <div class="article_image">
+    <article id="article">
+        <!--<div class="article_image">
             <a href="#"><img src="/static/img/pic4.jpg" alt="" title=""></a>
-        </div>
+        </div>-->
+        <script>
+                $.ajax({
+                    url: "https://api.saintic.com/blog?num=all",
+                    method: 'GET',
+                    datatype: 'json',
+                    success: function(res) {
+                        console.log(res);
+                        var data= res.data;
+                        var str = '';
+                        for(i=0; i<data.length; i++) {
+                            blog = data[i];
+                            str += '<div class="post"><h1 class="title">' + blog.title + '</h1><a class="read_more" href="/blog/' + blog.id + '.html">Continue Reading<i class="read_more_arrow"></i></a></div>';
+                        };
+                        document.getElementById('article').innerHTML=str;
+                    },
+                    error: function(error){
+                        alert(error);
+                    }
+                });
+        </script>
+        <!--
         <div class="post">
             <h1 class="title">
                 <a href="#">Hello World</a>
             </h1>
             <p>文章页</p>
-            <a class="read_more" href="#">Continue Reading <i class="read_more_arrow"></i> </a>
+            <a class="read_more" href="#">Continue Reading <i class="read_more_arrow"></i></a>
         </div>
+        -->
     </article>
 {% endblock %}
 {% block script %}

@@ -3,7 +3,6 @@
 {% block head %}
     <!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">-->
     <link href="{{ url_for('static', filename='css/ulr/login.css') }}" rel="stylesheet" type="text/css" media="all"/>
-    <script src="{{ url_for('static', filename='js/jquery-1.9.0.js') }}" type="text/javascript"></script>
 {% endblock %}
 {% block body %}
 </br>
@@ -11,7 +10,7 @@
 <div class="login">
     <h2>SaintIC Team</h2>
     <div class="login-top">
-        <form action="/login" method="post" id="UserLoginFormId">
+        <form action="{{ url_for('login', next='/uc') }}" method="post" id="UserLoginFormId">
             <p style="color:red; text-align: center" id="error">{% if error %}{{ error }}{% endif %}</p>
             <input type="text" id="username" name="username" required>
             <input type="password" id="password" name="password" required>
