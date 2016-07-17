@@ -14,11 +14,11 @@ class Blog(Resource):
         """
 
         num    = request.args.get('num', 10)
-        blogId = request.args.get('id', None)
+        blogId = request.args.get('blogId', None)
         res    = {"url": request.url, "msg": None, "data": None, "code": 0}
 
-        if blogId and isinstance(blogId, int):
-            sql = "SELECT id,title,content,create_time,update_time,tag,catalog,sources FROM blog WHERE id=%d" %blogId
+        if blogId:
+            sql = "SELECT id,title,content,create_time,update_time,tag,catalog,sources FROM blog WHERE id=%s" %blogId
         else:
             if num == "all":
                 sql = "SELECT id,title,content,create_time,update_time,tag,catalog,sources FROM blog"
