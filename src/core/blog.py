@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 
 from pub import logger, mysql
-from flask import request, g
+from flask import request
 from flask.ext.restful import Resource
 
 class Blog(Resource):
@@ -10,46 +10,35 @@ class Blog(Resource):
     def get(self):
         """/blog资源，参数是
         1.num, 限制列出数据数量，默认值10，另外可设置为all，列出所有blog。
-        2.id, 列出某一个id的文章。
+        2.id, 列出某一个id的文章,优先级最高。
         """
 
         num    = request.args.get('num', 10)
-        blogId = request.args.get('id')
-        code   = 0
-        res    = {"url": request.url, "msg": None, 'code': code}
+        blogId = request.args.get('id', None)
+        res    = {"url": request.url, "msg": None, "data": None, "code": 0}
 
-        if not isinstance(blogId, int):
-            errmsg = 'blogId not a number'
-            logger.warn(errmsg)
-            res['msg'] = errmsg
-            res['code']= code + 1
-            return res
-        if num != "all" and not type(num) is int:
-            errmsg = 'num not a number or all'
-            logger.warn(errmsg)
-            res['msg'] = errmsg
-            res['code']= code + 2
-            return res
-
-        if blogId:
-            sql = "SELECT id,title,author,ctime,mtime,content,tag,category FROM blog WHERE id=%d" %blogId  #这条SQL中LIMIT没有意义，省略，所以`num`无意义。
+        if blogId and isinstance(blogId, int):
+            sql = "SELECT id,title,content,create_time,update_time,tag,catalog,sources FROM blog WHERE id=%d" %blogId
         else:
             if num == "all":
-                sql = "SELECT id,title,author,ctime,mtime,content,tag,category FROM blog"
+                sql = "SELECT id,title,content,create_time,update_time,tag,catalog,sources FROM blog"
             else:
-                sql = "SELECT id,title,author,ctime,mtime,content,tag,category FROM blog LIMIT %d" %num
+                if isinstance(num, int):
+                    sql = "SELECT id,title,content,create_time,update_time,tag,catalog,sources FROM blog LIMIT %d" %num
+                else:
+                    res.update(msg = 'num not a integer or all, or no blogId query.', code = 1)
+                    logger.warn(res)
+                    return res
         try:
             data = mysql.get(sql)
             logger.info({"Blog:get:SQL": sql})
         except Exception,e:
-            logger.error(e)
-            errmsg = 'get blog error'
-            logger.warn(errmsg)
-            res['msg'] = errmsg
-            res['code']= code + 3
+            logger.error(e, exc_info=True)
+            res.update(msg = "get blog error", code = 2)
+            logger.info(res)
             return res
         else:
-            res['msg'] = success
+            res.update(msg = 'success', data = data)
             logger.info(res)
             return res
 

@@ -2,7 +2,7 @@
 
 import json
 from pub import logger, gen_requestId
-from flask import Flask, request, g, redirect, jsonify, Response
+from flask import Flask, request, g, redirect, jsonify
 from flask.ext.restful import Api, Resource
 from core import (User, Blog, Token, Conf)
 
@@ -65,7 +65,6 @@ def internal_error(error=None):
 
 #Define /, make it chcek or get
 class Index(Resource):
-    @classmethod
     def get(self):
         return {"Team.Api": "Welcome %s" %request.headers.get('X-Real-Ip', request.remote_addr)}
 
