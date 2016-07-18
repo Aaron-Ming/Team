@@ -44,6 +44,17 @@ class Redis_cluster_connect(object):
         logger.info("get ttl")
         return self.rc.ttl(key)
 
+    def hset(self, key, field, value):
+        #hash set a key
+        logger.info("hset key")
+        return self.rc.hset(key, field, value)
+
+    def hget(self, key, field):
+        return self.rc.hget(key, field)
+
+    def hgetall(self, key):
+        return self.rc.hgetall(key)
+
     @property
     def ping(self):
         return self.rc.ping()
@@ -55,3 +66,17 @@ class Redis_cluster_connect(object):
     @property
     def cluster_info(self):
         return self.rc.cluster_info()
+
+    def Blog2Redis(self, blogs):
+        for blog in blogs:
+            key = "Team.Front.Blog.Id.%d" %blog.get("id")
+            print key
+            for field, value in blog.iteritems():
+                self.rc.hset(key, field, value)
+            print self.rc.hgetall(key)
+
+if __name__ == "__main__":
+   rc=Redis_cluster_connect(host="127.0.0.1", port=10101) 
+   import requests
+   res = requests.get("https://api.saintic.com/blog?num=all", verify=False).json()
+   print rc.Blog2Redis(res["data"])
