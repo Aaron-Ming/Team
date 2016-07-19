@@ -31,7 +31,7 @@ case $1 in
 start)
     if [ -f $pidfile ]; then
         if [[ $(ps aux | grep $(cat $pidfile) | grep -v grep | wc -l) -lt 1 ]]; then
-            $(which python) -O ${dir}/src/Product.py &> ${log_dir}/output.log &
+            $(which python) -O ${dir}/src/Product.py &>> ${log_dir}/output.log &
             pid=$!
             echo $pid > $pidfile
             echo "$procname start over."
@@ -45,16 +45,11 @@ start)
     ;;
 
 stop)
-    killall $procname
+    pid=$(cat $pidfile)
+    kill $pid
     retval=$?
-    if [ $retval -eq 0 ]; then
-        rm -f $pidfile
-    else
-        kill -9 `cat $pidfile`
-        [ $? -ne 0 ] && kill -9 `cat $pidfile`
-        rm -f $pidfile
-        echo "$procname stop over"
-    fi
+    rm -f $pidfile
+    echo "$procname stop over."
     ;;
 
 status)
