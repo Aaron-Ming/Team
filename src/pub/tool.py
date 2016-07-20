@@ -1,5 +1,6 @@
 # -*- coding:utf8 -*-
 
+import hashlib
 from log import Syslog
 from uuid import uuid4
 

@@ -47,11 +47,11 @@ BLOG={
 #插件配置项
 PLUGINS={
     "session_cluster": {
-        "type": "redis_cluster",
+        "type": "redis",
         #指定session集群，暂时支持redis、redis cluster,
         "host": "127.0.0.1",
         #指定session集群存储应用host/ip,
-        "port": 10101,
+        "port": 6379,
         #指定session集群存储应用port,
         "auth": None
         #验证密码(目前仅支持单实例版redis)

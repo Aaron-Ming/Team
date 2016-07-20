@@ -9,7 +9,7 @@ class UserAuth:
     def __init__(self):
         self.api = "https://api.saintic.com/user"
         self.headers = {'User-Agent' : 'SaintIC Team Front UserAuth'}
-        self.timeout = 3
+        self.timeout = 5
 
     def login(self, username, password):
         r = requests.post(self.api, params={"action": "log"}, data={"username": username, "password": password}, headers=self.headers, verify=False, timeout=self.timeout)

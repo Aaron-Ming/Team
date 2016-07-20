@@ -4,6 +4,7 @@ import os
 import json
 import time
 import uuid
+import base64
 import datetime
 from pub import config, gen_requestId, logger, md5
 from plugins import session_redis_connect, UserAuth
@@ -18,7 +19,7 @@ __doc__     = 'SaintIC Team Blog Front'
 
 app=Flask(__name__)
 app.secret_key = os.urandom(24)
-SecretKey = str(uuid.uuid4())
+Ukey = "Team.Front.Session."
 
 #每个URL请求之前，定义requestId并绑定到g.
 @app.before_request
@@ -27,19 +28,18 @@ def before_request():
     g.requestId = gen_requestId()
     g.session   = session_redis_connect
     g.auth      = UserAuth()
-    g.username  = request.cookies.get("username")
-    g.logged_in = request.cookies.get("logged_in")
-    g.sessionId = request.cookies.get("sessionId")
-    logger.debug("cookie info, username:%s, logged_in:%s, sessionId:%s"%(g.username, g.logged_in, g.sessionId))
+    g.username  = request.cookies.get("username", "")
+    g.sessionId = request.cookies.get("sessionId", "")
+    g.logged_in = request.cookies.get("logged_in", "no")
+    g.signin    = True if g.logged_in == "yes" and g.sessionId == md5(g.username + base64.decodestring(g.session.get(g.username)) + app.secret_key) else False
     logger.info("Start Once Access, and this requestId is %s" % g.requestId)
+    logger.debug("cookie info, username:%s, logged_in:%s, sessionId:%s"%(g.username, g.logged_in, g.sessionId))
 
 #每次返回数据中，带上响应头，包含版本和请求的requestId, 记录访问日志
 @app.after_request
 def add_header(response):
     response.headers["X-SaintIC-App-Name"] = config.PRODUCT.get("ProcessName", "Team.Front")
     response.headers["X-SaintIC-Request-Id"] = g.requestId
-    #response.set_cookie(key="username", value=g.username, expires=datetime.datetime.today() + datetime.timedelta(days=30))
-    #response.set_cookie(key="sessionId", value=md5(username + password + SecretKey), expires=datetime.datetime.today() + datetime.timedelta(days=30))
     logger.info(json.dumps({
         "AccessLog": {
             "status_code": response.status_code,
@@ -75,38 +75,40 @@ def index():
 def login():
     error = None
     if request.method == "GET":
-        if session.get("username"):
+        if g.signin:
             return redirect(request.args.get('next', url_for('index')))
         else:
             return render_template("front/login.html", error=error)
+
     elif request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
-        if session.get("username"):
-            return redirect(request.args.get('next', url_for('index')))
-        else:
+        try:
+            if g.signin:
+                return redirect(request.args.get('next', url_for('index')))
             if g.auth.login(username, password) == True:
-                ukey = "Team.Front.Session.%s" %username
+                _key = Ukey + username
                 expire_time = datetime.datetime.today() + datetime.timedelta(days=30)
-                g.session.set(ukey, True)
-                session["username"] = True
-                logger.info("Add a redis session, key is %s" %ukey)
+                g.session.set(_key, base64.encodestring(password))
+                logger.info("Create a redis session key(%s)." %_key)
                 resp = make_response(redirect(request.args.get('next', url_for('index'))))
-                resp.set_cookie(key='username', value=username, expires=expire_time)
-                resp.set_cookie(key='sessionId', value=md5(username + password + SecretKey), expires=expire_time)
+                resp.set_cookie(key='username',  value=username, expires=expire_time)
+                resp.set_cookie(key='sessionId', value=md5(username + password + app.secret_key), expires=expire_time)
                 resp.set_cookie(key='logged_in', value="yes", expires=expire_time)
                 return resp
             else:
                 error = "Login fail, invaild username or password."
                 return redirect(url_for("login"))
+        except Exception,e:
+            logger.error(e)
+            return "error"
 
 @app.route('/logout')
 def logout():
-    try:
-        session.pop('username')
-    except Exception:
-        pass
-    return redirect(request.args.get('next', url_for('index')))
+    resp = make_response(redirect(request.args.get('next', url_for('index'))))
+    resp.set_cookie(key='username',  value='', expires=0)
+    resp.set_cookie(key='logged_in', value='no', expires=0)
+    return resp
 
 @app.route('/uc')
 def uc():
