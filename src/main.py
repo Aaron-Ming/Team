@@ -3,9 +3,11 @@
 import os
 import json
 import time
-from pub import config, gen_requestId, logger
+import uuid
+import datetime
+from pub import config, gen_requestId, logger, md5
 from plugins import session_redis_connect, UserAuth
-from flask import Flask, render_template, g, request, redirect, url_for, session
+from flask import Flask, render_template, g, request, redirect, url_for, session, make_response
 
 __version__ = '0.1.0'
 __date      = '2016-06-29'
@@ -16,6 +18,7 @@ __doc__     = 'SaintIC Team Blog Front'
 
 app=Flask(__name__)
 app.secret_key = os.urandom(24)
+SecretKey = str(uuid.uuid4())
 
 #每个URL请求之前，定义requestId并绑定到g.
 @app.before_request
@@ -24,6 +27,10 @@ def before_request():
     g.requestId = gen_requestId()
     g.session   = session_redis_connect
     g.auth      = UserAuth()
+    g.username  = request.cookies.get("username")
+    g.logged_in = request.cookies.get("logged_in")
+    g.sessionId = request.cookies.get("sessionId")
+    logger.debug("cookie info, username:%s, logged_in:%s, sessionId:%s"%(g.username, g.logged_in, g.sessionId))
     logger.info("Start Once Access, and this requestId is %s" % g.requestId)
 
 #每次返回数据中，带上响应头，包含版本和请求的requestId, 记录访问日志
@@ -31,6 +38,8 @@ def before_request():
 def add_header(response):
     response.headers["X-SaintIC-App-Name"] = config.PRODUCT.get("ProcessName", "Team.Front")
     response.headers["X-SaintIC-Request-Id"] = g.requestId
+    #response.set_cookie(key="username", value=g.username, expires=datetime.datetime.today() + datetime.timedelta(days=30))
+    #response.set_cookie(key="sessionId", value=md5(username + password + SecretKey), expires=datetime.datetime.today() + datetime.timedelta(days=30))
     logger.info(json.dumps({
         "AccessLog": {
             "status_code": response.status_code,
@@ -40,7 +49,8 @@ def add_header(response):
             "referer": request.headers.get('Referer'),
             "agent": request.headers.get("User-Agent"),
             "requestId": g.requestId,
-            "OneTimeInterval": "%0.2fs" %float(time.time() - g.startTime)
+            "OneTimeInterval": "%0.2fs" %float(time.time() - g.startTime),
+            "cookies": request.cookies
             }
         }
     ))
@@ -77,10 +87,15 @@ def login():
         else:
             if g.auth.login(username, password) == True:
                 ukey = "Team.Front.Session.%s" %username
+                expire_time = datetime.datetime.today() + datetime.timedelta(days=30)
                 g.session.set(ukey, True)
                 session["username"] = True
                 logger.info("Add a redis session, key is %s" %ukey)
-                return redirect(request.args.get('next', url_for('index')))
+                resp = make_response(redirect(request.args.get('next', url_for('index'))))
+                resp.set_cookie(key='username', value=username, expires=expire_time)
+                resp.set_cookie(key='sessionId', value=md5(username + password + SecretKey), expires=expire_time)
+                resp.set_cookie(key='logged_in', value="yes", expires=expire_time)
+                return resp
             else:
                 error = "Login fail, invaild username or password."
                 return redirect(url_for("login"))

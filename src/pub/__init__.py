@@ -3,7 +3,7 @@
 """
 
 import config
-from tool import logger, gen_requestId
+from tool import logger, gen_requestId, md5
 
-__all__ = ["config", "logger", "gen_requestId"]
+__all__ = ["config", "logger", "gen_requestId", "md5"]
 
