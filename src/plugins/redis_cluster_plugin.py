@@ -1,6 +1,7 @@
 #-*- coding:utf8 -*-
 
 import sys
+sys.path.append('..')
 from pub import logger
 
 class Redis_cluster_connect(object):
@@ -24,7 +25,11 @@ class Redis_cluster_connect(object):
     def get(self, key):
         #get a value of key
         logger.info("Query a key for %s " %key)
-        return self.rc.get(key)
+        if key:
+            return self.rc.get(key)
+        else:
+            logger.debug('return ""')
+            return ""
 
     def delete(self, *keys):
         #delete a key or more

@@ -35,7 +35,3 @@ class UserAuth:
         res = r.json()
         if "success" in res.get("msg") and res.get("code") == 0:
             return res.get("data")
-
-if __name__ == "__main__":
-    user=UserAuth()
-    print user.login("admin", "910323")

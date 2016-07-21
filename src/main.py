@@ -26,14 +26,14 @@ Ukey = "Team.Front.Session."
 def before_request():
     g.startTime = time.time()
     g.requestId = gen_requestId()
-    g.session   = session_redis_connect
+    g.redis     = session_redis_connect
     g.auth      = UserAuth()
     g.username  = request.cookies.get("username", "")
-    g.sessionId = request.cookies.get("sessionId", "")
-    g.logged_in = request.cookies.get("logged_in", "no")
-    g.signin    = True if g.logged_in == "yes" and g.sessionId == md5(g.username + base64.decodestring(g.session.get(g.username)) + app.secret_key) else False
+    g.sessionId = request.cookies.get("sessionId")
+    g.password  = g.redis.get(Ukey + g.username) if g.redis.get(Ukey + g.username) else ""
+    g.signin    = True if g.sessionId == md5(g.username + base64.decodestring(g.password)) else False
     logger.info("Start Once Access, and this requestId is %s" % g.requestId)
-    logger.debug("cookie info, username:%s, logged_in:%s, sessionId:%s"%(g.username, g.logged_in, g.sessionId))
+    logger.debug("cookie info, username:%s, password:%s, sessionId:%s, signin:%s"%(g.username, g.password, g.sessionId, g.signin))
 
 #每次返回数据中，带上响应头，包含版本和请求的requestId, 记录访问日志
 @app.after_request
@@ -62,11 +62,6 @@ def not_found(error=None):
     message = 'Not Found: ' + request.url
     return render_template("public/4xx.html", msg=message)
 
-@app.errorhandler(500)
-def internal_error(error=None):
-    message = 'Internal Server Error: ' + request.url
-    return render_template("public/5xx.html", msg=message)
-
 @app.route('/')
 def index():
     return render_template('front/index.html')
@@ -74,6 +69,7 @@ def index():
 @app.route('/login', methods=["GET", "POST"])
 def login():
     error = None
+    logger.debug(error)
     if request.method == "GET":
         if g.signin:
             return redirect(request.args.get('next', url_for('index')))
@@ -81,33 +77,39 @@ def login():
             return render_template("front/login.html", error=error)
 
     elif request.method == "POST":
-        username = request.form.get("username")
-        password = request.form.get("password")
-        try:
+        username = request.form.get("username", "")
+        password = request.form.get("password", "")
+        #try:
+        if True:
             if g.signin:
                 return redirect(request.args.get('next', url_for('index')))
-            if g.auth.login(username, password) == True:
+            elif g.auth.login(username, password) == True:
                 _key = Ukey + username
                 expire_time = datetime.datetime.today() + datetime.timedelta(days=30)
-                g.session.set(_key, base64.encodestring(password))
-                logger.info("Create a redis session key(%s)." %_key)
                 resp = make_response(redirect(request.args.get('next', url_for('index'))))
-                resp.set_cookie(key='username',  value=username, expires=expire_time)
-                resp.set_cookie(key='sessionId', value=md5(username + password + app.secret_key), expires=expire_time)
-                resp.set_cookie(key='logged_in', value="yes", expires=expire_time)
+                if g.redis.set(_key, base64.encodestring(password)):
+                    logger.info("Create a redis session key(%s)." %_key)
+                    resp.set_cookie(key='username',  value=username, expires=expire_time)
+                    resp.set_cookie(key='sessionId', value=md5(username + password), expires=expire_time)
+                logger.debug("return resp, key is %s" %_key)
                 return resp
             else:
                 error = "Login fail, invaild username or password."
+                logger.debug(error)
                 return redirect(url_for("login"))
+        """
         except Exception,e:
-            logger.error(e)
-            return "error"
+            error = "exception"
+            logger.error(e, exc_info=True)
+            logger.debug(error)
+            return redirect(url_for("login"))
+        """
 
 @app.route('/logout')
 def logout():
     resp = make_response(redirect(request.args.get('next', url_for('index'))))
     resp.set_cookie(key='username',  value='', expires=0)
-    resp.set_cookie(key='logged_in', value='no', expires=0)
+    resp.set_cookie(key='sessionId',  value='', expires=0)
     return resp
 
 @app.route('/uc')
