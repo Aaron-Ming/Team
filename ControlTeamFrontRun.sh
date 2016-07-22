@@ -6,7 +6,7 @@ log_dir=${dir}/src/logs
 procname=$(grep '"ProcessName":' ${dir}/src/pub/config.py | awk '{print $2}' | awk -F \" '{print $2}'|head -1)
 pidfile=${log_dir}/${procname}.pid
 
-function _status()
+function _status_bak()
 {
     pid=$(ps aux | grep $procname | grep -v grep | awk '{print $2}')
     if [ ! -f $pidfile ]; then
@@ -26,6 +26,29 @@ function _status()
     fi
 
 }
+
+function _status()
+{
+    #pid=$(ps aux | grep $procname | grep -vE "grep|worker|Team.Api\." | awk '{print $2}')
+    if [ ! -f $pidfile ]; then
+        echo -e "\033[39;31m${procname} has stopped.\033[0m"
+        exit
+    fi
+    pid=$(cat $pidfile)
+    procnum=$(ps aux | grep -v grep | grep $pid | grep $procname | wc -l)
+    if [[ "$procnum" != "1" ]]; then
+        echo -e "\033[39;31m异常，pid文件与系统pid数量不相等。\033[0m"
+        echo -e "\033[39;34m  pid数量：${procnum}\033[0m"
+        echo -e "\033[39;34m  pid文件：${pid}($pidfile)\033[0m"
+    else
+        echo -e "\033[39;33m${procname}\033[0m":
+        echo "  pid: $pid"
+        echo -e "  state:" "\033[39;32mrunning\033[0m"
+        echo -e "  process start time:" "\033[39;32m$(ps -eO lstart | grep $pid | grep $procname | grep -vE "worker|grep|Team.Api\." | awk '{print $6"-"$3"-"$4,$5}')\033[0m"
+        echo -e "  process running time:" "\033[39;32m$(ps -eO etime| grep $pid | grep $procname | grep -vE "worker|grep|Team.Api\." | awk '{print $2}')\033[0m"
+    fi
+}
+
 
 case $1 in
 start)
