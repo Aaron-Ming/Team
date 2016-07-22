@@ -145,8 +145,10 @@ class User(Resource):
                     mysql.execute(sql)
                 logger.info({"User:post:reg:sql": sql})
             except Exception, e:
+                logger.error(e, exc_info=True)
+                print e
                 res.update({'code':1012, 'msg':'Sign up failed'}) #code:1012, sign up failed when write into mysql
-                logger.error(res)
+                logger.info(res)
             else:
                 res.update({'code': 0, 'msg': 'Sign up success'})
                 logger.info(res)
