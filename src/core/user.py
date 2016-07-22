@@ -3,7 +3,7 @@
 from pub import logger, mysql, gen_token, gen_requestId, md5, config, dbUser, mail_check, chinese_check, postData
 from flask import request, g
 from flask.ext.restful import Resource
-import sys
+import sys, time
 reload(sys)
 sys.setdefaultencoding('utf8')
 
@@ -138,7 +138,7 @@ class User(Resource):
                 logger.warn(res)
                 return res
             try:
-                sql = "INSERT INTO user (username, password, email) VALUES('%s', '%s', '%s')" % (username, _MD5pass, email)
+                sql = "INSERT INTO user (username, password, email, time) VALUES('%s', '%s', '%s', '%s')" % (username, _MD5pass, email, time.strftime("%Y-%m-%d"))
                 if hasattr(mysql, 'insert'):
                     mysql.insert(sql)
                 else:
