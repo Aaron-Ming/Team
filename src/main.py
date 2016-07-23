@@ -8,7 +8,7 @@ import base64
 import datetime
 from pub import config, gen_requestId, logger, md5
 from plugins import session_redis_connect, UserAuth
-from flask import Flask, render_template, g, request, redirect, url_for, session, make_response
+from flask import Flask, render_template, g, request, redirect, url_for, make_response, jsonify
 
 __version__ = '0.1.0'
 __date      = '2016-06-29'
@@ -33,7 +33,7 @@ def before_request():
     g.password  = g.redis.get(Ukey + g.username) if g.redis.get(Ukey + g.username) else ""
     g.signin    = True if g.sessionId == md5(g.username + base64.decodestring(g.password)) else False
     logger.info("Start Once Access, and this requestId is %s" % g.requestId)
-    logger.debug("cookie info, username:%s, password:%s, sessionId:%s, signin:%s"%(g.username, g.password, g.sessionId, g.signin))
+    logger.debug("cookie info, username:%s, sessionId:%s, signin:%s"%(g.username, g.sessionId, g.signin))
 
 #每次返回数据中，带上响应头，包含版本和请求的requestId, 记录访问日志
 @app.after_request
@@ -104,6 +104,34 @@ def login():
             logger.debug(error)
             return redirect(url_for("login"))
         """
+
+@app.route('/auth', methods=["POST"])
+def auth():
+    username = request.form.get("username", "")
+    password = request.form.get("password", "")
+    try:
+        if g.signin:
+            return redirect(request.args.get('next', url_for('index')))
+        elif g.auth.login(username, password) == True:
+            key = Ukey + username
+            #expire_time = datetime.datetime.today() + datetime.timedelta(days=30)
+            #resp = make_response(redirect(request.args.get('next', url_for('index'))))
+            if g.redis.set(key, base64.encodestring(password)):
+                logger.info("Create a redis session key(%s) successfully." %key)
+                resp = jsonify(loggedIn=True)
+                resp.set_cookie(key='username',  value=username, expires=None)
+                resp.set_cookie(key='sessionId', value=md5(username + password), expires=None)
+            else:
+                resp = jsonify(loggedIn=False)
+                logger.warn("Create a redis session key(%s) failed." %key)
+            return resp
+        else:
+            error = "Login fail, invaild username or password."
+            logger.debug(error)
+            return jsonify(loggedIn=False, error=error)
+    except Exception,e:
+        logger.error(e, exc_info=True)
+        return jsonify(loggedIn=False, error="Server Exception")
 
 @app.route('/logout')
 def logout():

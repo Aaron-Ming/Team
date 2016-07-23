@@ -1,3 +1,4 @@
+#!/usr/bin/python -O
 #product environment start application with `tornado IOLoop` and `gevent server`
 
 from main import app

@@ -10,40 +10,36 @@
 <div class="login">
     <h2>SaintIC Team</h2>
     <div class="login-top">
-        <form action="{{ url_for('login', next='/uc') }}" method="post" id="UserLoginFormId">
-            <p style="color:red; text-align: center" id="error">{% if error %}{{ error }}{% endif %}</p>
-            <input type="text" id="username" name="username" required>
-            <input type="password" id="password" name="password" required>
-            <div class="forgot">
-                <a href="#">忘记密码</a>
-                <!--<input onclick="postForm('/uc')" type="button" value="登录">-->
-                <input type="submit" value="登录">
-            </div>
-        </form>
-        <!--
-        <script type="text/javascript">
+        <script>
             function postForm(nextUrl) {
                 $.ajax({
-                    url: 'https://api.saintic.com/user?action=log',
+                    url: '/auth',
                     method: 'POST',
                     datatype: 'json',
                     data: $('#UserLoginFormId').serialize(),
                     success: function(res) {
                         console.log(res);
-                        //var username = res.data.username;
-                        //var uid = res.data.uid;
-                        if (res.code == 0){
+                        if (res.loggedIn == true){
                             window.location.href=nextUrl;
-                            //document.cookie = "cookieId=" + username + uid;
                         }
                     },
                     error: function(error){
-                        document.getElementById("error").innerHTML("invalid username or password");
+                        console.log(error)
+                        document.getElementById("error").innerHTML(error.error);
                     }
                 });
             };
         </script>
-        -->
+        <form action="" method="post" id="UserLoginFormId">
+            <p style="color:red; text-align: center" id="error"></p>
+            <input type="text" id="username" name="username" required>
+            <input type="password" id="password" name="password" required>
+            <div class="forgot">
+                <a href="#">忘记密码</a>
+                <input onclick="postForm('/')" type="button" value="登录">
+                <!--<input type="submit" value="登录">-->
+            </div>
+        </form>
     </div>
     <div class="login-bottom">
         <!--<h3>新用户 &nbsp;<a href="#">注册</a>&nbsp 这里</h3>-->
