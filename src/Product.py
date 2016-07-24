@@ -13,6 +13,7 @@ ProductType = PRODUCT.get('ProductType')
 try:
     import setproctitle
 except ImportError, e:
+    print e
     logger.warn("%s, try to pip install setproctitle, otherwise, you can't use the process to customize the function" %e)
     pass
 else:
@@ -20,7 +21,9 @@ else:
     logger.info("The process is %s" % ProcessName)
 
 try:
-    logger.info('%s has been launched, %s:%d' %(ProcessName, Host, Port))
+    msg = '%s has been launched, %s:%d' %(ProcessName, Host, Port)
+    logger.info(msg)
+    print msg
     if ProductType == 'gevent':
         from gevent.wsgi import WSGIServer
         http_server = WSGIServer((Host, Port), app)

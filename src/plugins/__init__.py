@@ -6,7 +6,7 @@ from redis_plugin import Redis_connect
 from redis_cluster_plugin import Redis_cluster_connect
 from authentication import UserAuth
 
-__all__ = ["session_redis_connect", ]
+__all__ = ["session_redis_connect", "UserAuth"]
 
 _session_type = PLUGINS.get("session_cluster").get("type")
 _session_host = PLUGINS.get("session_cluster").get("host")
