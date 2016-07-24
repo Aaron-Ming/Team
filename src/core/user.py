@@ -36,21 +36,21 @@ class User(Resource):
             return res 
 
         if _username: #username's priority is greater than email
-            sql="SELECT username,email,cname,motto,url,time,extra FROM user WHERE username='%s' LIMIT 1" % _username
+            sql="SELECT username,email,cname,avatar,motto,url,time,extra FROM user WHERE username='%s' LIMIT 1" % _username
         elif _email:
             emails=[ email.email for email in mysql.get("SELECT email FROM user") if email.email ]
             logger.debug({"The mysql emails": emails, "requestId": str(g.requestId)})
             if mail_check.match(_email) and _email in emails: #check email in mysql and format
-                sql="SELECT username,email,cname,motto,url,time,extra FROM user WHERE email='%s' LIMIT 1" % _email
+                sql="SELECT username,email,cname,avatar,motto,url,time,extra FROM user WHERE email='%s' LIMIT 1" % _email
             else:
                 res.update({"msg": "email format error or no such email", "code": 1001}) #code:1001, email format error or no email
                 logger.info(res)
                 return res
         else: #url args no username and email, this is default sql and display
             if _num == "all":
-                sql="SELECT username,email,cname,motto,url,time,extra FROM user"
+                sql="SELECT username,email,cname,avatar,motto,url,time,extra FROM user"
             else:
-                sql="SELECT username,email,cname,motto,url,time,extra FROM user LIMIT %d" %  _num
+                sql="SELECT username,email,cname,avatar,motto,url,time,extra FROM user LIMIT %d" %  _num
         #(if...elif...else) is end, write log sql and requestId
         logger.info({"requestId": g.requestId, "User Get End SQL": sql})
         try:
