@@ -83,13 +83,13 @@ ul.main_nav li{
 
 ul.main_nav li a{
 	display: block;
-	width: 130px;
-	height: 71px;
+	width: 144px;
+	height: 72px;
 	padding-top: 55px;
 	border-right: 1px #1e1e1e solid;
 	vertical-align: middle;
 	text-decoration: none;
-	text-shadow: 0px 1px 0 #1e1e1e;
+	text-shadow: 0px 1px 1 #1e1e1e;
 	text-align: center;
 }
 

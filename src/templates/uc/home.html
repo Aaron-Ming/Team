@@ -6,16 +6,43 @@
 {% block body %}
 <section class="main2 wrapper">
     <div class="site-wrapper">
-      <div class="home">
-        <!--头部-->
-        <div class="home__header">
-            <img src="{% if data.get('avatar') %}{{ data.get('avatar') }}{% else %}{{ url_for('static', filename='img/ads.jpg') }}{% endif %}"/>
-            <h1>{% if data.get('cname') %}{{ data.get('cname') }}{% endif %}</h1><h2>{% if data.get('motto') %}{{ data.get('motto') }}{% endif %}</h2>
+        <div class="home">
+            <!--头部-->
+            <div class="home__header">
+                <img id="avatar" src="" />
+                <h1 id="cname"></h1><h2 id="motto"></h2>
+            </div>
+            {% block content %}
+            <ul>
+                <li><a href='#'></a>test1</li>
+                <li><a href='#'></a>test2</li>
+                <li><a href='#'></a>test3</li>
+                <li><a href='#'></a>test4</li>
+            </ul>
+            {% endblock %}
+            <!--页脚-->
+            {% include "base/footer.html" %}
         </div>
-        {% block content %}{% endblock %}
-        <!--页脚-->
-        {% include "base/footer.html" %}
-      </div>
+        <script>
+            $.ajax({
+                url: "https://api.saintic.com/user?username=" + {{ username }},
+                method: 'GET',
+                datatype: 'json',
+                success: function(res) {
+                    console.log({{ username }});
+                    console.log(res);
+                    var data= res.data;
+                    document.getElementById('avatar').src=data.avatar;
+                    document.getElementById('cname').innerHTML=data.cname;
+                    document.getElementById('motto').innerHTML=data.motto;
+                    document.title = document.title + " for " + data.username;
+                },
+                error: function(error){
+                    console.log(error);
+                    location.reload(true);
+                }
+            });
+        </script>
     </div>
 </section>
 {% endblock %}
@@ -24,7 +51,6 @@
     var NavId=null;
     var As=document.getElementById('nav').getElementsByTagName('li');
     NavId = As[1];
-    console.log(NavId);
     NavId.className='current';
 </script>
 {% endblock %}

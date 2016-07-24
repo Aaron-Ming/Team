@@ -64,10 +64,10 @@ def not_found(error=None):
 def index():
     return render_template('front/index.html')
 
-@app.route('/uc')
-def uc():
+@app.route('/uc/<username>')
+def uc(username):
     if g.signin:
-        return render_template("uc/home.html", data={})
+        return render_template("uc/home.html", username=username)
     else:
         return redirect(url_for('login'))
 

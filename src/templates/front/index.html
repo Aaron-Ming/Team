@@ -3,25 +3,25 @@
 {% block article %}
     <article id="article">
         <script>
-                $.ajax({
-                    url: "https://api.saintic.com/blog?num=all",
-                    method: 'GET',
-                    datatype: 'json',
-                    success: function(res) {
-                        console.log(res);
-                        var data= res.data;
-                        var str = '';
-                        for(i=0; i<data.length; i++) {
-                            blog = data[i];
-                            str += '<div class="post"><h1 class="title">' + blog.title + '</h1><a class="read_more" href="/blog/' + blog.id + '.html">Continue Reading<i class="read_more_arrow"></i></a></div>';
-                        };
-                        document.getElementById('article').innerHTML=str;
-                    },
-                    error: function(error){
-                        console.log(error);
-                        location.reload(true);
-                    }
-                });
+            $.ajax({
+                url: "https://api.saintic.com/blog?num=all",
+                method: 'GET',
+                datatype: 'json',
+                success: function(res) {
+                    console.log(res);
+                    var data= res.data;
+                    var str = '';
+                    for(i=0; i<data.length; i++) {
+                        blog = data[i];
+                        str += '<div class="post"><h1 class="title">' + blog.title + '</h1><a class="read_more" href="/blog/' + blog.id + '.html">Continue Reading<i class="read_more_arrow"></i></a></div>';
+                    };
+                    document.getElementById('article').innerHTML=str;
+                },
+                error: function(error){
+                    console.log(error);
+                    location.reload(true);
+                }
+            });
         </script>
     </article>
 {% endblock %}
@@ -30,7 +30,6 @@
     var NavId=null;
     var As=document.getElementById('nav').getElementsByTagName('li');
     NavId = As[0];
-    console.log(NavId);
     NavId.className='current';
 </script>
 {% endblock %}
