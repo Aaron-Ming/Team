@@ -7,7 +7,6 @@ from pub.config import GLOBAL, PRODUCT
 
 Host = GLOBAL.get('Host')
 Port = GLOBAL.get('Port')
-Environment = GLOBAL.get('Environment')
 ProcessName = PRODUCT.get('ProcessName')
 ProductType = PRODUCT.get('ProductType')
 
@@ -19,11 +18,6 @@ except ImportError, e:
 else:
     setproctitle.setproctitle(ProcessName)
     logger.info("The process is %s" % ProcessName)
-
-if Environment != 'product':
-    msg="The %s isn't product, process exit!!!" % Environment
-    logger.error(msg)
-    raise RuntimeError(msg)
 
 try:
     logger.info('%s has been launched, %s:%d' %(ProcessName, Host, Port))

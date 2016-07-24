@@ -3,9 +3,7 @@
 import os
 import json
 import time
-import uuid
 import base64
-import datetime
 from pub import config, gen_requestId, logger, md5
 from plugins import session_redis_connect, UserAuth
 from flask import Flask, render_template, g, request, redirect, url_for, make_response, jsonify
@@ -33,7 +31,7 @@ def before_request():
     g.password  = g.redis.get(Ukey + g.username) if g.redis.get(Ukey + g.username) else ""
     g.signin    = True if g.sessionId == md5(g.username + base64.decodestring(g.password)) else False
     logger.info("Start Once Access, and this requestId is %s" % g.requestId)
-    logger.debug("cookie info, username:%s, sessionId:%s, signin:%s"%(g.username, g.sessionId, g.signin))
+    logger.debug("Cookie debug, username:%s, sessionId:%s, signin:%s"%(g.username, g.sessionId, g.signin))
 
 #每次返回数据中，带上响应头，包含版本和请求的requestId, 记录访问日志
 @app.after_request
@@ -68,42 +66,10 @@ def index():
 
 @app.route('/login', methods=["GET", "POST"])
 def login():
-    error = None
-    logger.debug(error)
-    if request.method == "GET":
-        if g.signin:
-            return redirect(request.args.get('next', url_for('index')))
-        else:
-            return render_template("front/login.html", error=error)
-
-    elif request.method == "POST":
-        username = request.form.get("username", "")
-        password = request.form.get("password", "")
-        #try:
-        if True:
-            if g.signin:
-                return redirect(request.args.get('next', url_for('index')))
-            elif g.auth.login(username, password) == True:
-                _key = Ukey + username
-                expire_time = datetime.datetime.today() + datetime.timedelta(days=30)
-                resp = make_response(redirect(request.args.get('next', url_for('index'))))
-                if g.redis.set(_key, base64.encodestring(password)):
-                    logger.info("Create a redis session key(%s)." %_key)
-                    resp.set_cookie(key='username',  value=username, expires=expire_time)
-                    resp.set_cookie(key='sessionId', value=md5(username + password), expires=expire_time)
-                logger.debug("return resp, key is %s" %_key)
-                return resp
-            else:
-                error = "Login fail, invaild username or password."
-                logger.debug(error)
-                return redirect(url_for("login"))
-        """
-        except Exception,e:
-            error = "exception"
-            logger.error(e, exc_info=True)
-            logger.debug(error)
-            return redirect(url_for("login"))
-        """
+    if g.signin:
+        return redirect(request.args.get('next', url_for('index')))
+    else:
+        return render_template("front/login.html")
 
 @app.route('/auth', methods=["POST"])
 def auth():
@@ -142,7 +108,10 @@ def logout():
 
 @app.route('/uc')
 def uc():
-    return render_template("uc/home.html", data={})
+    if g.signin:
+        return redirect(request.args.get('next', url_for('index')))
+    else:
+        return render_template("uc/home.html", data={})
 
 @app.route('/blog/<int:bid>.html')
 def blog(bid):
@@ -152,14 +121,5 @@ if __name__ == "__main__":
     from pub.config import GLOBAL
     Host = GLOBAL.get('Host')
     Port = GLOBAL.get('Port')
-    Environment = GLOBAL.get("Environment")
     Debug = GLOBAL.get('Debug', True)
-
-    if Environment == "dev":
-        app.run(host=Host, port=int(Port), debug=Debug)
-    elif Environment == "super debug":
-        from werkzeug.contrib.profiler import ProfilerMiddleware
-        app.config['PROFILE'] = True
-        app.wsgi_app = ProfilerMiddleware(app.wsgi_app, restrictions = [30])
-        app.run(debug=Debug, host=Host, port=int(Port))
-
+    app.run(host=Host, port=int(Port), debug=Debug)

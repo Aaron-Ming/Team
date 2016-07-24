@@ -10,10 +10,20 @@
 <div class="login">
     <h2>SaintIC Team</h2>
     <div class="login-top">
+        <form action="" method="post" id="UserLoginFormId">
+            <p style="color:red; text-align: center" id="error"></p>
+            <input type="text" id="username" name="username" required>
+            <input type="password" id="password" name="password" required>
+            <div class="forgot">
+                <a href="#">忘记密码</a>
+                <input onclick="postForm('{ url_for(\"index\") }')" type="button" value="登录">
+                <!--<input type="submit" value="登录">-->
+            </div>
+        </form>
         <script>
             function postForm(nextUrl) {
                 $.ajax({
-                    url: '/auth',
+                    url: '{{ url_for("auth") }}',
                     method: 'POST',
                     datatype: 'json',
                     data: $('#UserLoginFormId').serialize(),
@@ -30,20 +40,10 @@
                 });
             };
         </script>
-        <form action="" method="post" id="UserLoginFormId">
-            <p style="color:red; text-align: center" id="error"></p>
-            <input type="text" id="username" name="username" required>
-            <input type="password" id="password" name="password" required>
-            <div class="forgot">
-                <a href="#">忘记密码</a>
-                <input onclick="postForm('/')" type="button" value="登录">
-                <!--<input type="submit" value="登录">-->
-            </div>
-        </form>
     </div>
     <div class="login-bottom">
         <!--<h3>新用户 &nbsp;<a href="#">注册</a>&nbsp 这里</h3>-->
-        <h3><a href="/">返回首页</a></h3>
+        <h3><a href="{{ url_for('index') }}">返回首页</a></h3>
     </div>
 </div>
 {% endblock %}
