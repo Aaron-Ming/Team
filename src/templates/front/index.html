@@ -21,7 +21,8 @@
                         document.getElementById('article').innerHTML=str;
                     },
                     error: function(error){
-                        alert(error);
+                        console.log(error);
+                        location.reload(true);
                     }
                 });
         </script>

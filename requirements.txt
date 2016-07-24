@@ -4,3 +4,4 @@ flask
 setproctitle
 redis
 redis-py-cluster
+requests

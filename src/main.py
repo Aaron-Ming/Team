@@ -85,6 +85,7 @@ def auth():
             if g.redis.set(key, base64.encodestring(password)):
                 logger.info("Create a redis session key(%s) successfully." %key)
                 resp = jsonify(loggedIn=True)
+                resp.set_cookie(key='logged_in', value="yes", expires=None)
                 resp.set_cookie(key='username',  value=username, expires=None)
                 resp.set_cookie(key='sessionId', value=md5(username + password), expires=None)
             else:
@@ -102,6 +103,7 @@ def auth():
 @app.route('/logout')
 def logout():
     resp = make_response(redirect(request.args.get('next', url_for('index'))))
+    resp.set_cookie(key='logged_in', value='', expires=0)
     resp.set_cookie(key='username',  value='', expires=0)
     resp.set_cookie(key='sessionId',  value='', expires=0)
     return resp
