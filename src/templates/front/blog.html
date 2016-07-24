@@ -16,7 +16,8 @@
                     document.title = document.title + " | " + data.title;
                 },
                 error: function(error){
-                    alert(error);
+                    console.log(error);
+                    location.reload(true);
                 }
             });
         </script>

@@ -2,9 +2,6 @@
 {% block title %}SaintIC Team Indexer{% endblock %}
 {% block article %}
     <article id="article">
-        <!--<div class="article_image">
-            <a href="#"><img src="/static/img/pic4.jpg" alt="" title=""></a>
-        </div>-->
         <script>
                 $.ajax({
                     url: "https://api.saintic.com/blog?num=all",
@@ -26,15 +23,6 @@
                     }
                 });
         </script>
-        <!--
-        <div class="post">
-            <h1 class="title">
-                <a href="#">Hello World</a>
-            </h1>
-            <p>文章页</p>
-            <a class="read_more" href="#">Continue Reading <i class="read_more_arrow"></i></a>
-        </div>
-        -->
     </article>
 {% endblock %}
 {% block script %}

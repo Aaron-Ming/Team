@@ -64,6 +64,17 @@ def not_found(error=None):
 def index():
     return render_template('front/index.html')
 
+@app.route('/uc')
+def uc():
+    if g.signin:
+        return render_template("uc/home.html", data={})
+    else:
+        return redirect(url_for('login'))
+
+@app.route('/blog/<int:bid>.html')
+def blog(bid):
+    return render_template("front/blog.html", blogId=bid)
+
 @app.route('/login', methods=["GET", "POST"])
 def login():
     if g.signin:
@@ -107,17 +118,6 @@ def logout():
     resp.set_cookie(key='username',  value='', expires=0)
     resp.set_cookie(key='sessionId',  value='', expires=0)
     return resp
-
-@app.route('/uc')
-def uc():
-    if g.signin:
-        return redirect(request.args.get('next', url_for('index')))
-    else:
-        return render_template("uc/home.html", data={})
-
-@app.route('/blog/<int:bid>.html')
-def blog(bid):
-    return render_template("front/blog.html", blogId=bid)
 
 if __name__ == "__main__":
     from pub.config import GLOBAL
