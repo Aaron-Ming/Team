@@ -1,6 +1,6 @@
 FROM registry.saintic.com/alpine-python:gcc
 MAINTAINER Mr.tao <staugur@saintic.com>
-ADD . /Team.Front
+ADD ./src /Team.Front
 WORKDIR /Team.Front
 RUN pip install Flask tornado gevent setproctitle redis redis-py-cluster && chmod +x Product.py
 EXPOSE 10050
