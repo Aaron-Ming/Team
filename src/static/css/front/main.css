@@ -84,7 +84,7 @@ ul.main_nav li{
 ul.main_nav li a{
 	display: block;
 	width: 144px;
-	height: 72px;
+        height: 72px;
 	padding-top: 55px;
 	border-right: 1px #1e1e1e solid;
 	vertical-align: middle;
@@ -482,3 +482,4 @@ footer ul.social_profiles li a,
 	-moz-transition: .2s linear;
 	-o-transition: .2s linear;
 }
+
