@@ -24,13 +24,14 @@ Ukey = "Team.Front.Session."
 def before_request():
     g.startTime = time.time()
     g.requestId = gen_requestId()
+    g.refererUrl= request.cookies.get("url") if request.cookies.get("url") and not "/auth" in request.cookies.get("url") and not "/favicon.ico" in request.cookies.get("url") and not "/logout" in request.cookies.get("url") else url_for("index")
+    logger.info("Start Once Access, and this requestId is %s, refererUrl is %s" %(g.requestId, g.refererUrl))
     g.redis     = session_redis_connect
     g.auth      = UserAuth()
     g.username  = request.cookies.get("username", "")
     g.sessionId = request.cookies.get("sessionId")
     g.password  = g.redis.get(Ukey + g.username) if g.redis.get(Ukey + g.username) else ""
     g.signin    = True if g.sessionId == md5(g.username + base64.decodestring(g.password)) else False
-    logger.info("Start Once Access, and this requestId is %s" % g.requestId)
     logger.debug("Cookie debug, username:%s, sessionId:%s, signin:%s"%(g.username, g.sessionId, g.signin))
 
 #每次返回数据中，带上响应头，包含版本和请求的requestId, 记录访问日志
@@ -38,13 +39,14 @@ def before_request():
 def add_header(response):
     response.headers["X-SaintIC-App-Name"] = config.PRODUCT.get("ProcessName", "Team.Front")
     response.headers["X-SaintIC-Request-Id"] = g.requestId
+    response.set_cookie(key="url", value=request.url, expires=None)
     logger.info(json.dumps({
         "AccessLog": {
             "status_code": response.status_code,
             "method": request.method,
             "ip": request.headers.get('X-Real-Ip', request.remote_addr),
             "url": request.url,
-            "referer": request.headers.get('Referer'),
+            "referer": request.headers.get('Referer') or g.refererUrl,
             "agent": request.headers.get("User-Agent"),
             "requestId": g.requestId,
             "OneTimeInterval": "%0.2fs" %float(time.time() - g.startTime),
@@ -64,7 +66,7 @@ def not_found(error=None):
 def index():
     return render_template('front/index.html')
 
-@app.route('/uc/<username>')
+@app.route('/uc/<username>/')
 def uc(username):
     if g.signin:
         return render_template("uc/home.html", username=username)
@@ -75,24 +77,24 @@ def uc(username):
 def blog(bid):
     return render_template("front/blog.html", blogId=bid)
 
-@app.route('/login', methods=["GET", "POST"])
+@app.route('/login/', methods=["GET", "POST"])
 def login():
     if g.signin:
-        return redirect(request.args.get('next', url_for('index')))
+        return redirect(request.args.get('next', g.refererUrl))
     else:
         return render_template("front/login.html")
 
-@app.route('/auth', methods=["POST"])
+@app.route('/auth/', methods=["POST"])
 def auth():
     username = request.form.get("username", "")
     password = request.form.get("password", "")
     try:
         if g.signin:
-            return redirect(request.args.get('next', url_for('index')))
+            return redirect(request.args.get('next', g.refererUrl))
         elif g.auth.login(username, password) == True:
             key = Ukey + username
             #expire_time = datetime.datetime.today() + datetime.timedelta(days=30)
-            #resp = make_response(redirect(request.args.get('next', url_for('index'))))
+            #resp = make_response(redirect(request.args.get('next', g.refererUrl)))
             if g.redis.set(key, base64.encodestring(password)):
                 logger.info("Create a redis session key(%s) successfully." %key)
                 resp = jsonify(loggedIn=True)
@@ -111,9 +113,9 @@ def auth():
         logger.error(e, exc_info=True)
         return jsonify(loggedIn=False, error="Server Exception")
 
-@app.route('/logout')
+@app.route('/logout/')
 def logout():
-    resp = make_response(redirect(request.args.get('next', url_for('index'))))
+    resp = make_response(redirect(url_for('login')))
     resp.set_cookie(key='logged_in', value='', expires=0)
     resp.set_cookie(key='username',  value='', expires=0)
     resp.set_cookie(key='sessionId',  value='', expires=0)

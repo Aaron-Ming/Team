@@ -18,25 +18,21 @@
         <div class="menu">
             <ul>
                 <li><a href="{{ url_for('index') }}">Index<span>主页归来</span></a></li>
-
-                {#{% if g.signin -%}
-                    <li><a href="{{ url_for('logout') }}">Logout<span>注销</span></a></li>
-                {% else -%}
-                    <li><a href="{{ url_for('login') }}">Login<span>登录</span></a></li>
-                {% endif -%}#}
-
                 <li><a href="https://github.com/saintic/Team/tree/front" target="_blank">GitHub<span>开源地址</span></a></li>
-
                 <li><a href="#">CataLog<span>分类目录</span></a>
                     <ul id="catalog">
                     </ul>
                 </li>
-
                 <li><a href="#">About<span>关于我们</span></a>
                     <ul>
                         <li><a href="#">Team<span>团队介绍</span></a></li>
                     </ul>
                 </li>
+                {% if g.signin -%}
+                    <li><a href="{{ url_for('logout') }}">Logout<span>注销</span></a></li>
+                {% else -%}
+                    <li><a href="{{ url_for('login') }}">Login<span>登录</span></a></li>
+                {% endif -%}
             </ul>
         </div>
     </div>

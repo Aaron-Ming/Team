@@ -16,13 +16,11 @@
             <input type="password" id="password" name="password" required>
             <div class="forgot">
                 <a href="#">忘记密码</a>
-                <input onclick=postForm("{{ url_for('index') }}") type="button" value="登录">
-                <!--<input type="submit" value="登录">-->
+                <input onclick=postForm("{% if g.refererUrl %}{{ g.refererUrl }}{% else %}{{ url_for('index') }}{% endif %}") type="button" value="登录">
             </div>
         </form>
         <script>
             function postForm(nextUrl) {
-                console.log("shangyiye: "+document.referer);
                 $.ajax({
                     url: '{{ url_for("auth") }}',
                     method: 'POST',
