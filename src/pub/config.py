@@ -38,7 +38,7 @@ PRODUCT={
 
 #数据库配置段
 MYSQL={
-    "Host": "101.200.125.9",
+    "Host": "localhost",
     "Port": 3306,
     "Database": "team",
     "User": "root",

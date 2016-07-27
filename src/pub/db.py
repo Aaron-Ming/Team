@@ -44,4 +44,8 @@ class DB():
 if __name__ == "__main__":
     mysql=DB()
     sql = "SELECT username,password FROM user WHERE username='sakura'"
-    print mysql.get(sql)
+    sql = "select group_concat(catalog) from blog group by catalog"
+    #sql = "select catalog from blog"
+    data = mysql.get(sql)
+    print data
+    print [ v.split(",")[0] for i in data for v in i.values() if v ]

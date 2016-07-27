@@ -9,13 +9,29 @@ class Blog(Resource):
     @classmethod
     def get(self):
         """/blog资源，参数是
-        1.num, 限制列出数据数量，默认值10，另外可设置为all，列出所有blog。
-        2.id, 列出某一个id的文章,优先级最高。
+        1.num(int, str), 限制列出数据数量，另外可设置为all，列出所有blog。
+        2.blogId(int), 列出某一个id的文章, 独立参数。
+        3.catalog(bool), 查询博客所有目录，独立参数。
         """
 
-        num    = request.args.get('num', 10)
-        blogId = request.args.get('blogId', None)
+        num    = request.args.get('num')
+        blogId = request.args.get('blogId')
+        catalog= True if request.args.get("catalog") == "true" or request.args.get("catalog") == "True" else False
         res    = {"url": request.url, "msg": None, "data": None, "code": 0}
+        logger.debug({"num": num, "blogId": blogId, "catalog": catalog})
+
+        if catalog:
+            sql = "SELECT GROUP_CONCAT(catalog) FROM blog GROUP BY catalog"
+            logger.info("SELECT catalog SQL: %s" %sql)
+            try:
+                data = [ v.split(",")[0] for i in mysql.get(sql) for v in i.values() if v ]
+            except Exception,e:
+                logger.error(e, exc_info=True)
+                data = []
+            else:
+                res.update(msg = "Catalog query success", data = data)
+                logger.info(res)
+                return res
 
         if blogId:
             sql = "SELECT id,title,content,create_time,update_time,tag,catalog,sources FROM blog WHERE id=%s" %blogId
@@ -41,5 +57,6 @@ class Blog(Resource):
             res.update(msg = 'success', data = data)
             logger.info(res)
             return res
+
 
     def post(self):pass
