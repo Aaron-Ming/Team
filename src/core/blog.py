@@ -59,4 +59,18 @@ class Blog(Resource):
             return res
 
 
-    def post(self):pass
+    def post(self):
+        """ 创建博客文章接口:
+        :: 1. 验证头部信息
+        :: 2. 验证cookie信息
++----+---------+--------------------------+-------------+-------------+--------+-----------+---------+
+| id | title   | content                  | create_time | update_time | tag    | catalog   | sources |
++----+---------+--------------------------+-------------+-------------+--------+-----------+---------+
+| 47 | 测试1   | 技术博客测试文章         | NULL        | NULL        | 技术   | 未分类    | 原创    |
++----+---------+--------------------------+-------------+-------------+--------+-----------+---------+
+        """
+        requestId  = request.header.get("requestId")
+        requestApp = request.header.get("requestApp")
+        _check_head = 
+        sql = u"INSERT INTO blog (title,author,time,content,tag,class) VALUES('%s', '%s', '%s', '%s', '%s', '%s')" %(title,author,time,content,tag,classtype)
+

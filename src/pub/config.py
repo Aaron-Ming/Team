@@ -23,6 +23,9 @@ GLOBAL={
     "LogLevel": "DEBUG",
     #应用程序写日志级别，目前有DEBUG，INFO，WARNING，ERROR，CRITICAL
 
+    "ACA": ("Team.Front", ),
+    #Access control application, 访问控制应用，限定只有ACA定义中的应用可以访问API资源。
+
 }
 
 #生产环境配置段
@@ -34,7 +37,6 @@ PRODUCT={
     "ProductType": "tornado",
     #生产环境启动方法，可选`gevent`, `tornado`, `uwsgi`,其中tornado log level是WARNNING，也就是低于WARN级别的日志不会打印或写入日志中。
 }
-
 
 #数据库配置段
 MYSQL={
@@ -48,23 +50,3 @@ MYSQL={
     #MySQL连接信息，格式可包括在()、[]、{}内，分别填写主机名或IP、端口、数据库、用户、密码、字符集、时区等，其中port默认3306、字符集默认utf8、时区默认东八区，注意必须写在一行内！
 }
 
-#博客配置项
-BLOG={
-   "IndexPageNum": 8,
-    #首页文章展现术,
-    "AdminGroup": ("admin", "taochengwei"),
-    #管理员权限组
-}
-
-#配置控制中心(ConfigControlCenter, C3)
-C3={
-    "GLOBAL": {
-        "Environment":  GLOBAL.get("Environment"),
-        "Host":         GLOBAL.get("Host"),
-        "Port":         10050,
-        "LogLevel":     GLOBAL.get("LogLevel"),
-        "ProcessName":  "Team.Front",
-        "ProductType":  PRODUCT.get("ProductType"),
-    },
-    "BLOG": BLOG,
-}

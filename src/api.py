@@ -78,7 +78,6 @@ api.add_resource(Index, '/', endpoint='index')
 api.add_resource(User, '/user', '/user/', endpoint='user')
 api.add_resource(Token, '/token', '/token/', endpoint='token')
 api.add_resource(Blog, '/blog', '/blog/', endpoint='blog')
-api.add_resource(Conf, '/conf', '/conf/', endpoint='conf')
 
 if __name__ == '__main__':
     from pub.config import GLOBAL
