@@ -71,6 +71,6 @@ class Blog(Resource):
         """
         requestId  = request.header.get("requestId")
         requestApp = request.header.get("requestApp")
-        _check_head = 
-        sql = u"INSERT INTO blog (title,author,time,content,tag,class) VALUES('%s', '%s', '%s', '%s', '%s', '%s')" %(title,author,time,content,tag,classtype)
+        #_check_head = 
+        sql = "INSERT INTO blog (title,author,time,content,tag,class) VALUES('%s', '%s', '%s', '%s', '%s', '%s')" %(title,author,time,content,tag,classtype)
 

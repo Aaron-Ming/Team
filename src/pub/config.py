@@ -4,7 +4,7 @@
 GLOBAL={
 
     "Environment": "dev",
-    "Environment": "product",
+    #"Environment": "product",
     #1. The meaning of the representative is the application of the environment, the value of dev, product;
     #2. When the value is dev, only exec app.run() with flask.
     #3. When the value is product, will start server with tornado or gevent.
@@ -23,8 +23,8 @@ GLOBAL={
     "LogLevel": "DEBUG",
     #应用程序写日志级别，目前有DEBUG，INFO，WARNING，ERROR，CRITICAL
 
-    "ACA": ("Team.Front", ),
-    #Access control application, 访问控制应用，限定只有ACA定义中的应用可以访问API资源。
+    "ACL": ("Team.Front", ),
+    #Access control list, 访问控制列表，限定只有ACL定义中的应用可以访问API资源。
 
 }
 
@@ -40,7 +40,7 @@ PRODUCT={
 
 #数据库配置段
 MYSQL={
-    "Host": "localhost",
+    "Host": "101.200.125.9",
     "Port": 3306,
     "Database": "team",
     "User": "root",
