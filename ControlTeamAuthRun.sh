@@ -3,17 +3,8 @@
 dir=$(cd $(dirname $0); pwd)
 log_dir=${dir}/src/logs
 [ -d $log_dir ] || mkdir $log_dir
-procname=$(grep '"ProcessName":' ${dir}/src/pub/config.py | awk '{print $2}' | awk -F \" '{print $2}'|head -1)
-productype=$(grep '"ProductType":' ${dir}/src/pub/config.py | awk '{print $2}' | awk -F \" '{print $2}'|head -1)
+procname=$(grep '"ProcessName":' ${dir}/src/config.py | awk '{print $2}' | awk -F \" '{print $2}'|head -1)
 pidfile=${log_dir}/${procname}.pid
-
-function _start()
-{
-    $(which python) -O ${dir}/src/Product.py &> ${log_dir}/output.log &
-    pid=$!
-    echo $pid > $pidfile
-    echo "$procname start over."
-}
 
 function _status()
 {
@@ -41,10 +32,16 @@ case $1 in
 start)
     if [ -f $pidfile ]; then
         if [[ $(ps aux | grep $(cat $pidfile) | grep -v grep | wc -l) -lt 1 ]]; then
-            _start
+            $(which python) -O ${dir}/src/Product.py &>> ${log_dir}/output.log &
+            pid=$!
+            echo $pid > $pidfile
+            echo "$procname start over."
         fi
     else
-        _start
+        $(which python) -O ${dir}/src/Product.py &>> ${log_dir}/output.log &
+        pid=$!
+        echo $pid > $pidfile
+        echo "$procname start over."
     fi
     ;;
 

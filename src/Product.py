@@ -2,8 +2,8 @@
 #product environment start application with `tornado IOLoop` and `gevent server`
 
 from api import app
-from pub import logger, RunEnvError
-from pub.config import GLOBAL, PRODUCT
+from pub import logger
+from config import GLOBAL, PRODUCT
 
 Host = GLOBAL.get('Host')
 Port = GLOBAL.get('Port')
@@ -19,13 +19,10 @@ else:
     setproctitle.setproctitle(ProcessName)
     logger.info("The process is %s" % ProcessName)
 
-if Environment != 'product':
-    errmsg="The %s isn't product, process exit!!!" % Environment
-    logger.error(errmsg)
-    raise RunEnvError(errmsg)
-
 try:
-    logger.info('%s has been launched, %s:%d' %(ProcessName, Host, Port))
+    msg = '%s has been launched, %s:%d' %(ProcessName, Host, Port)
+    print(msg)
+    logger.info(msg)
     if ProductType == 'gevent':
         from gevent.wsgi import WSGIServer
         http_server = WSGIServer((Host, Port), app)
@@ -51,14 +48,14 @@ try:
             else:
                 uwsgi("--http", "%s:%d"%(Host,Port), "--procname-master", ProcessName, "--procname", ProcessName + ".worker", "--chdir", BASE_DIR, "-w", "api:app", "-d", logfile, "-M", "-p", cpu_count())
         except ImportError:
-            errmsg=r"Start Fail, maybe you did not install the `sh` module."
-            logger.error(errmsg)
-            raise ImportError(errmsg)
+            msg = r"Start Fail, maybe you did not install the `sh` module."
+            logger.error(msg)
+            raise ImportError(msg)
 
     else:
-        errmsg='Start the program does not support with %s, abnormal exit!' %ProductType
-        logger.error(errmsg)
-        raise RunEnvError(errmsg)
+        msg = 'Start the program does not support with %s, abnormal exit!' %ProductType
+        logger.error(msg)
+        raise RuntimeError(msg)
 
 except Exception,e:
     print(e)
