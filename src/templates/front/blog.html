@@ -1,5 +1,8 @@
 {% extends "base/front.html" %}
 {% block title %}SaintIC Team Blog{% endblock %}
+{% block head %}
+    <link href="{{ url_for('static', filename='rainbow-2.1.0/themes/css/github.css') }}" rel="stylesheet" type="text/css" media="screen">
+{% endblock %}
 {% block article %}
     <article id="article">
         <script>
@@ -23,4 +26,9 @@
         </script>
         {{ blog }}
     </article>
+{% endblock %}
+{% block script %}
+    <script src="{{ url_for('static', filename='rainbow-2.1.0/dist/rainbow.js') }}"></script>
+    <script src="{{ url_for('static', filename='rainbow-2.1.0/src/language/generic.js') }}"></script>
+    <script src="{{ url_for('static', filename='rainbow-2.1.0/src/language/shell.js') }}"></script>
 {% endblock %}

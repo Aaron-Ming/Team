@@ -20,6 +20,14 @@ else:
     setproctitle.setproctitle(ProcessName)
     logger.info("The process is %s" % ProcessName)
 
+if GLOBAL.get("put2Redis") == True:
+    from pub import put2Redis
+    from threading import Thread
+    from plugins import session_redis_connect
+    MISC = {"loglevel": GLOBAL.get("LogLevel"), "proctype": ProductType}
+    t = Thread(target=put2Redis, name='Thread.Put2Redis', args=(session_redis_connect, ProcessName, Port, MISC))
+    t.start()
+
 try:
     msg = '%s has been launched, %s:%s' %(ProcessName, Host, Port)
     logger.info(msg)

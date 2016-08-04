@@ -16,6 +16,9 @@ GLOBAL={
 
     "LogLevel": os.environ.get("loglevel", "DEBUG"),
     #应用程序写日志级别，目前有DEBUG，INFO，WARNING，ERROR，CRITICAL
+
+    "put2Redis": os.environ.get("put2redis", True),
+    #是否开启put至redis的线程
 }
 
 

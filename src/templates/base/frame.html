@@ -17,7 +17,7 @@
         <div class="logo" ><a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='img/saint_logo.png') }}" alt="SaintIC Logo" title="SaintIC Team"></a></div>
         <div class="menu">
             <ul>
-                <li><a href="{{ url_for('index') }}">Index<span>主页归来</span></a></li>
+                <li><a href="{{ url_for('index') }}">Index<span>回归主页</span></a></li>
                 <li><a href="https://github.com/saintic/Team/tree/front" target="_blank">GitHub<span>开源地址</span></a></li>
                 <li><a href="#">CataLog<span>分类目录</span></a>
                     <ul id="catalog">
@@ -29,9 +29,9 @@
                     </ul>
                 </li>
                 {% if g.signin -%}
-                    <li><a href="{{ url_for('logout') }}">Logout<span>注销</span></a></li>
+                    <li class="about"><a href="{{ url_for('logout') }}">Logout<span>注销</span></a></li>
                 {% else -%}
-                    <li><a href="{{ url_for('login') }}">Login<span>登录</span></a></li>
+                    <li class="about"><a href="{{ url_for('login') }}">Login<span>登录</span></a></li>
                 {% endif -%}
             </ul>
         </div>
