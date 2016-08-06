@@ -1,12 +1,27 @@
 #-*- coding:utf8 -*-
+#Conection Redis Module.
 
-import redis
 from pub import logger
+try:
+    import redis
+    import rediscluster
+except ImportError,e:
+    logger.error(e)
+    raise ImportError('%s, maybe you need to install `redis-py-cluster`.' %e)
 
-class Redis_connect(object):
 
-    def __init__(self, host, port=6379, auth=None):
-        self.rc = redis.Redis(host=host, port=port, password=auth, socket_timeout=3, socket_connect_timeout=3, retry_on_timeout=1)
+class RedisBaseApi(object):
+
+    def __init__(self, sessionType, **kw):
+        host = kw.get("host")
+        port = kw.get("port")
+        auth = kw.get("pass")
+        rc1 = lambda host, port, auth=None: redis.Redis(host=host, port=port, password=auth, socket_timeout=3, socket_connect_timeout=3, retry_on_timeout=3)
+        rc2 = lambda host, port: rediscluster.StrictRedisCluster(startup_nodes=[{"host": host, "port": port}], decode_responses=True, socket_timeout=3)
+        if sessionType == "redis":
+            self.rc = rc1(host, port, auth)
+        elif sessionType == "redis_cluster":
+            self.rc = rc2(host, port)
 
     def set(self, key, value, time=3360):
         #set a key <=> value
@@ -58,16 +73,3 @@ class Redis_connect(object):
     @property
     def keys(self):
         return self.rc.keys()
-
-    def Blog2Redis(self, blogs):
-        for blog in blogs:
-            key = "Team.Front.Blog.Id.%d" %blog.get("id")
-            for field, value in blog.iteritems():
-                self.rc.hset(key, field, value)
-            #self.rc.hgetall(key)
-
-if __name__ == "__main__":
-   rc=Redis_connect(host="127.0.0.1", auth='SaintIC') 
-   import requests
-   res = requests.get("https://api.saintic.com/blog?num=all", verify=False).json()
-   print rc.Blog2Redis(res["data"])

@@ -24,7 +24,6 @@ def before_request():
 #每次返回数据中，带上响应头，包含API版本和本次请求的requestId，以及允许所有域跨域访问API, 记录访问日志
 @app.after_request
 def add_header(response):
-    response.headers["Content-type"]         = "application/json, charset=utf8;"
     response.headers["X-SaintIC-Media-Type"] = "saintic." + __version__
     response.headers["X-SaintIC-Request-Id"] = g.requestId
     response.headers["Access-Control-Allow-Origin"] = "*"
@@ -37,9 +36,9 @@ def add_header(response):
             "referer": request.headers.get('Referer'),
             "agent": request.headers.get("User-Agent"),
             "requestId": g.requestId,
-            }   
-        }   
-    )) 
+            }
+        }
+    ))
     return response
 
 #自定义错误显示信息，404错误和500错误

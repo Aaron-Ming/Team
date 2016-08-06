@@ -61,5 +61,5 @@ MODULES={
     }),
 
     #权限管理模块
-    "Authority": ''
+    "Authority": os.environ.get("authority"),
 }
