@@ -58,7 +58,7 @@ class Blog(Resource):
             logger.info(res)
             return res
 
-
+    @classmethod
     def post(self):
         """ 创建博客文章接口:
         :: 1. 验证头部信息
@@ -69,8 +69,38 @@ class Blog(Resource):
 | 47 | 测试1   | 技术博客测试文章         | NULL        | NULL        | 技术   | 未分类    | 原创    |
 +----+---------+--------------------------+-------------+-------------+--------+-----------+---------+
         """
-        requestId  = request.header.get("requestId")
-        requestApp = request.header.get("requestApp")
-        #_check_head = 
+        AppRequestId     = request.header.get("AppRequestId")
+        AppRequestName   = request.header.get("AppRequestName")
+        AppRequestCookie = request.cookies
+        logger.debug(AppRequestCookie)
+        AppRequestCookieUsername = request.cookies.get("username", "")
+        AppRequestCookiePassword = g.redis.get(Ukey + AppRequestCookieUsername) or ""
+        AppRequestCookieSignin   = True if md5(AppRequestCookieUsername + base64.decodestring(AppRequestCookiePassword)) else False
+
+        title     = request.form.get('title')
+        author    = username
+        time      = today()
+            content   = request.form.get(u'editor')
+            if content.find('\'') >= 0: content = content.replace('\'', '\"')
+            tag       = request.form.get('tag')
+            classtype = request.form.get('type')
+            logger.debug(type(content))
+            sql = u"INSERT INTO blog (title,author,time,content,tag,class) VALUES('%s', '%s', '%s', '%s', '%s', '%s')" %(title,author,time,content,tag,classtype)
+            #sql="INSERT INTO blog(title,author,time,content,tag,class) VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')".format(title,author,time,content,tag,classtype)
+            logger.debug({'title': title})
+            logger.debug({'time': time})
+            logger.debug({'author': author})
+            logger.debug({'content': content.find('\'')})
+            logger.info(sql)
+            #此处需要重写DB类的insert方法，用(sql, arg1, arg2, ...)插入数据库中避免错误
+            try:
+                mysql.execute(sql)
+            except Exception,e:
+                logger.error(e)
+            return redirect(url_for('create_blog'))
+        return render_template('user/blog-new.html', username=username, data=userdata, types=ClassData())
+    else:
+        return redirect(url_for('index'))
+
         sql = "INSERT INTO blog (title,author,time,content,tag,class) VALUES('%s', '%s', '%s', '%s', '%s', '%s')" %(title,author,time,content,tag,classtype)
 

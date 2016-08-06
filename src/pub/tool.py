@@ -2,9 +2,11 @@
 
 import re
 import hashlib
+import datetime
+import binascii, os, uuid
 from log import Syslog
 from db import DB
-import binascii, os, uuid
+from config import MYSQL
 
 md5           = lambda pwd:hashlib.md5(pwd).hexdigest()
 mysql         = DB()
@@ -15,6 +17,23 @@ gen_requestId = lambda :str(uuid.uuid4())
 #API所需要的正则表达式
 mail_check    = re.compile(r'([0-9a-zA-Z\_*\.*\-*]+)@([a-zA-Z0-9\-*\_*\.*]+)\.([a-zA-Z]+$)')
 chinese_check = re.compile(u"[\u4e00-\u9fa5]+")
+
+#获取今天的日期
+today = lambda :datetime.datetime.now().strftime("%Y-%m-%d")
+
+#用户上传文件随机命名
+gen_rnd_filename = lambda :"%s%s" %(datetime.datetime.now().strftime('%Y%m%d%H%M%S'), str(random.randrange(1000, 10000)))
+
+mysql2 = lambda :torndb.Connection(
+                    host     = "%s:%s" %(MYSQL.get('Host'), MYSQL.get('Port', 3306)),
+                    database = MYSQL.get('Database'),
+                    user     = MYSQL.get('User', None),
+                    password = MYSQL.get('Passwd', None),
+                    time_zone= MYSQL.get('Timezone','+8:00'),
+                    charset  = MYSQL.get('Charset', 'utf8'),
+                    connect_timeout=3,
+                    max_idle_time=5
+        )
 
 #API所需要的公共函数
 def dbUser(username=None, password=False, token=False, uid=False):
