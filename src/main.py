@@ -24,7 +24,7 @@ Ukey = "Team.Front.Session."
 def before_request():
     g.startTime = time.time()
     g.requestId = gen_requestId()
-    g.refererUrl= request.cookies.get("Url") if request.cookies.get("Url") and not "/auth" in request.cookies.get("Url") and not "favicon.ico" in request.cookies.get("Url") and not "robots.txt" in request.cookies.get("Url") and not "/logout" in request.cookies.get("Url") and not "index.js.map" in request.cookies.get("Url") else url_for("index")
+    g.refererUrl= request.cookies.get("Url") if request.cookies.get("Url") and not "/auth" in request.cookies.get("Url") and not "favicon.ico" in request.cookies.get("Url") and not "robots.txt" in request.cookies.get("Url") and not "/logout" in request.cookies.get("Url") and not "index.js.map" in request.cookies.get("Url") and not "static" in request.cookies.get("Url") else url_for("index")
     logger.info("Start Once Access, and this requestId is %s, refererUrl is %s" %(g.requestId, g.refererUrl))
     g.redis     = session_redis_connect
     g.auth      = UserAuth()
