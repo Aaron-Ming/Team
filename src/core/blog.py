@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-from pub import logger, mysql
+from pub import logger, mysql, mysql2, today
 from flask import request
 from flask.ext.restful import Resource
 
@@ -63,44 +63,35 @@ class Blog(Resource):
         """ 创建博客文章接口:
         :: 1. 验证头部信息
         :: 2. 验证cookie信息
-+----+---------+--------------------------+-------------+-------------+--------+-----------+---------+
-| id | title   | content                  | create_time | update_time | tag    | catalog   | sources |
-+----+---------+--------------------------+-------------+-------------+--------+-----------+---------+
-| 47 | 测试1   | 技术博客测试文章         | NULL        | NULL        | 技术   | 未分类    | 原创    |
-+----+---------+--------------------------+-------------+-------------+--------+-----------+---------+
         """
-        AppRequestId     = request.header.get("AppRequestId")
-        AppRequestName   = request.header.get("AppRequestName")
-        AppRequestCookie = request.cookies
-        logger.debug(AppRequestCookie)
+        AppRequestId     = request.headers.get("AppRequestId")
+        AppRequestName   = request.headers.get("AppRequestName")
+
+        logger.debug(request.cookies)
+
         AppRequestCookieUsername = request.cookies.get("username", "")
-        AppRequestCookiePassword = g.redis.get(Ukey + AppRequestCookieUsername) or ""
-        AppRequestCookieSignin   = True if md5(AppRequestCookieUsername + base64.decodestring(AppRequestCookiePassword)) else False
-
-        title     = request.form.get('title')
-        author    = username
-        time      = today()
-            content   = request.form.get(u'editor')
-            if content.find('\'') >= 0: content = content.replace('\'', '\"')
-            tag       = request.form.get('tag')
-            classtype = request.form.get('type')
-            logger.debug(type(content))
-            sql = u"INSERT INTO blog (title,author,time,content,tag,class) VALUES('%s', '%s', '%s', '%s', '%s', '%s')" %(title,author,time,content,tag,classtype)
-            #sql="INSERT INTO blog(title,author,time,content,tag,class) VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')".format(title,author,time,content,tag,classtype)
-            logger.debug({'title': title})
-            logger.debug({'time': time})
-            logger.debug({'author': author})
-            logger.debug({'content': content.find('\'')})
-            logger.info(sql)
-            #此处需要重写DB类的insert方法，用(sql, arg1, arg2, ...)插入数据库中避免错误
+        AppRequestCookiePassword = '' # g.redis.get(Ukey + AppRequestCookieUsername) or ""
+        AppRequestCookieSignin   = True #if md5(AppRequestCookieUsername + base64.decodestring(AppRequestCookiePassword)) else False
+        #get blog form informations.
+        blog_title   = request.form.get('title')
+        blog_content = request.form.get('content')
+        blog_ctime   = today()
+        blog_tag     = request.form.get('tag')
+        blog_catalog = request.form.get('catalog')
+        blog_sources = request.form.get("sources")
+        logger.info("blog_title:%s, blog_content:%s, blog_ctime:%s, blog_tag:%s, blog_catalog:%s, blog_sources:%s" %(blog_title, blog_content, blog_ctime, blog_tag, blog_catalog, blog_sources))
+        if blog_title and blog_content and blog_ctime and blog_tag and blog_catalog and blog_sources:
+            #sql = 'INSERT INTO blog (title,content,create_time,tag,catalog,sources) VALUES ("%s", "%s", "%s", "%s", "%s", "%s")'
+            sql = 'INSERT INTO blog (title,content,create_time,tag,catalog,sources) VALUES (%s, %s, %s, %s, %s, %s)'
+            logger.info(sql %(blog_title, blog_content, blog_ctime, blog_tag, blog_catalog, blog_sources))
             try:
-                mysql.execute(sql)
+                blog_id  = mysql2().insert(sql, blog_title, blog_content, blog_ctime, blog_tag, blog_catalog, blog_sources)
             except Exception,e:
-                logger.error(e)
-            return redirect(url_for('create_blog'))
-        return render_template('user/blog-new.html', username=username, data=userdata, types=ClassData())
-    else:
-        return redirect(url_for('index'))
-
-        sql = "INSERT INTO blog (title,author,time,content,tag,class) VALUES('%s', '%s', '%s', '%s', '%s', '%s')" %(title,author,time,content,tag,classtype)
-
+                logger.error(e, exc_info=True)
+                res = {"code": 3, "data": None, "msg": "blog write error."}
+            else:
+                res = {"code": 0, "data": blog_id, "msg": "blog write success."}
+        else:
+            res = {"code": 4, "data": None, "msg": "data form error."}
+        logger.info(res)
+        return res
