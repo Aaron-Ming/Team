@@ -1,5 +1,7 @@
 # -*- coding:utf8 -*-
 
+import os
+
 #全局配置端
 GLOBAL={
 
