@@ -15,16 +15,25 @@ class Blog(Resource):
         """
 
         num    = request.args.get('num')
+        try:
+            num= int(num)
+        except Exception,e:
+            logger.warn(e)
+            num= str(num)
+        sort   = request.args.get('sort', 'desc')
         blogId = request.args.get('blogId')
         catalog= True if request.args.get("catalog") == "true" or request.args.get("catalog") == "True" else False
+        sources= True if request.args.get("sources") in ("true", "True") else False
         res    = {"url": request.url, "msg": None, "data": None, "code": 0}
-        logger.debug({"num": num, "blogId": blogId, "catalog": catalog})
+        logger.debug({"num": num, "blogId": blogId, "catalog": catalog, "sources": sources})
 
         if catalog:
             sql = "SELECT GROUP_CONCAT(catalog) FROM blog GROUP BY catalog"
             logger.info("SELECT catalog SQL: %s" %sql)
             try:
-                data = [ v.split(",")[0] for i in mysql.get(sql) for v in i.values() if v ]
+                data = mysql.get(sql)
+                logger.info(data)
+                data = [ v.split(",")[0] for i in data for v in i.values() if v and v.split(",")[0] ]
             except Exception,e:
                 logger.error(e, exc_info=True)
                 data = []
@@ -33,30 +42,50 @@ class Blog(Resource):
                 logger.info(res)
                 return res
 
+        if sources:
+            sql = "SELECT GROUP_CONCAT(sources) FROM blog GROUP BY sources"
+            logger.info("SELECT sources SQL: %s" %sql)
+            try:
+                data = mysql.get(sql)
+                logger.info(data)
+                data = [ v.split(",")[0] for i in data for v in i.values() if v and v.split(",")[0] ]
+            except Exception,e:
+                logger.error(e, exc_info=True)
+                data = []
+            else:
+                res.update(msg = "Sources query success", data = data)
+                logger.info(res)
+                return res
+
         if blogId:
             sql = "SELECT id,title,content,create_time,update_time,tag,catalog,sources FROM blog WHERE id=%s" %blogId
         else:
             if num == "all":
-                sql = "SELECT id,title,content,create_time,update_time,tag,catalog,sources FROM blog"
-            else:
-                if isinstance(num, int):
-                    sql = "SELECT id,title,content,create_time,update_time,tag,catalog,sources FROM blog LIMIT %d" %num
+                if sort == "desc":
+                    sql = "SELECT id,title,content,create_time,update_time,tag,catalog,sources FROM blog ORDER BY id DESC"
                 else:
-                    res.update(msg = 'num not a integer or all, or no blogId query.', code = 1)
-                    logger.warn(res)
-                    return res
+                    sql = "SELECT id,title,content,create_time,update_time,tag,catalog,sources FROM blog"
+            elif isinstance(num, int):
+                if sort == "desc":
+                    sql = "SELECT id,title,content,create_time,update_time,tag,catalog,sources FROM blog ORDER BY id DESC LIMIT %d" %num
+                else:
+                    sql = "SELECT id,title,content,create_time,update_time,tag,catalog,sources FROM blog LIMIT %d" %num
+            else:
+                res.update(msg = 'num not a integer or all, or no blogId query.', code = 1)
+                logger.warn(res)
+                return res
+
+        logger.info({"Blog:get:SQL": sql})
         try:
             data = mysql.get(sql)
-            logger.info({"Blog:get:SQL": sql})
         except Exception,e:
             logger.error(e, exc_info=True)
             res.update(msg = "get blog error", code = 2)
-            logger.info(res)
-            return res
         else:
             res.update(msg = 'success', data = data)
-            logger.info(res)
-            return res
+
+        logger.info(res)
+        return res
 
     @classmethod
     def post(self):
