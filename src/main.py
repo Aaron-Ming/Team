@@ -8,6 +8,8 @@ from pub import config, gen_requestId, logger, md5, Uploader
 from plugins import session_redis_connect, UserAuth
 from flask import Flask, render_template, g, request, redirect, url_for, make_response, jsonify
 
+import datetime
+
 __version__ = '0.1.0'
 __date      = '2016-06-29'
 __org__     = 'SaintIC'
@@ -17,7 +19,20 @@ __doc__     = 'SaintIC Team Blog Front'
 
 app=Flask(__name__)
 app.secret_key = os.urandom(24)
+
+app.config['UPLOAD_FOLDER'] = 'static/upload/'
+app.config['MAX_CONTENT_LENGTH'] = 2 * 1024 * 1024
+app.config['ALLOWED_EXTENSIONS'] = set(['png', 'jpg', 'jpeg', 'gif'])
+
 Ukey = "Team.Front.Session."
+
+# 获取今天的日期
+today = lambda :datetime.datetime.now().strftime("%Y-%m-%d")
+# 用户上传文件验证类型
+allowed_file = lambda filename:'.' in filename and filename.rsplit('.', 1)[1] in app.config['ALLOWED_EXTENSIONS']
+# 文本编辑器上传定义随机命名
+gen_rnd_filename = lambda :"%s%s" %(datetime.datetime.now().strftime('%Y%m%d%H%M%S'), str(random.randrange(1000, 10000)))
+
 
 #每个URL请求之前，定义requestId并绑定到g.
 @app.before_request
@@ -62,14 +77,25 @@ def not_found(error=None):
     message = 'Not Found: ' + request.url
     return render_template("public/4xx.html", msg=message)
 
+#博客主页
 @app.route('/')
 def index():
     return render_template('front/index.html')
 
-@app.route('/robots.txt')
-def robots():
-    return render_template('public/robots.txt')
+#博客展示页面
+@app.route('/blog/<int:bid>.html')
+def blogShow(bid):
+    return render_template("front/blog-show.html", blogId=bid)
 
+#博客创建页面
+@app.route('/blog/create/')
+def blogCreate():
+    if g.signin:
+        return render_template("front/blog-create.html")
+    else:
+        return redirect(url_for('login'))
+
+#博客用户个人中心页面
 @app.route('/uc/<username>/')
 def uc(username):
     if g.signin:
@@ -77,13 +103,7 @@ def uc(username):
     else:
         return redirect(url_for('login'))
 
-@app.route('/blog/<int:bid>.html')
-def blog(bid):
-    import requests
-    #data=requests.get("https://api.saintic.com/blog?blogId="+str(bid), timeout=3).json()
-    #return render_template("front/new-blog.html", title=data['data'].get("title"), data=data['data'].get("content"))
-    return render_template("front/blog.html", blogId=bid)
-
+#博客登录页面
 @app.route('/login/', methods=["GET", "POST"])
 def login():
     if g.signin:
@@ -91,6 +111,7 @@ def login():
     else:
         return render_template("front/login.html")
 
+#博客验证登陆接口
 @app.route('/auth/', methods=["POST"])
 def auth():
     username = request.form.get("username", "")
@@ -120,6 +141,7 @@ def auth():
         logger.error(e, exc_info=True)
         return jsonify(loggedIn=False, error="Server Exception")
 
+#博客注销页面
 @app.route('/logout/')
 def logout():
     resp = make_response(redirect(url_for('login')))
@@ -128,40 +150,8 @@ def logout():
     resp.set_cookie(key='sessionId',  value='', expires=0)
     return resp
 
-
-#博客创建页面
-@app.route('/blog/create/', methods = ["GET", "POST"])
-def blog_create_page():
-    if g.signin:
-        if request.method == "GET":
-            return render_template("front/blog_create.html")
-        if request.method == "POST":
-            title     = request.form.get('title')
-            author    = username
-            time      = today()
-            content   = request.form.get(u'editor')
-            if content.find('\'') >= 0: content = content.replace('\'', '\"')
-            tag       = request.form.get('tag')
-            classtype = request.form.get('type')
-            logger.debug(type(content))
-            sql = u"INSERT INTO blog (title,author,time,content,tag,class) VALUES('%s', '%s', '%s', '%s', '%s', '%s')" %(title,author,time,content,tag,classtype)
-            #sql="INSERT INTO blog(title,author,time,content,tag,class) VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')".format(title,author,time,content,tag,classtype)
-            logger.debug({'title': title})
-            logger.debug({'time': time})
-            logger.debug({'author': author})
-            logger.debug({'content': content.find('\'')})
-            logger.info(sql)
-            #此处需要重写DB类的insert方法，用(sql, arg1, arg2, ...)插入数据库中避免错误
-            try:
-                mysql.execute(sql)
-            except Exception,e:
-                logger.error(e)
-            return redirect(url_for('create_blog'))
-        return render_template('user/blog-new.html', username=username, data=userdata, types=ClassData())
-    else:
-        return redirect(url_for('login'))
-
-@app.route('/home/upload/', methods=['GET', 'POST', 'OPTIONS'])
+#博客创建页面UEditor接口
+@app.route('/upload/', methods=['GET', 'POST', 'OPTIONS'])
 def upload():
     """UEditor文件上传接口
 
@@ -281,6 +271,9 @@ def upload():
     res.headers['Access-Control-Allow-Headers'] = 'X-Requested-With,X_Requested_With'
     return res
 
+@app.route('/robots.txt')
+def robots():
+    return render_template('public/robots.txt')
 if __name__ == "__main__":
     from pub.config import GLOBAL
     Host = GLOBAL.get('Host')
