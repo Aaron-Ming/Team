@@ -83,13 +83,5 @@ if __name__ == '__main__':
     from pub.config import GLOBAL
     Host = GLOBAL.get('Host')
     Port = GLOBAL.get('Port')
-    Environment = GLOBAL.get('Environment')
     Debug = GLOBAL.get('Debug', True)
-
-    if Environment == "dev":
-        app.run(host=Host, port=int(Port), debug=Debug)
-    elif Environment == "super debug":
-        from werkzeug.contrib.profiler import ProfilerMiddleware
-        app.config['PROFILE'] = True
-        app.wsgi_app = ProfilerMiddleware(app.wsgi_app, restrictions = [30])
-        app.run(debug=Debug, host=Host, port=int(Port))
+    app.run(host=Host, port=int(Port), debug=Debug)

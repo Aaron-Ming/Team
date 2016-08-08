@@ -3,13 +3,6 @@
 #全局配置端
 GLOBAL={
 
-    "Environment": "dev",
-    #"Environment": "product",
-    #1. The meaning of the representative is the application of the environment, the value of dev, product;
-    #2. When the value is dev, only exec app.run() with flask.
-    #3. When the value is product, will start server with tornado or gevent.
-    #3. When the value is "super debug", will start tuning mode.
-
     "Host": "0.0.0.0",
     #Application run network address, you can set it `0.0.0.0`, `127.0.0.1`, ``, `None`;
     #Default run on all network interfaces.
