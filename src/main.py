@@ -1,5 +1,6 @@
 # -*- coding:utf8 -*-
 
+import re
 import os
 import json
 import time
@@ -151,7 +152,7 @@ def logout():
     return resp
 
 #博客创建页面UEditor接口
-@app.route('/upload/', methods=['GET', 'POST', 'OPTIONS'])
+@app.route('/blog/upload/', methods=['GET', 'POST', 'OPTIONS'])
 def upload():
     """UEditor文件上传接口
 
@@ -168,7 +169,8 @@ def upload():
         try:
             # 删除 `/**/` 之间的注释
             CONFIG = json.loads(re.sub(r'\/\*.*\*\/', '', fp.read()))
-        except:
+        except Exception,e:
+            logger.error(e)
             CONFIG = {}
 
     if action == 'config':
@@ -269,6 +271,7 @@ def upload():
     res.mimetype = mimetype
     res.headers['Access-Control-Allow-Origin'] = '*'
     res.headers['Access-Control-Allow-Headers'] = 'X-Requested-With,X_Requested_With'
+    logger.debug(res)
     return res
 
 @app.route('/robots.txt')

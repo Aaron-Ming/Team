@@ -9,8 +9,6 @@ from log import Syslog
 from uuid import uuid4
 
 import os
-import re
-import json
 import base64
 import random
 import urllib
