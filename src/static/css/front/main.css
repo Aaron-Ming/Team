@@ -502,7 +502,7 @@ footer ul.social_profiles li a,
 }
 #header .menu .active a { color: #9C0; }
 #header .menu li span { display: block; position: absolute; top: 0; left: 0; font-size: 12px; }
-#header .menu li ul { display: none; width: 600px; position: absolute; left: 0; }
+#header .menu li ul { display: none; width: 600px; position: absolute; text-align: center }
 #header .menu .about ul { right: 47px; left: auto; }
 #header .menu li li { text-transform: none; font-size: 16px; padding: 0 15px 0 0; height: 36px; line-height: 18px; }
 #header .menu .about li { float: right; }
