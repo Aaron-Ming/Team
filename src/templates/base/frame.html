@@ -18,21 +18,25 @@
         <div class="menu">
             <ul>
                 <li><a href="{{ url_for('index') }}">Index<span>回归主页</span></a></li>
-                <li><a href="https://github.com/saintic/Team/tree/front" target="_blank">GitHub<span>开源地址</span></a></li>
                 <li><a href="#">CataLog<span>分类目录</span></a>
                     <ul id="catalog">
                     </ul>
                 </li>
-                <li><a href="#">About<span>关于我们</span></a>
+                <li><a href="#">Sources<span>文章来源</span></a>
+                    <ul id="sources">
+                    </ul>
+                </li>
+                <li><a href="#">Function<span>额外功能</span></a>
                     <ul>
+                        {% if g.signin -%}
+                            <li><a href="{{ url_for('logout') }}">Logout<span>注销</span></a></li>
+                        {% else -%}
+                            <li><a href="{{ url_for('login') }}">Login<span>登录</span></a></li>
+                        {% endif -%}
+                        <li><a href="https://github.com/saintic/Team/tree/front" target="_blank">GitHub<span>开源地址</span></a></li>
                         <li><a href="#">Team<span>团队介绍</span></a></li>
                     </ul>
                 </li>
-                {% if g.signin -%}
-                    <li class="about"><a href="{{ url_for('logout') }}">Logout<span>注销</span></a></li>
-                {% else -%}
-                    <li class="about"><a href="{{ url_for('login') }}">Login<span>登录</span></a></li>
-                {% endif -%}
             </ul>
         </div>
     </div>
@@ -53,6 +57,25 @@
                         str += '<li><a href="#">' + catalog + '</a></li>';
                     };
                     document.getElementById('catalog').innerHTML=str;
+                },
+                error: function(error){
+                    console.log(error);
+                    location.reload(true);
+                }
+            });
+            $.ajax({
+                url: "https://api.saintic.com/blog?sources=true",
+                method: 'GET',
+                datatype: 'json',
+                success: function(res) {
+                    console.log(res);
+                    var data= res.data;
+                    var str = '';
+                    for(i=0; i<data.length; i++) {
+                        sources = data[i];
+                        str += '<li><a href="#">' + sources + '</a></li>';
+                    };
+                    document.getElementById('sources').innerHTML=str;
                 },
                 error: function(error){
                     console.log(error);
