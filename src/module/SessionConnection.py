@@ -10,6 +10,18 @@ except ImportError,e:
     raise ImportError('%s, maybe you need to install `redis-py-cluster`.' %e)
 
 
+def RedisBaseApi(sessionType, **kw):
+    host = kw.get("host")
+    port = kw.get("port")
+    auth = kw.get("pass")
+    rc1  = lambda host, port, auth=None: redis.Redis(host=host, port=port, password=auth, socket_timeout=3, socket_connect_timeout=3, retry_on_timeout=3)
+    rc2  = lambda host, port: rediscluster.StrictRedisCluster(startup_nodes=[{"host": host, "port": port}], decode_responses=True, socket_timeout=3)
+        if sessionType == "redis":
+            self.rc = rc1(host, port, auth)
+        elif sessionType == "redis_cluster":
+            self.rc = rc2(host, port)
+
+"""
 class RedisBaseApi(object):
 
     def __init__(self, sessionType, **kw):
@@ -73,3 +85,4 @@ class RedisBaseApi(object):
     @property
     def keys(self):
         return self.rc.keys()
+"""
